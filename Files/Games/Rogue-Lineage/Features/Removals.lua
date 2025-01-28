@@ -5,8 +5,8 @@ local Lighting = GetService("Lighting")
 local Event = require("Files/Utils/Event.lua")
 
 local FullbrightConnect = Event:Create(Lighting:GetPropertyChangedSignal("Ambient"))
-local FogStartConnect = Event:Create(Lighting:GetPropertyChangedSignal("FogStart"))
 local FogEndConnect = Event:Create(Lighting:GetPropertyChangedSignal("FogEnd"))
+local FogStartConnect = Event:Create(Lighting:GetPropertyChangedSignal("FogStart"))
 
 local OrderFields = {}
 
@@ -70,29 +70,28 @@ function Removals:NoFog(Value)
         OldFogStart = Lighting.FogStart
         OldFogEnd = Lighting.FogEnd
 
-        Lighting.FogStart = 0
         Lighting.FogEnd = 999999
-
-        FogStartConnect:Connect(function(NewFog)
-            OldFogStart = NewFog
-            Lighting.FogStart = 0
-        end)
+        Lighting.FogStart = 0
 
         FogEndConnect:Connect(function(NewFog)
             OldFogEnd = NewFog
             Lighting.FogEnd = 999999
         end)
 
+        FogStartConnect:Connect(function(NewFog)
+            OldFogStart = NewFog
+            Lighting.FogStart = 0
+        end)
     elseif (Value == false) then
-        FogStartConnect:Disconnect()
         FogEndConnect:Disconnect()
-
-        if (OldFogStart ~= nil) then
-            Lighting.FogStart = OldFogStart
-        end
+        FogStartConnect:Disconnect()
 
         if (OldFogEnd ~= nil) then
             Lighting.FogEnd = OldFogEnd
+        end
+
+        if (OldFogStart ~= nil) then
+            Lighting.FogStart = OldFogStart
         end
     end
 end
