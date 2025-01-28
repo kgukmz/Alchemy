@@ -6,7 +6,7 @@ local Library = {
 		main = "Alchemy";
 		configs = "Alchemy/Configuration";
 	};
-	Accent = Color3.fromRGB(99, 127, 188);
+	Accent = Color3.fromRGB(82, 139, 223);
 	Pages = {};
 	Sections = {};
 	Flags = {};
