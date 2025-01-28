@@ -70,14 +70,17 @@ function Removals:NoFog(Value)
         OldFogStart = Lighting.FogStart
         OldFogEnd = Lighting.FogEnd
 
+        Lighting.FogStart = 0
+        Lighting.FogEnd = 999999
+
         FogStartConnect:Connect(function(NewFog)
             OldFogStart = NewFog
-            Lighting.FogStart = 999999
+            Lighting.FogStart = 0
         end)
 
         FogEndConnect:Connect(function(NewFog)
             OldFogEnd = NewFog
-            Lighting.FogEnd = 0
+            Lighting.FogEnd = 999999
         end)
 
     elseif (Value == false) then
