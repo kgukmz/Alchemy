@@ -47,13 +47,14 @@ function Removals:RemoveAmbient(Value)
     if (Value == true) then
         OldAmbient = Lighting.Ambient
         
-        local Intensity = getgenv().FullbrightIntensity or 200, 200, 200
+        local Intensity = getgenv().FullbrightIntensity or 200
         Lighting.Ambient = Color3.fromRGB(Intensity, Intensity, Intensity)
 
         FullbrightConnect:Connect(function(NewAmbient)
             OldAmbient = NewAmbient
+            print(OldAmbient, NewAmbient)
             
-            local Intensity = getgenv().FullbrightIntensity or 200, 200, 200
+            local Intensity = getgenv().FullbrightIntensity or 200
             Lighting.Ambient = Color3.fromRGB(Intensity, Intensity, Intensity)
         end)
     elseif (Value == false) then
@@ -73,18 +74,23 @@ function Removals:NoFog(Value)
         Lighting.FogEnd = 999999
         Lighting.FogStart = 0
 
-        FogEndConnect:Connect(function(NewFog)
-            OldFogEnd = NewFog
+        FogEndConnect:Connect(function(NewFogEnd)
+            OldFogEnd = NewFogEnd
+            print(OldFogEnd, NewFogEnd)
             Lighting.FogEnd = 999999
         end)
 
-        FogStartConnect:Connect(function(NewFog)
-            OldFogStart = NewFog
+        FogStartConnect:Connect(function(NewFogStart)
+            OldFogStart = NewFogStart
+            print(OldFogStart, OldFogEnd)
+
             Lighting.FogStart = 0
         end)
     elseif (Value == false) then
         FogEndConnect:Disconnect()
         FogStartConnect:Disconnect()
+
+        print(OldFogEnd, OldFogStart)
 
         if (OldFogEnd ~= nil) then
             Lighting.FogEnd = OldFogEnd
