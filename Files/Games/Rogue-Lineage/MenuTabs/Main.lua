@@ -5,6 +5,7 @@ function Main:Init(Window)
     MainTab:Separator({ Text = "MAIN" })
     
     local WorldHeader = MainTab:CollapsingHeader({ Title = "WORLD" })
+    WorldHeader:Separator({ Text = "FULLBRIGHT" })
     WorldHeader:Checkbox({
         Label = "Enable Fullbright"
     })
@@ -22,7 +23,15 @@ function Main:Init(Window)
     })
     
     WorldHeader:Checkbox({
-        Label = ""
+        Label = "No Sanity"
+    })
+
+    WorldHeader:Checkbox({
+        Label = "No Blur"
+    })
+
+    WorldHeader:Checkbox({
+        Label = "No Fog"
     })
 end
 
