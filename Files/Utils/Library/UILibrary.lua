@@ -3,8 +3,8 @@ local PlaceHolderUI = Instance.new("ScreenGui", game.CoreGui);
 local Library = {
 	Open = true;
 	Folders = {
-		main = "test";
-		configs = "test/Configs";
+		main = "Alchemy";
+		configs = "Alchemy/Configuration";
 	};
 	Accent = Color3.fromRGB(99, 127, 188);
 	Pages = {};
