@@ -1,22 +1,13 @@
 local Removals = {}
 
--- Get the Lighting service
-local Lighting = game:GetService("Lighting")
-
--- Event module (assuming it's correctly implemented elsewhere)
 local Event = require("Files/Utils/Event.lua")
 
--- Create event connections for property changes
+local Lighting = GetService("Lighting")
+
 local FullbrightConnect = Event:Create(Lighting:GetPropertyChangedSignal("Ambient"))
-local FogEndConnect = Event:Create(Lighting:GetPropertyChangedSignal("FogEnd"))
-local FogStartConnect = Event:Create(Lighting:GetPropertyChangedSignal("FogStart"))
+local OldAmbient = nil
 
 local OrderFields = {}
-
--- Initialize the old values to current Lighting properties
-local OldAmbient = Lighting.Ambient
-local OldFogStart = Lighting.FogStart
-local OldFogEnd = Lighting.FogEnd
 
 function Removals:RemoveOrderFields(Value)
     if (getgenv().getinstances == nil) then
@@ -47,59 +38,46 @@ function Removals:RemoveOrderFields(Value)
     end
 end
 
-function Removals:RemoveAmbient(Value) 
+function Removals:RemoveKillBricks(Value)
+    local BrickNames = {
+        "Fire";
+        "BaalField";
+        "ArdorianKillbrick";
+        "CryptKiller";
+        "KillBrick";
+        "KillFire";
+        "PitKillBrick";
+        "Lava";
+    }
+
+    for i, Object in next, workspace.Map:GetDescendants() do
+        if (table.find(BrickNames, Object.Name)) then
+            continue
+        end
+        if (Object.ClassName ~= "Part") then
+            continue
+        end
+
+        Object.CanTouch = not Value
+    end
+end
+
+function Removals:RemoveAmbient(Value) -- // Add a scale later maybe lol
     if (Value == true) then
         OldAmbient = Lighting.Ambient
-
-        local FullbrightColor = Color3.fromRGB(190, 190, 190)
-        Lighting.Ambient = FullbrightColor
+        Lighting.Ambient = Color3.fromRGB(220, 220, 220)
+        print("Set ambient to white")
 
         FullbrightConnect:Connect(function(NewValue)
             OldAmbient = NewValue
-            print("Old Ambient:", OldAmbient, "New Ambient:", NewValue)
-            
-            Lighting.Ambient = FullbrightColor
+            Lighting.Ambient = Color3.fromRGB(255, 255, 255)
         end)
     elseif (Value == false) then
         FullbrightConnect:Disconnect()
 
         if (OldAmbient ~= nil) then
             Lighting.Ambient = OldAmbient
-        end
-    end
-end
-
-function Removals:NoFog(Value)
-    if (Value == true) then
-        OldFogStart = Lighting.FogStart
-        OldFogEnd = Lighting.FogEnd
-
-        Lighting.FogEnd = 999999
-        Lighting.FogStart = 0
-
-        FogEndConnect:Connect(function(NewFogEnd)
-            OldFogEnd = NewFogEnd
-            print("Old FogEnd:", OldFogEnd, "New FogEnd:", NewFogEnd)
-            Lighting.FogEnd = 999999
-        end)
-
-        FogStartConnect:Connect(function(NewFogStart)
-            OldFogStart = NewFogStart
-            print("Old FogStart:", OldFogStart, "Old FogEnd:", OldFogEnd)
-            Lighting.FogStart = 0
-        end)
-    elseif (Value == false) then
-        FogEndConnect:Disconnect()
-        FogStartConnect:Disconnect()
-
-        print("Restoring Fog values - OldFogEnd:", OldFogEnd, "OldFogStart:", OldFogStart)
-
-        if (OldFogEnd ~= nil) then
-            Lighting.FogEnd = OldFogEnd
-        end
-
-        if (OldFogStart ~= nil) then
-            Lighting.FogStart = OldFogStart
+            print("Reverted to original ambient")
         end
     end
 end
