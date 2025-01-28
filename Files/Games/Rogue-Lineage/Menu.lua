@@ -1,13 +1,17 @@
 local Menu = {}
 
-local Library = require("Files/Utils/Library/UILibrary.lua")
+local Library = require("Files/Utils/Library/ImGui.lua")
 
 local MainTab = require("Files/Games/Rogue-Lineage/MenuTabs/Main.lua")
 
 function Menu:Load()
     self.Library = Library
-    self.Window = Library:Window({
-        Size = UDim2.new(0, 500, 0, 550)
+    
+    self.Window = Library:CreateWindow({
+        Title = ("Alchemy | [%s]"):format(identifyexecutor() or "EXECUTOR") ,
+        Size = UDim2.new(0, 400, 0, 300),
+        Position = UDim2.new(0.5, 0, 0, 70),
+        NoResize = true,
     })
 
     self.Main = MainTab:Init(self.Window)
