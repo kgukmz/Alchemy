@@ -1,7 +1,6 @@
 local Removals = {}
 
 local Lighting = GetService("Lighting")
-print(Lighting)
 
 local FullbrightConnection
 local FogStartConnection
@@ -54,24 +53,50 @@ function Removals:Fullbright(Value)
                 table.insert(Intensity, FullbrightIntensity)
             end
 
-            -- // Lighting.Ambient = Color3.fromRGB(255, 255, 255)
             Lighting.Ambient = Color3.fromRGB(table.unpack(Intensity)) 
         end
 
         SetAmbient()
-        
+
         FullbrightConnection = Lighting:GetPropertyChangedSignal("Ambient"):Connect(function()
             OldAmbient = Lighting.Ambient
             SetAmbient()
         end)
     elseif (Value == false) then
-        if (not FullbrightConnection == nil) then
+        if (FullbrightConnection ~= nil) then
             FullbrightConnection:Disconnect()
             FullbrightConnection = nil
         end
 
-        if (not OldAmbient == nil) then
+        if (not OldAmbient ~= nil) then
             Lighting.Ambient = OldAmbient
+        end
+        
+        print(FullbrightConnection)
+        print(OldAmbient)
+    end
+end
+
+function Removals:NoFog(Value)
+    if (Value == true) then
+        
+    elseif (Value == false) then
+        if (FogStartConnection ~= nil) then
+            FogStartConnection:Disconnect()
+            FogStartConnection = nil
+        end
+
+        if (FogEndConnection ~= nil) then
+            FogEndConnection:Disconnect()
+            FogEndConnection = nil
+        end
+
+        if (OldFogStart ~= nil) then
+            
+        end
+
+        if (OldFogEnd ~= nil) then
+            
         end
     end
 end
