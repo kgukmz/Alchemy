@@ -25,7 +25,7 @@ for GameID, MenuName in next, GameList do
     end
 
     warn(MenuName)
-    GameMenu = require(("Files/Games/%s/Menu.lua"):format(MenuName))
+    GameMenu = require(("Files/Games/" .. MenuName .. "/Menu.lua"))
     break
 end
 
