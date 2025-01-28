@@ -75,17 +75,29 @@ end
 
 function Removals:NoFog(Value)
     if (Value == true) then
-        
+        OldFogStart = Lighting.FogStart
+        OldFogEnd = Lighting.FogEnd
+
+        FogStartConnect:Connect(function(NewFog)
+            OldFogStart = NewFog
+            Lighting.FogStart = 999999
+        end)
+
+        FogEndConnect:Connect(function(NewFog)
+            OldFogEnd = NewFog
+            Lighting.FogEnd = 0
+        end)
+
     elseif (Value == false) then
         FogStartConnect:Disconnect()
         FogEndConnect:Disconnect()
 
         if (OldFogStart ~= nil) then
-            
+            Lighting.FogStart = OldFogStart
         end
 
         if (OldFogEnd ~= nil) then
-            
+            Lighting.FogEnd = OldFogEnd
         end
     end
 end
