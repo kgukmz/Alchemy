@@ -5,6 +5,7 @@ function Main:Init(Window)
 
     local WorldSection = MainPage:Section({
         Name = "World";
+        Side = "Left";
         Size = 350;
     })
 
@@ -15,8 +16,16 @@ function Main:Init(Window)
         end
     })
 
+    WorldSection:Slider({
+        Name = "Intensity";
+        Min = 1;
+        Max = 10;
+        Default = 1;
+    })
+
     local ClientSection = MainPage:Section({
         Name = "Client";
+        Side = "Right";
         Size = 350;
     })
 

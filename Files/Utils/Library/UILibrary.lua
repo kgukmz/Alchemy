@@ -1044,7 +1044,7 @@ do
 		local Tabs = Instance.new('Frame', HolderInline)
 		local UIListLayout = Instance.new('UIListLayout', Tabs)
 		local DragButton = Instance.new('TextButton', Outline)
-		local KeybindList = Library:KeybindList()
+		-- // local KeybindList = Library:KeybindList()
 		--
 		ScreenGui.DisplayOrder = 2
 		--
