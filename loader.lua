@@ -7,7 +7,7 @@ if (Success == false) then
     return
 end
 
-print("Hello from loader")
+print("[ALCHEMY] Loading...")
 
 local LoadModule = getgenv().loadModule
 
@@ -15,3 +15,18 @@ if (LoadModule ~= nil and LoadModule ~= "") then
     require(LoadModule)
     return
 end
+
+local GameList = require("Files/Utils/GameList.lua")
+local GameMenu = require("Files/Games/Universal/Menu.lua")
+
+for GameID, MenuName in next, GameList do
+    if (game.PlaceId ~= GameID) then
+        continue
+    end
+
+    warn(MenuName)
+    GameMenu = require(("Files/Games/%s/Menu.lua"):format(MenuName))
+    break
+end
+
+GameMenu:Load()
