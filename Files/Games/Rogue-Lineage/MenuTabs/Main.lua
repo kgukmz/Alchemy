@@ -3,7 +3,7 @@ local Main = {}
 function Main:Init(Window)
     local MainTab = Window:CreateTab({ Name = "MAIN" })
     MainTab:Separator({ Text = "MAIN" })
-
+    
     local WorldHeader = MainTab:CollapsingHeader({ Title = "WORLD" })
     WorldHeader:Checkbox({
         Label = "Enable Fullbright"
