@@ -4,7 +4,7 @@ function Main:Init(Window)
     local Main = Window:CreateTab({ Name = "MAIN" })
     Main:Separator({ Text = "MAIN" })
 
-    local WorldHeader = Window:CollapsingHeader({ Title = "WORLD" })
+    local WorldHeader = Main:CollapsingHeader({ Title = "WORLD" })
     WorldHeader:Checkbox({
         Label = "Enable Fullbright"
     })
