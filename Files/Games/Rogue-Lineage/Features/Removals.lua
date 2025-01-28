@@ -47,22 +47,14 @@ function Removals:RemoveAmbient(Value)
     if (Value == true) then
         OldAmbient = Lighting.Ambient
         
-        local function SetAmbient()
-            local FullbrightIntensity = getgenv().FullbrightIntensity or 255
-
-            local Intensity = {}
-            for i = 1, 3 do
-                table.insert(Intensity, FullbrightIntensity)
-            end
-
-            Lighting.Ambient = Color3.fromRGB(table.unpack(Intensity)) 
-        end
-
-        SetAmbient()
+        local Intensity = getgenv().FullbrightIntensity or 200, 200, 200
+        Lighting.Ambient = Color3.fromRGB(Intensity, Intensity, Intensity)
 
         FullbrightConnect:Connect(function(NewAmbient)
             OldAmbient = NewAmbient
-            SetAmbient()
+            
+            local Intensity = getgenv().FullbrightIntensity or 200, 200, 200
+            Lighting.Ambient = Color3.fromRGB(Intensity, Intensity, Intensity)
         end)
     elseif (Value == false) then
         FullbrightConnect:Disconnect()

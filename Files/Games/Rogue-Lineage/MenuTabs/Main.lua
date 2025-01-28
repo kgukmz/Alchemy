@@ -35,6 +35,7 @@ function Main:Init(Window)
 
     WorldHeader:Checkbox({
         Label = "No Fog";
+        Callback = Removals.NoFog;
     })
 
     WorldHeader:Separator({ Text = "REMOVALS" })
