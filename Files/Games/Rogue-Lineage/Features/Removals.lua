@@ -2,9 +2,11 @@ local Removals = {}
 
 local Lighting = GetService("Lighting")
 
-local FullbrightConnection
-local FogStartConnection
-local FogEndConnection
+local Event = require("Files/Utils/Event.lua")
+
+local FullbrightConnect = Event:Create(Lighting:GetPropertyChangedSignal("Ambient"))
+local FogStartConnection = Event:Create(Lighting:GetPropertyChangedSignal("FogStart"))
+local FogEndConnection = Event:Create(Lighting:GetPropertyChangedSignal("FogEnd"))
 
 local OrderFields = {}
 
@@ -41,7 +43,7 @@ function Removals:RemoveOrderFields(Value)
     end
 end
 
-function Removals:Fullbright(Value) 
+function Removals:RemoveAmbient(Value) 
     if (Value == true) then
         OldAmbient = Lighting.Ambient
         
@@ -58,22 +60,16 @@ function Removals:Fullbright(Value)
 
         SetAmbient()
 
-        FullbrightConnection = Lighting:GetPropertyChangedSignal("Ambient"):Connect(function()
-            OldAmbient = Lighting.Ambient
+        FullbrightConnect:Connect(function(NewAmbient)
+            OldAmbient = NewAmbient
             SetAmbient()
         end)
     elseif (Value == false) then
-        if (FullbrightConnection ~= nil) then
-            FullbrightConnection:Disconnect()
-            FullbrightConnection = nil
-        end
+        FullbrightConnect:Disconnect()
 
         if (not OldAmbient ~= nil) then
             Lighting.Ambient = OldAmbient
         end
-        
-        print(FullbrightConnection)
-        print(OldAmbient)
     end
 end
 

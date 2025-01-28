@@ -12,7 +12,7 @@ function Main:Init(Window)
     WorldHeader:Separator({ Text = "FULLBRIGHT" })
     WorldHeader:Checkbox({
         Label = "Enable Fullbright";
-        Callback = Removals.Fullbright;
+        Callback = Removals.RemoveAmbient;
     })
     
     WorldHeader:Slider({
