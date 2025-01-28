@@ -17,7 +17,7 @@ function Main:Init(Window)
         MaxValue = 10;
     })
 
-    WorldHeader:Separator({ Text = "TOGGLES" })
+    WorldHeader:Separator({ Text = "VISUALS" })
     WorldHeader:Checkbox({
         Label = "No Shadows"
     })
@@ -33,6 +33,16 @@ function Main:Init(Window)
     WorldHeader:Checkbox({
         Label = "No Fog"
     })
+
+    WorldHeader:Separator({ Text = "REMOVALS" })
+    WorldHeader:Checkbox({
+        Label = "Remove Orderly Fields"
+    })
+
+    WorldHeader:Checkbox({
+        Label = "Disable Killbricks"
+    })
+
 end
 
 return Main
