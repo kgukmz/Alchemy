@@ -58,6 +58,8 @@ function Removals:Fullbright(Value)
             Lighting.Ambient = Color3.fromRGB(table.unpack(Intensity)) 
         end
 
+        SetAmbient()
+        
         FullbrightConnection = Lighting:GetPropertyChangedSignal("Ambient"):Connect(function()
             OldAmbient = Lighting.Ambient
             SetAmbient()
