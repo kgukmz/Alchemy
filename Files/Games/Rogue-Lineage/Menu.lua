@@ -10,7 +10,7 @@ function Menu:Load()
         Size = UDim2.new(0, 500, 0, 550)
     })
 
-    self.Main = MainTab:Load(self.Window)
+    self.Main = MainTab:Init(self.Window)
 
     return Menu
 end

@@ -1,6 +1,6 @@
 local Main = {}
 
-function Main:Load(Window)
+function Main:Init(Window)
     local MainPage = Window:Page({Name = "Main"})
 
     local WorldSection = MainPage:Section({
