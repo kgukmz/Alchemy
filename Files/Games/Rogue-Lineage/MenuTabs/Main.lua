@@ -30,7 +30,25 @@ function Main:Init(Window)
     })
 
     ClientSection:Toggle({
-        Name = ""
+        Name = "Speedhack"
+    })
+
+    ClientSection:Slider({
+        Name = "Speed";
+        Min = 1;
+        Max = 125;
+        Default = 1;
+    })
+
+    ClientSection:Toggle({
+        Name = "Infinite Jump"
+    })
+
+    ClientSection:Slider({
+        Name = "Speed";
+        Min = 1;
+        Max = 125;
+        Default = 1;
     })
 end
 
