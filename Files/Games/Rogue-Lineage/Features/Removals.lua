@@ -1,19 +1,22 @@
 local Removals = {}
 
--- // local Lighting = GetService("Lighting")
+-- Get the Lighting service
 local Lighting = game:GetService("Lighting")
 
+-- Event module (assuming it's correctly implemented elsewhere)
 local Event = require("Files/Utils/Event.lua")
 
+-- Create event connections for property changes
 local FullbrightConnect = Event:Create(Lighting:GetPropertyChangedSignal("Ambient"))
 local FogEndConnect = Event:Create(Lighting:GetPropertyChangedSignal("FogEnd"))
 local FogStartConnect = Event:Create(Lighting:GetPropertyChangedSignal("FogStart"))
 
 local OrderFields = {}
 
-local OldAmbient
-local OldFogStart
-local OldFogEnd
+-- Initialize the old values to current Lighting properties
+local OldAmbient = Lighting.Ambient
+local OldFogStart = Lighting.FogStart
+local OldFogEnd = Lighting.FogEnd
 
 function Removals:RemoveOrderFields(Value)
     if (getgenv().getinstances == nil) then
@@ -47,14 +50,15 @@ end
 function Removals:RemoveAmbient(Value) 
     if (Value == true) then
         OldAmbient = Lighting.Ambient
-        
-        Lighting.Ambient = Color3.fromRGB(200, 200, 200)
+
+        local FullbrightColor = Color3.fromRGB(190, 190, 190)
+        Lighting.Ambient = FullbrightColor
 
         FullbrightConnect:Connect(function(NewValue)
             OldAmbient = NewValue
-            print(OldAmbient, NewAmbient)
+            print("Old Ambient:", OldAmbient, "New Ambient:", NewValue)
             
-            Lighting.Ambient = Color3.fromRGB(200, 200, 200)
+            Lighting.Ambient = FullbrightColor
         end)
     elseif (Value == false) then
         FullbrightConnect:Disconnect()
@@ -75,21 +79,20 @@ function Removals:NoFog(Value)
 
         FogEndConnect:Connect(function(NewFogEnd)
             OldFogEnd = NewFogEnd
-            print(OldFogEnd, NewFogEnd)
+            print("Old FogEnd:", OldFogEnd, "New FogEnd:", NewFogEnd)
             Lighting.FogEnd = 999999
         end)
 
         FogStartConnect:Connect(function(NewFogStart)
             OldFogStart = NewFogStart
-            print(OldFogStart, OldFogEnd)
-
+            print("Old FogStart:", OldFogStart, "Old FogEnd:", OldFogEnd)
             Lighting.FogStart = 0
         end)
     elseif (Value == false) then
         FogEndConnect:Disconnect()
         FogStartConnect:Disconnect()
 
-        print(OldFogEnd, OldFogStart)
+        print("Restoring Fog values - OldFogEnd:", OldFogEnd, "OldFogStart:", OldFogStart)
 
         if (OldFogEnd ~= nil) then
             Lighting.FogEnd = OldFogEnd
