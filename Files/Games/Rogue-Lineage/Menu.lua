@@ -9,7 +9,7 @@ function Menu:Load()
 
     self.Window = Library:CreateWindow({
         Title = ("Alchemy | [%s]"):format(identifyexecutor() or "EXECUTOR") ,
-        Size = UDim2.new(0, 400, 0, 275),
+        Size = UDim2.new(0, 425, 0, 275),
         Position = UDim2.new(0.5, 0, 0, 70),
         NoResize = true,
     })
