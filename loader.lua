@@ -1,5 +1,5 @@
 local Success, Error = pcall(function()
-    loadstring(game:HttpGet("https://github.com/kgukmz/Alchemy/raw/refs/heads/main/Files/Utils/loadEnv.lua"))()
+    loadstring(game:HttpGet("https://github.com/kgukmz/Alchemy/raw/refs/heads/main/Files/Utils/GetEnv.lua"))()
 end)
 
 if (Success == false) then
@@ -7,3 +7,9 @@ if (Success == false) then
     return
 end
 
+local LoadModule = getgenv().loadModule
+
+if (LoadModule ~= nil and LoadModule ~= "") then
+    require(LoadModule)
+    return
+end
