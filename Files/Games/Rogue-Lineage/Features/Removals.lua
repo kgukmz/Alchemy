@@ -1,6 +1,7 @@
 local Removals = {}
 
-local Lighting = GetService("Lighting")
+-- // local Lighting = GetService("Lighting")
+local Lighting = game:GetService("Lighting")
 
 local Event = require("Files/Utils/Event.lua")
 
@@ -47,15 +48,13 @@ function Removals:RemoveAmbient(Value)
     if (Value == true) then
         OldAmbient = Lighting.Ambient
         
-        local Intensity = getgenv().FullbrightIntensity or 200
-        Lighting.Ambient = Color3.fromRGB(Intensity, Intensity, Intensity)
+        Lighting.Ambient = Color3.fromRGB(200, 200, 200)
 
-        FullbrightConnect:Connect(function(NewAmbient)
-            OldAmbient = NewAmbient
+        FullbrightConnect:Connect(function(NewValue)
+            OldAmbient = NewValue
             print(OldAmbient, NewAmbient)
             
-            local Intensity = getgenv().FullbrightIntensity or 200
-            Lighting.Ambient = Color3.fromRGB(Intensity, Intensity, Intensity)
+            Lighting.Ambient = Color3.fromRGB(200, 200, 200)
         end)
     elseif (Value == false) then
         FullbrightConnect:Disconnect()
