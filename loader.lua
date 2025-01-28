@@ -9,13 +9,6 @@ end
 
 print("[ALCHEMY] Loading...")
 
-local LoadModule = getgenv().loadModule
-
-if (LoadModule ~= nil and LoadModule ~= "") then
-    require(LoadModule)
-    return
-end
-
 local GameList = require("Files/Utils/GameList.lua")
 local GameMenu = require("Files/Games/Universal/Menu.lua")
 
