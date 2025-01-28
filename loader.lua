@@ -12,9 +12,7 @@ end
 print("[ALCHEMY] Loading...")
 
 local GameList = require("Files/Utils/GameList.lua")
-print"vd"
 local GameMenu = require("Files/Games/Universal/Menu.lua")
-print"v2"
 
 for GameID, MenuName in next, GameList do
     if (game.PlaceId ~= GameID) then
@@ -23,7 +21,6 @@ for GameID, MenuName in next, GameList do
 
     warn(MenuName)
     GameMenu = require(("Files/Games/" .. MenuName .. "/Menu.lua"))
-    print"vs"
     break
 end
 
