@@ -60,12 +60,12 @@ function Removals:Fullbright(Value)
             Lighting.Ambient = Color3.fromRGB(table.unpack(Intensity)) 
         end)
     elseif (Value == false) then
-        if (FullbrightConnection ~= nil) then
+        if (not FullbrightConnection == nil) then
             FullbrightConnection:Disconnect()
             FullbrightConnection = nil
         end
 
-        if (OldAmbient ~= nil) then
+        if (not OldAmbient == nil) then
             Lighting.Ambient = OldAmbient
         end
     end

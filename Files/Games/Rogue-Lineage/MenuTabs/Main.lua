@@ -12,7 +12,7 @@ function Main:Init(Window)
     WorldHeader:Separator({ Text = "FULLBRIGHT" })
     WorldHeader:Checkbox({
         Label = "Enable Fullbright";
-        Callback = Removals.Fullbright
+        Callback = Removals.Fullbright;
     })
     
     WorldHeader:Slider({
@@ -25,7 +25,7 @@ function Main:Init(Window)
     WorldHeader:Separator({ Text = "VISUALS" })
     WorldHeader:Checkbox({
         Label = "No Shadows";
-        Callback = Removals.NoShadows
+        Callback = Removals.NoShadows;
     })
     
     WorldHeader:Checkbox({
@@ -44,11 +44,11 @@ function Main:Init(Window)
     })
 
     WorldHeader:Checkbox({
-        Label = "Disable Killbricks"
+        Label = "Disable Killbricks";
     })
 
     WorldHeader:Checkbox({
-        Label = "Disable Poison Bricks"
+        Label = "Disable Poison Bricks";
     })
 end
 
