@@ -46,9 +46,7 @@ function Removals:Fullbright(Value)
     if (Value == true) then
         OldAmbient = Lighting.Ambient
         
-        FullbrightConnection = Lighting:GetPropertyChangedSignal("Ambient"):Connect(function()
-            OldAmbient = Lighting.Ambient
-
+        local function SetAmbient()
             local FullbrightIntensity = getgenv().FullbrightIntensity or 255
 
             local Intensity = {}
@@ -58,6 +56,11 @@ function Removals:Fullbright(Value)
 
             -- // Lighting.Ambient = Color3.fromRGB(255, 255, 255)
             Lighting.Ambient = Color3.fromRGB(table.unpack(Intensity)) 
+        end
+
+        FullbrightConnection = Lighting:GetPropertyChangedSignal("Ambient"):Connect(function()
+            OldAmbient = Lighting.Ambient
+            SetAmbient()
         end)
     elseif (Value == false) then
         if (not FullbrightConnection == nil) then
