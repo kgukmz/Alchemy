@@ -4,6 +4,8 @@ function Main:Init(Window)
     local MainTab = Window:CreateTab({ Name = "MAIN" })
     MainTab:Separator({ Text = "MAIN" })
     
+    -- // World Header
+
     local WorldHeader = MainTab:CollapsingHeader({ Title = "WORLD" })
     WorldHeader:Separator({ Text = "FULLBRIGHT" })
     WorldHeader:Checkbox({
@@ -11,7 +13,7 @@ function Main:Init(Window)
     })
     
     WorldHeader:Slider({
-        Label = "Intensity";
+        Label = "[Intensity]";
         Value = 1;
         MinValue = 1;
         MaxValue = 10;
@@ -23,11 +25,7 @@ function Main:Init(Window)
     })
     
     WorldHeader:Checkbox({
-        Label = "No Sanity"
-    })
-
-    WorldHeader:Checkbox({
-        Label = "No Blur"
+        Label = "No Visual Defects" -- // No sanity, no blur
     })
 
     WorldHeader:Checkbox({
@@ -43,6 +41,9 @@ function Main:Init(Window)
         Label = "Disable Killbricks"
     })
 
+    WorldHeader:Checkbox({
+        Label = "Disable Poison Bricks"
+    })
 end
 
 return Main
