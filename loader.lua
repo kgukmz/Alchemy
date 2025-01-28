@@ -7,6 +7,8 @@ if (Success == false) then
     return
 end
 
+print("Hello from loader")
+
 local LoadModule = getgenv().loadModule
 
 if (LoadModule ~= nil and LoadModule ~= "") then
