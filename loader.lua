@@ -7,4 +7,3 @@ if (Success == false) then
     return
 end
 
-require("Files/Utils/ESPModule.lua")

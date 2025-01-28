@@ -8,7 +8,15 @@ local function GetService(Service)
         return ServiceCache[Service]
     end
 
-    local NewService = game:GetService(Service)
+    if (getgenv().cloneref == nil) then
+        warn("cloneref not supported, assigning a replacement...")
+        
+        getgenv().cloneref = function(...)
+            return ...
+        end
+    end
+
+    local NewService = cloneref(game:GetService(Service))
     ServiceCache[Service] = NewService
 
     return NewService
