@@ -35,7 +35,7 @@ local Library = {
 
     Black = Color3.new(0, 0, 0);
     -- Font = Enum.Font.Code,
-    Font = Drawing.Fonts.Plex,
+    Font = Font.new("rbxasset://gca/ProggyClean.font"),
 
     OpenedFrames = {};
     DependencyBoxes = {};
