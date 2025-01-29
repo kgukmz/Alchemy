@@ -1086,10 +1086,10 @@ do
 		HolderInline.BorderColor3 = Color3.new(0,0,0)
 		--
 		Title.Name = "Title"
-		Title.Position = UDim2.new(0,10,0,-8)
-		Title.Size = UDim2.new(1,0,0,12)
+		Title.Position = UDim2.new(0,10,0,-11)
+		Title.Size = UDim2.new(1,0,0,15)
 		Title.BackgroundTransparency = 1
-		Title.Text = "he has entered the flow da" -- Window.Title
+		Title.Text = "he has entered the flow daya" -- Window.Title
 		Title.TextColor3 = Color3.new(1, 1, 1)
 		Title.FontFace = Font.new("rbxassetid://12187371840")
 		Title.TextSize = Library.FontSize
@@ -1196,7 +1196,7 @@ do
 		local UIListLayout = Instance.new('UIListLayout', Left)
 		local UIListLayout_2 = Instance.new('UIListLayout', Right)
 		Left.Name = "Left"
-		Left.Position = UDim2.new(0,5,0,35)
+		Left.Position = UDim2.new(0,5,0,45)
 		Left.Size = UDim2.new(0.485,-3,1,-40)
 		Left.BackgroundColor3 = Color3.new(1,1,1)
 		Left.BorderSizePixel = 0
