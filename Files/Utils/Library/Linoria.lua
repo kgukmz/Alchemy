@@ -1149,9 +1149,7 @@ do
                 return;
             end;
 
-            if Library.KeybindContainer == nil then
-                return;
-            end;
+            warn(Library.KeybindContainer)
 
             local State = KeyPicker:GetState();
 
@@ -1166,6 +1164,8 @@ do
             local XSize = 0
 
             if Library.KeybindContainer ~= nil then
+                warn("[DEBUG] NOT NIL")
+
                 for _, Label in next, Library.KeybindContainer:GetChildren() do
                     if Label:IsA('TextLabel') and Label.Visible then
                         YSize = YSize + 18;
