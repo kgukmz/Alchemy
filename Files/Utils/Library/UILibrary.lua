@@ -1042,7 +1042,7 @@ do
 		local Accent = Instance.new('Frame', Inline)
 		local HolderOutline = Instance.new('Frame', Inline)
 		local HolderInline = Instance.new('Frame', HolderOutline)
-		local TitleLabel = Instance.new('TextLabel', HolderInline)
+		local Title = Instance.new('TextLabel', Outline)
 		local Tabs = Instance.new('Frame', HolderInline)
 		local UIListLayout = Instance.new('UIListLayout', Tabs)
 		local DragButton = Instance.new('TextButton', Outline)
@@ -1072,17 +1072,18 @@ do
 		Accent.BorderColor3 = Color3.new(0,0,0)
 		table.insert(Library.ThemeObjects, Accent)
 		--
-		TitleLabel.Name = "TitleLabel"
-		TitleLabel.Size = UDim2.new(0.25,0,1,0)
-		TitleLabel.BackgroundTransparency = 1
-		TitleLabel.BorderSizePixel = 0
-		TitleLabel.BorderColor3 = Color3.new(0,0,0)
-		TitleLabel.Text = Window.Title
-		TitleLabel.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
-		TitleLabel.FontFace = Font.new("rbxassetid://12187371840")
-		TitleLabel.TextSize = Library.FontSize
-		TitleLabel.TextStrokeTransparency = 0
-		TitleLabel.LineHeight = 1.1
+		Title.Name = "Title"
+		Title.Position = UDim2.new(0,10,0,-8)
+		Title.Size = UDim2.new(0.25,0,1,0)
+		Title.BackgroundTransparency = 1
+		Title.BorderSizePixel = 0
+		Title.BorderColor3 = Color3.new(0,0,0)
+		Title.Text = Window.Title
+		Title.TextColor3 = Color3.new(1, 1, 1)
+		Title.FontFace = Font.new("rbxassetid://12187371840")
+		Title.TextSize = Library.FontSize
+		Title.TextStrokeTransparency = 0
+		Title.LineHeight = 1.1
 		--
 		HolderOutline.Name = "HolderOutline"
 		HolderOutline.Position = UDim2.new(0,7,0,11)
