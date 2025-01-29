@@ -189,7 +189,7 @@ local Library = {
 	};
 	Connections = {};
 	Font = Enum.Font.Ubuntu;
-	FontSize = 12;
+	FontSize = 9;
 	Notifs = {};
 	KeyList = nil;
 	UIKey = Enum.KeyCode.End;
@@ -1089,10 +1089,10 @@ do
 		Title.Position = UDim2.new(0,10,0,-20)
 		Title.Size = UDim2.new(1,0,0,15)
 		Title.BackgroundTransparency = 1
-		Title.Text = "he has entered the flow da" -- Window.Title
+		Title.Text = "Alchemy Droid Nigga" -- Window.Title
 		Title.TextColor3 = Color3.new(1, 1, 1)
 		Title.FontFace = Font.new("rbxassetid://12187371840")
-		Title.TextSize = 20 -- Library.FontSize
+		Title.TextSize = 10 -- Library.FontSize
 		Title.TextStrokeTransparency = 0
 		Title.LineHeight = 1.1
 		--
