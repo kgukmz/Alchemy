@@ -2891,6 +2891,8 @@ function Library:CreateKeybindVisualiser(Title, ...)
         Size = Arguments.Size or UDim2.new(1, 0, 0, 20);
     }
 
+    print(Config.Size)
+
     local KeybindOuter = Library:Create('Frame', {
         AnchorPoint = Vector2.new(0, 0.5);
         BorderColor3 = Color3.new(0, 0, 0);
