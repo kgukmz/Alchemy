@@ -1149,8 +1149,6 @@ do
                 return;
             end;
 
-            warn(Library.KeybindContainer)
-
             local State = KeyPicker:GetState();
 
             ContainerLabel.Text = string.format('[%s] %s (%s)', KeyPicker.Value, Info.Text, KeyPicker.Mode);
@@ -2245,7 +2243,6 @@ do
             Parent = DropdownInner;
         });
 
-        --[[ 
         local DropdownArrow = Library:Create('ImageLabel', {
             AnchorPoint = Vector2.new(0, 0.5);
             BackgroundTransparency = 1;
@@ -2255,17 +2252,6 @@ do
             ZIndex = 8;
             Parent = DropdownInner;
         });
-        --]]
-
-        local DropdownMarker = Library:CreateLabel({
-            AnchorPoint = Vector2.new(0, 0.5);
-            Position = UDim2.new(0, 5, 0, 0);
-            Size = UDim2.new(1, -5, 1, 0);
-            TextSize = 16;
-            Text = "+";
-            ZIndex = 0;
-            Parent = DropdownInner;
-        })
 
         local ItemList = Library:CreateLabel({
             Position = UDim2.new(0, 5, 0, 0);
@@ -2513,15 +2499,13 @@ do
         function Dropdown:OpenDropdown()
             ListOuter.Visible = true;
             Library.OpenedFrames[ListOuter] = true;
-            -- DropdownArrow.Rotation = 180;
-            DropdownMarker.Text = "-"
+            DropdownArrow.Rotation = 180;
         end;
 
         function Dropdown:CloseDropdown()
             ListOuter.Visible = false;
             Library.OpenedFrames[ListOuter] = nil;
-            -- DropdownArrow.Rotation = 0;
-            DropdownMarker.Text = "+"
+            DropdownArrow.Rotation = 0;
         end;
 
         function Dropdown:OnChanged(Func)
