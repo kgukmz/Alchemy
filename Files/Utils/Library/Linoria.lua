@@ -2958,9 +2958,28 @@ function Library:CreateKeybindVisualiser(Title, ...)
         Parent = KeybindContainer,
     })
 
+    KeybindOuter.Visible = true
+
     Library.KeybindFrame = KeybindOuter;
     Library.KeybindContainer = KeybindContainer;
     Library:MakeDraggable(KeybindOuter);
+
+    local Funcs = {}
+
+    function Funcs:SetVisibility(Value)
+        if Library.KeybindFrame == nil then
+            return;
+        end;
+
+        Library.KeybindFrame.Visible = Value
+    end
+
+    function Funcs:Remove()
+        Library.KeybindFrame:Destroy()
+        Library.KeybindFrame = nil
+    end
+
+    return Funcs
 end
 
 function Library:CreateWindow(...)
