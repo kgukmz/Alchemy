@@ -1037,31 +1037,18 @@ do
 		};
 		--
 		local ScreenGui = Instance.new('ScreenGui', game.CoreGui)
-		local TitleLabel = Instance.new('TextLabel', ScreenGui)
 		local Outline = Instance.new('Frame', ScreenGui)
 		local Inline = Instance.new('Frame', Outline)
 		local Accent = Instance.new('Frame', Inline)
 		local HolderOutline = Instance.new('Frame', Inline)
 		local HolderInline = Instance.new('Frame', HolderOutline)
+		local TitleLabel = Instance.new('TextLabel', HolderInline)
 		local Tabs = Instance.new('Frame', HolderInline)
 		local UIListLayout = Instance.new('UIListLayout', Tabs)
 		local DragButton = Instance.new('TextButton', Outline)
 		-- // local KeybindList = Library:KeybindList()
 		--
 		ScreenGui.DisplayOrder = 2
-		--
-		TitleLabel.Name = "TitleLabel"
-		TitleLabel.Size = UDim2.new(0.25,0,1,0)
-		TitleLabel.BackgroundTransparency = 1
-		TitleLabel.BorderSizePixel = 0
-		TitleLabel.BorderColor3 = Color3.new(0,0,0)
-		TitleLabel.Text = Window.Title
-		TitleLabel.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
-		TitleLabel.AutoButtonColor = false
-		TitleLabel.FontFace = Font.new("rbxassetid://12187371840")
-		TitleLabel.TextSize = Library.FontSize
-		TitleLabel.TextStrokeTransparency = 0
-		TitleLabel.LineHeight = 1.1
 		--
 		Outline.Name = "Outline"
 		Outline.Position = UDim2.new(0.5,0,0.5,0)
@@ -1084,6 +1071,18 @@ do
 		Accent.BorderSizePixel = 0
 		Accent.BorderColor3 = Color3.new(0,0,0)
 		table.insert(Library.ThemeObjects, Accent)
+		--
+		TitleLabel.Name = "TitleLabel"
+		TitleLabel.Size = UDim2.new(0.25,0,1,0)
+		TitleLabel.BackgroundTransparency = 1
+		TitleLabel.BorderSizePixel = 0
+		TitleLabel.BorderColor3 = Color3.new(0,0,0)
+		TitleLabel.Text = Window.Title
+		TitleLabel.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
+		TitleLabel.FontFace = Font.new("rbxassetid://12187371840")
+		TitleLabel.TextSize = Library.FontSize
+		TitleLabel.TextStrokeTransparency = 0
+		TitleLabel.LineHeight = 1.1
 		--
 		HolderOutline.Name = "HolderOutline"
 		HolderOutline.Position = UDim2.new(0,7,0,11)
