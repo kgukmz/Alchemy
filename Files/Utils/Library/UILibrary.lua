@@ -189,7 +189,7 @@ local Library = {
 	};
 	Connections = {};
 	Font = Enum.Font.Ubuntu;
-	FontSize = 9;
+	FontSize = 12;
 	Notifs = {};
 	KeyList = nil;
 	UIKey = Enum.KeyCode.End;
@@ -1086,13 +1086,13 @@ do
 		HolderInline.BorderColor3 = Color3.new(0,0,0)
 		--
 		Title.Name = "Title"
-		Title.Position = UDim2.new(0,10,0,-11)
+		Title.Position = UDim2.new(0,10,0,-20)
 		Title.Size = UDim2.new(1,0,0,15)
 		Title.BackgroundTransparency = 1
-		Title.Text = "he has entered the flow daya" -- Window.Title
+		Title.Text = "he has entered the flow da" -- Window.Title
 		Title.TextColor3 = Color3.new(1, 1, 1)
 		Title.FontFace = Font.new("rbxassetid://12187371840")
-		Title.TextSize = Library.FontSize
+		Title.TextSize = 20 -- Library.FontSize
 		Title.TextStrokeTransparency = 0
 		Title.LineHeight = 1.1
 		--
@@ -1206,7 +1206,7 @@ do
 		Left.ZIndex = 3
 		--
 		Right.Name = "Right"
-		Right.Position = UDim2.new(1,-5,0,35)
+		Right.Position = UDim2.new(1,-5,0,50)
 		Right.Size = UDim2.new(0.485,-3,1,-40)
 		Right.BackgroundColor3 = Color3.new(1,1,1)
 		Right.BorderSizePixel = 0
