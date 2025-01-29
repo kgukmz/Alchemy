@@ -1149,6 +1149,10 @@ do
                 return;
             end;
 
+            if Library.KeybindContainer == nil then
+                return;
+            end;
+
             local State = KeyPicker:GetState();
 
             ContainerLabel.Text = string.format('[%s] %s (%s)', KeyPicker.Value, Info.Text, KeyPicker.Mode);
@@ -2886,7 +2890,7 @@ function Library:CreateKeybindVisualiser(Title, ...)
     local Config = {
         Size = Arguments.Size or UDim2.new(1, 0, 0, 20);
     }
-    
+
     local KeybindOuter = Library:Create('Frame', {
         AnchorPoint = Vector2.new(0, 0.5);
         BorderColor3 = Color3.new(0, 0, 0);
