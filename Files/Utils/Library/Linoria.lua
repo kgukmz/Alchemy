@@ -2245,6 +2245,7 @@ do
             Parent = DropdownInner;
         });
 
+        --[[ 
         local DropdownArrow = Library:Create('ImageLabel', {
             AnchorPoint = Vector2.new(0, 0.5);
             BackgroundTransparency = 1;
@@ -2254,6 +2255,17 @@ do
             ZIndex = 8;
             Parent = DropdownInner;
         });
+        --]]
+
+        local DropdownMarker = Library:CreateLabel({
+            AnchorPoint = Vector2.new(0, 0.5);
+            Position = UDim2.new(1, -16, 0.5, 0);
+            Size = UDim2.new(0, 12, 0, 12);
+            TextSize = 14;
+            Text = "+";
+            ZIndex = 0;
+            Parent = DropdownInner;
+        })
 
         local ItemList = Library:CreateLabel({
             Position = UDim2.new(0, 5, 0, 0);
@@ -2501,13 +2513,15 @@ do
         function Dropdown:OpenDropdown()
             ListOuter.Visible = true;
             Library.OpenedFrames[ListOuter] = true;
-            DropdownArrow.Rotation = 180;
+            -- DropdownArrow.Rotation = 180;
+            DropdownMarker.Text = "-"
         end;
 
         function Dropdown:CloseDropdown()
             ListOuter.Visible = false;
             Library.OpenedFrames[ListOuter] = nil;
-            DropdownArrow.Rotation = 0;
+            -- DropdownArrow.Rotation = 0;
+            DropdownMarker.Text = "-"
         end;
 
         function Dropdown:OnChanged(Func)
