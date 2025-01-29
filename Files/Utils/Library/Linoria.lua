@@ -2802,7 +2802,7 @@ do
         Position = UDim2.fromOffset(5, 2),
         TextXAlignment = Enum.TextXAlignment.Left,
 
-        Text = 'Keybinds';
+        Text = 'ALCHEMY | [KEYBINDS]';
         ZIndex = 104;
         Parent = KeybindInner;
     });
@@ -2834,6 +2834,10 @@ end;
 function Library:SetWatermarkVisibility(Bool)
     Library.Watermark.Visible = Bool;
 end;
+
+function Library:SetKeybindVisibility(Bool)
+    Library.KeybindFrame.Visible = Bool;
+end
 
 function Library:SetWatermark(Text)
     local X, Y = Library:GetTextBounds(Text, Library.Font, 14);
