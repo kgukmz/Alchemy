@@ -1149,6 +1149,8 @@ do
                 return;
             end;
 
+            warn(Library.KeybindContainer)
+
             local State = KeyPicker:GetState();
 
             ContainerLabel.Text = string.format('[%s] %s (%s)', KeyPicker.Value, Info.Text, KeyPicker.Mode);
