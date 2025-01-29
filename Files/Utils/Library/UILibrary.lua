@@ -1028,6 +1028,7 @@ do
 	local Sections = Library.Sections;
 	function Library:Window(Options)
 		local Window = {
+			Title = Options.Title or "Bastard Munchen";
 			Pages = {};
 			Sections = {};
 			Elements = {};
@@ -1036,6 +1037,7 @@ do
 		};
 		--
 		local ScreenGui = Instance.new('ScreenGui', game.CoreGui)
+		local TitleLabel = Instance.new('TextLabel', ScreenGui)
 		local Outline = Instance.new('Frame', ScreenGui)
 		local Inline = Instance.new('Frame', Outline)
 		local Accent = Instance.new('Frame', Inline)
@@ -1047,6 +1049,19 @@ do
 		-- // local KeybindList = Library:KeybindList()
 		--
 		ScreenGui.DisplayOrder = 2
+		--
+		TitleLabel.Name = "TitleLabel"
+		TitleLabel.Size = UDim2.new(0.25,0,1,0)
+		TitleLabel.BackgroundTransparency = 1
+		TitleLabel.BorderSizePixel = 0
+		TitleLabel.BorderColor3 = Color3.new(0,0,0)
+		TitleLabel.Text = Window.Title
+		TitleLabel.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
+		TitleLabel.AutoButtonColor = false
+		TitleLabel.FontFace = Font.new("rbxassetid://12187371840")
+		TitleLabel.TextSize = Library.FontSize
+		TitleLabel.TextStrokeTransparency = 0
+		TitleLabel.LineHeight = 1.1
 		--
 		Outline.Name = "Outline"
 		Outline.Position = UDim2.new(0.5,0,0.5,0)
