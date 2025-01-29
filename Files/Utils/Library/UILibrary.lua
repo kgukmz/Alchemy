@@ -1042,7 +1042,7 @@ do
 		local Accent = Instance.new('Frame', Inline)
 		local HolderOutline = Instance.new('Frame', Inline)
 		local HolderInline = Instance.new('Frame', HolderOutline)
-		local Title = Instance.new('TextLabel', Outline)
+		local Title = Instance.new('TextLabel', HolderOutline)
 		local Tabs = Instance.new('Frame', HolderInline)
 		local UIListLayout = Instance.new('UIListLayout', Tabs)
 		local DragButton = Instance.new('TextButton', Outline)
@@ -1078,7 +1078,7 @@ do
 		Title.BackgroundTransparency = 1
 		Title.BorderSizePixel = 0
 		Title.BorderColor3 = Color3.new(0,0,0)
-		Title.Text = Window.Title
+		Title.Text = "nigger" -- Window.Title
 		Title.TextColor3 = Color3.new(1, 1, 1)
 		Title.FontFace = Font.new("rbxassetid://12187371840")
 		Title.TextSize = Library.FontSize
