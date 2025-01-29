@@ -2259,9 +2259,9 @@ do
 
         local DropdownMarker = Library:CreateLabel({
             AnchorPoint = Vector2.new(0, 0.5);
-            Position = UDim2.new(1, -16, 0.5, 0);
-            Size = UDim2.new(0, 12, 0, 12);
-            TextSize = 14;
+            Position = UDim2.new(0, 5, 0, 0);
+            Size = UDim2.new(1, -5, 1, 0);
+            TextSize = 16;
             Text = "+";
             ZIndex = 0;
             Parent = DropdownInner;
@@ -2521,7 +2521,7 @@ do
             ListOuter.Visible = false;
             Library.OpenedFrames[ListOuter] = nil;
             -- DropdownArrow.Rotation = 0;
-            DropdownMarker.Text = "-"
+            DropdownMarker.Text = "+"
         end;
 
         function Dropdown:OnChanged(Func)
