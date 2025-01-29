@@ -1165,16 +1165,18 @@ do
             local YSize = 0
             local XSize = 0
 
-            for _, Label in next, Library.KeybindContainer:GetChildren() do
-                if Label:IsA('TextLabel') and Label.Visible then
-                    YSize = YSize + 18;
-                    if (Label.TextBounds.X > XSize) then
-                        XSize = Label.TextBounds.X
-                    end
+            if Library.KeybindContainer ~= nil then
+                for _, Label in next, Library.KeybindContainer:GetChildren() do
+                    if Label:IsA('TextLabel') and Label.Visible then
+                        YSize = YSize + 18;
+                        if (Label.TextBounds.X > XSize) then
+                            XSize = Label.TextBounds.X
+                        end
+                    end;
                 end;
-            end;
 
-            Library.KeybindFrame.Size = UDim2.new(0, math.max(XSize + 10, 210), 0, YSize + 23)
+                Library.KeybindFrame.Size = UDim2.new(0, math.max(XSize + 10, 210), 0, YSize + 23)
+            end;
         end;
 
         function KeyPicker:GetState()
