@@ -1028,7 +1028,6 @@ do
 	local Sections = Library.Sections;
 	function Library:Window(Options)
 		local Window = {
-			Title = Options.Title or "Bastard Munchen";
 			Pages = {};
 			Sections = {};
 			Elements = {};
@@ -1042,7 +1041,6 @@ do
 		local Accent = Instance.new('Frame', Inline)
 		local HolderOutline = Instance.new('Frame', Inline)
 		local HolderInline = Instance.new('Frame', HolderOutline)
-		local Title = Instance.new('TextLabel', HolderOutline)
 		local Tabs = Instance.new('Frame', HolderInline)
 		local UIListLayout = Instance.new('UIListLayout', Tabs)
 		local DragButton = Instance.new('TextButton', Outline)
@@ -1085,17 +1083,6 @@ do
 		HolderInline.BorderSizePixel = 0
 		HolderInline.BorderColor3 = Color3.new(0,0,0)
 		--
-		Title.Name = "Title"
-		Title.Position = UDim2.new(0,10,0,-20)
-		Title.Size = UDim2.new(1,0,0,15)
-		Title.BackgroundTransparency = 1
-		Title.Text = "Alchemy Droid Nigga" -- Window.Title
-		Title.TextColor3 = Color3.new(1, 1, 1)
-		Title.FontFace = Font.new("rbxassetid://12187371840")
-		Title.TextSize = 10 -- Library.FontSize
-		Title.TextStrokeTransparency = 0
-		Title.LineHeight = 1.1
-		--
 		Tabs.Name = "Tabs"
 		Tabs.Size = UDim2.new(1,0,0,22)
 		Tabs.BackgroundColor3 = Color3.new(1,1,1)
@@ -1117,6 +1104,8 @@ do
 		DragButton.AutoButtonColor = false
 		DragButton.FontFace = Font.new("rbxassetid://12187371840")
 		DragButton.TextSize = 14
+
+
 
 		-- // Elements
 		Window.Elements = {
@@ -1196,7 +1185,7 @@ do
 		local UIListLayout = Instance.new('UIListLayout', Left)
 		local UIListLayout_2 = Instance.new('UIListLayout', Right)
 		Left.Name = "Left"
-		Left.Position = UDim2.new(0,5,0,45)
+		Left.Position = UDim2.new(0,5,0,35)
 		Left.Size = UDim2.new(0.485,-3,1,-40)
 		Left.BackgroundColor3 = Color3.new(1,1,1)
 		Left.BorderSizePixel = 0
@@ -1206,7 +1195,7 @@ do
 		Left.ZIndex = 3
 		--
 		Right.Name = "Right"
-		Right.Position = UDim2.new(1,-5,0,50)
+		Right.Position = UDim2.new(1,-5,0,35)
 		Right.Size = UDim2.new(0.485,-3,1,-40)
 		Right.BackgroundColor3 = Color3.new(1,1,1)
 		Right.BorderSizePixel = 0
