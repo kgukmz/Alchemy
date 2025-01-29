@@ -1072,19 +1072,6 @@ do
 		Accent.BorderColor3 = Color3.new(0,0,0)
 		table.insert(Library.ThemeObjects, Accent)
 		--
-		Title.Name = "Title"
-		Title.Position = UDim2.new(0,10,0,-8)
-		Title.Size = UDim2.new(0.25,0,1,0)
-		Title.BackgroundTransparency = 1
-		Title.BorderSizePixel = 0
-		Title.BorderColor3 = Color3.new(0,0,0)
-		Title.Text = "nigger" -- Window.Title
-		Title.TextColor3 = Color3.new(1, 1, 1)
-		Title.FontFace = Font.new("rbxassetid://12187371840")
-		Title.TextSize = Library.FontSize
-		Title.TextStrokeTransparency = 0
-		Title.LineHeight = 1.1
-		--
 		HolderOutline.Name = "HolderOutline"
 		HolderOutline.Position = UDim2.new(0,7,0,11)
 		HolderOutline.Size = UDim2.new(1,-14,1,-18)
@@ -1097,6 +1084,19 @@ do
 		HolderInline.BackgroundColor3 = Color3.new(0.0784,0.0784,0.0784)
 		HolderInline.BorderSizePixel = 0
 		HolderInline.BorderColor3 = Color3.new(0,0,0)
+		--
+		Title.Name = "Title"
+		Title.Position = UDim2.new(0,10,0,-8)
+		Title.Size = UDim2.new(0.25,0,1,0)
+		Title.BackgroundTransparency = 1
+		Title.BorderSizePixel = 0
+		Title.BorderColor3 = Color3.new(0,0,0)
+		Title.Text = "he has entered the flow" -- Window.Title
+		Title.TextColor3 = Color3.new(1, 1, 1)
+		Title.FontFace = Font.new("rbxassetid://12187371840")
+		Title.TextSize = Library.FontSize
+		Title.TextStrokeTransparency = 0
+		Title.LineHeight = 1.1
 		--
 		Tabs.Name = "Tabs"
 		Tabs.Size = UDim2.new(1,0,0,22)
