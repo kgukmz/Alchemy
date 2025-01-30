@@ -1429,7 +1429,7 @@ do
                 Obj.Callback = select(2, ...) or function() end
             end
 
-            assert(type(Obj.Callback) == 'function', 'AddButton: `Func` callback is missing.');
+            assert(type(Obj.Callback) == 'function', 'AddButton: Callback is missing.');
         end
 
         ProcessButtonParams('Button', Button, ...)

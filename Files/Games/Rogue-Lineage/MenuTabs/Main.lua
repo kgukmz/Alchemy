@@ -51,6 +51,14 @@ end
 function Main:ClientGroup(WindowTab)
     local ClientGroup = WindowTab:AddRightGroupbox("[ CLIENT ]")
 
+    ClientGroup:AddToggle("DisableFallDamageToggle", { Text = "Disable Fall Damage"; })
+    ClientGroup:AddToggle("DisableKillBricksToggle", { Text = "Disable Kill Bricks"; })
+    ClientGroup:AddToggle("DisablePoisonPitsToggle", { Text = "Disable Poison Pits"; })
+    ClientGroup:AddToggle("DisableVisualDefectsToggle", { Text = "Disable Visual Defects"; })
+    ClientGroup:AddToggle("RemoveOrderlyFieldsToggle", { Text = "Remove Orderly Fields"; })
+
+    ClientGroup:AddDivider()
+
     ClientGroup:AddDropdown("KillMethodDropdown", {
         Values = {
             "Regular";
@@ -62,13 +70,16 @@ function Main:ClientGroup(WindowTab)
         Multi = false;
         Tooltip = "Select a kill method"
     })
+
     ClientGroup:AddButton("ResetButton", {
-        Text = "Reset"
+        Text = "Reset";
+        Callback = function() end; -- // fix no callback arg support later
     })
     ClientGroup:AddButton("KillSelfButton", {
         Text = "Kill Self";
         DoubleClick = true;
-        Tooltip = "[ THIS FEATURE CAN AND WILL TAKE LIVES ]"
+        Tooltip = "[ THIS FEATURE CAN AND WILL TAKE LIVES ]";
+        Callback = function() end;
     })
 end
 
