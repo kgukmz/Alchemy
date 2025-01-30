@@ -3,6 +3,8 @@ local Removals = {}
 local OrderFieldCache = {}
 
 function Removals:RemoveOrderFields(Value)
+    print("Test")
+    print(Value)
     local MapFolder = workspace:FindFirstChild("Map")
 
     if (Value == true) then
