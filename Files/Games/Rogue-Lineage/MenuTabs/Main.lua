@@ -1,7 +1,8 @@
 local Main = {}
 
-function Main:MovementGroup(Tab)
-    local MovementGroup = Tab:AddLeftGroupbox("[ MOVEMENT ]")
+function Main:MovementGroup(WindowTab)
+    print(WindowTab)
+    local MovementGroup = WindowTab:AddLeftGroupbox("[ MOVEMENT ]")
     MovementGroup:AddToggle("FlyToggle", { Text = "Enable Fly"; })
     MovementGroup:AddSlider("FlyVelSlider", {
         Text = "Velocity";
@@ -47,8 +48,8 @@ function Main:MovementGroup(Tab)
     })
 end
 
-function Main:ClientGroup(Tab)
-    local ClientGroup = Tab:AddRightGroupbox("[ CLIENT ]")
+function Main:ClientGroup(WindowTab)
+    local ClientGroup = WindowTab:AddRightGroupbox("[ CLIENT ]")
 
     ClientGroup:AddDropdown("KillMethodDropdown", {
         Values = {
@@ -68,8 +69,8 @@ end
 function Main:Init(Window)
     local MainTab = Window:AddTab("[ MAIN ]")
 
-    self:MovementGroup(MainTab)
-    self:ClientGroup(MainTab)
+    Main:MovementGroup(MainTab)
+    Main:ClientGroup(MainTab)
 end
 
 return Main
