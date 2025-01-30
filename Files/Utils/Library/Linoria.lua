@@ -1421,15 +1421,15 @@ do
             local Props = select(1, ...)
             if type(Props) == 'table' then
                 Obj.Text = Props.Text
-                Obj.Func = Props.Func
+                Obj.Callback = Props.Callback or function() end
                 Obj.DoubleClick = Props.DoubleClick
                 Obj.Tooltip = Props.Tooltip
             else
                 Obj.Text = select(1, ...)
-                Obj.Func = select(2, ...)
+                Obj.Callback = select(2, ...) or function() end
             end
 
-            assert(type(Obj.Func) == 'function', 'AddButton: `Func` callback is missing.');
+            assert(type(Obj.Callback) == 'function', 'AddButton: `Func` callback is missing.');
         end
 
         ProcessButtonParams('Button', Button, ...)

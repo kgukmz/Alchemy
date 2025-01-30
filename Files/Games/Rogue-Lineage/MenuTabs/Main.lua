@@ -60,10 +60,16 @@ function Main:ClientGroup(WindowTab)
 
         Default = 1;
         Multi = false;
-        Tooltip = "Select a kill method [ THIS WILL TAKE LIVES ]"
+        Tooltip = "Select a kill method"
     })
-    ClientGroup:AddButton("Reset")
-    ClientGroup:AddButton("Kill Self")
+    ClientGroup:AddButton("ResetButton", {
+        Text = "Reset"
+    })
+    ClientGroup:AddButton("KillSelfButton", {
+        Text = "Kill Self";
+        DoubleClick = true;
+        Tooltip = "[ THIS FEATURE CAN AND WILL TAKE LIVES ]"
+    })
 end
 
 function Main:Init(Window)
