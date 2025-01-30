@@ -290,7 +290,7 @@ function Library:Notification(message, duration, color, position)
 	TextLabel.BorderColor3 = Color3.new(0,0,0)
 	TextLabel.Text = message
 	TextLabel.TextColor3 = Color3.new(0.9216,0.9216,0.9216)
-	TextLabel.FontFace = Font.new("rbxassetid://12187371840")
+	TextLabel.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 	TextLabel.TextSize = Library.FontSize
 	TextLabel.AutomaticSize = Enum.AutomaticSize.X
 	TextLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -554,7 +554,7 @@ function Library:KeybindList()
 	KeyTitle.BorderColor3 = Color3.new(0,0,0)
 	KeyTitle.Text = "Keybinds"
 	KeyTitle.TextColor3 = Color3.new(1,1,1)
-	KeyTitle.FontFace = Font.new("rbxassetid://12187371840")
+	KeyTitle.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 	KeyTitle.TextSize = 12
 	KeyTitle.TextStrokeTransparency = 0
 	--
@@ -582,7 +582,7 @@ function Library:KeybindList()
 		NewValue.BorderColor3 = Color3.new(0,0,0)
 		NewValue.Text = tostring(" ["..Key.."] " .. Name .. " (" .. Mode ..") ")
 		NewValue.TextColor3 = Color3.new(1,1,1)
-		NewValue.FontFace = Font.new("rbxassetid://12187371840")
+		NewValue.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		NewValue.TextSize = 12
 		NewValue.AutomaticSize = Enum.AutomaticSize.X
 		NewValue.TextXAlignment = Enum.TextXAlignment.Left
@@ -667,7 +667,7 @@ do
 		Color.Text = ""
 		Color.TextColor3 = Color3.new(0,0,0)
 		Color.AutoButtonColor = false
-		Color.FontFace = Font.new("rbxassetid://12187371840")
+		Color.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Color.TextSize = 14
 		Color.ZIndex = 100
 		--
@@ -795,7 +795,7 @@ do
 		Hold.Text = "Copy"
 		Hold.TextColor3 = Color3.fromRGB(145,145,145)
 		Hold.AutoButtonColor = false
-		Hold.FontFace = Font.new("rbxassetid://12187371840")
+		Hold.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Hold.TextSize = Library.FontSize
 		Hold.TextStrokeTransparency = 0
 		Hold.ZIndex = 100
@@ -809,7 +809,7 @@ do
 		Toggle.Text = "Paste"
 		Toggle.TextColor3 = Color3.fromRGB(145,145,145)
 		Toggle.AutoButtonColor = false
-		Toggle.FontFace = Font.new("rbxassetid://12187371840")
+		Toggle.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Toggle.TextSize = Library.FontSize
 		Toggle.TextStrokeTransparency = 0
 		Toggle.ZIndex = 100
@@ -1102,7 +1102,7 @@ do
 		DragButton.Text = ""
 		DragButton.TextColor3 = Color3.new(0,0,0)
 		DragButton.AutoButtonColor = false
-		DragButton.FontFace = Font.new("rbxassetid://12187371840")
+		DragButton.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		DragButton.TextSize = 14
 
 
@@ -1219,7 +1219,7 @@ do
 		TabButton.Text = Page.Name
 		TabButton.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
 		TabButton.AutoButtonColor = false
-		TabButton.FontFace = Font.new("rbxassetid://12187371840")
+		TabButton.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		TabButton.TextSize = Library.FontSize
 		TabButton.TextStrokeTransparency = 0
 		TabButton.LineHeight = 1.1
@@ -1486,7 +1486,7 @@ do
 		Title.BorderSizePixel = 0
 		Title.BorderColor3 = Color3.new(0,0,0)
 		Title.TextColor3 = Color3.new(1,1,1)
-		Title.FontFace = Font.new("rbxassetid://12187371840")
+		Title.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Title.TextSize = Library.FontSize
 		Title.ZIndex = 3
 		Title.TextXAlignment = Enum.TextXAlignment.Left
@@ -1568,7 +1568,7 @@ do
 		NewToggle.Text = ""
 		NewToggle.TextColor3 = Color3.new(0,0,0)
 		NewToggle.AutoButtonColor = false
-		NewToggle.FontFace = Font.new("rbxassetid://12187371840")
+		NewToggle.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		NewToggle.TextSize = 14
 		--
 		Outline.Name = "Outline"
@@ -1595,7 +1595,7 @@ do
 		Title.BorderSizePixel = 0
 		Title.BorderColor3 = Color3.new(0,0,0)
 		Title.TextColor3 = Toggle.Risk and Color3.fromRGB(189, 34, 34) or Color3.new(0.5686,0.5686,0.5686)
-		Title.FontFace = Font.new("rbxassetid://12187371840")
+		Title.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Title.TextSize = Library.FontSize
 		Title.TextXAlignment = Enum.TextXAlignment.Left
 		Title.Text = Toggle.Name
@@ -1715,7 +1715,7 @@ do
 			Value.BorderColor3 = Color3.new(0,0,0)
 			Value.Text = "MB2"
 			Value.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
-			Value.FontFace = Font.new("rbxassetid://12187371840")
+			Value.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 			Value.TextSize = Library.FontSize
 			Value.TextStrokeTransparency = 0
 			--
@@ -1746,7 +1746,7 @@ do
 			Hold.Text = "Hold"
 			Hold.TextColor3 = Keybind.Mode == "Hold" and Color3.new(1,1,1) or Color3.new(0.5686,0.5686,0.5686)
 			Hold.AutoButtonColor = false
-			Hold.FontFace = Font.new("rbxassetid://12187371840")
+			Hold.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 			Hold.TextSize = Library.FontSize
 			Hold.TextStrokeTransparency = 0
 			--
@@ -1759,7 +1759,7 @@ do
 			Toggle.Text = "Toggle"
 			Toggle.TextColor3 = Keybind.Mode == "Toggle" and Color3.new(1,1,1) or Color3.new(0.5686,0.5686,0.5686)
 			Toggle.AutoButtonColor = false
-			Toggle.FontFace = Font.new("rbxassetid://12187371840")
+			Toggle.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 			Toggle.TextSize = Library.FontSize
 			Toggle.TextStrokeTransparency = 0
 			--
@@ -1772,7 +1772,7 @@ do
 			Always.Text = "Always"
 			Always.TextColor3 = Keybind.Mode == "Always" and Color3.new(1,1,1) or Color3.new(0.5686,0.5686,0.5686)
 			Always.AutoButtonColor = false
-			Always.FontFace = Font.new("rbxassetid://12187371840")
+			Always.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 			Always.TextSize = Library.FontSize
 			Always.TextStrokeTransparency = 0
 
@@ -2093,7 +2093,7 @@ do
 		NewSlider.Text = ""
 		NewSlider.TextColor3 = Color3.new(0,0,0)
 		NewSlider.AutoButtonColor = false
-		NewSlider.FontFace = Font.new("rbxassetid://12187371840")
+		NewSlider.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		NewSlider.TextSize = 14
 		--
 		Outline.Name = "Outline"
@@ -2118,7 +2118,7 @@ do
 		Accent.Text = ""
 		Accent.TextColor3 = Color3.new(0,0,0)
 		Accent.AutoButtonColor = false
-		Accent.FontFace = Font.new("rbxassetid://12187371840")
+		Accent.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Accent.TextSize = 14
 		table.insert(Library.ThemeObjects, Accent)
 		table.insert(Library.ThemeObjects, Accent)
@@ -2134,7 +2134,7 @@ do
 		Add.Text = "+"
 		Add.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
 		Add.AutoButtonColor = false
-		Add.FontFace = Font.new("rbxassetid://12187371840")
+		Add.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Add.TextSize = Library.FontSize
 		Add.TextStrokeTransparency = 0
 		--
@@ -2149,7 +2149,7 @@ do
 		Subtract.Text = "-"
 		Subtract.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
 		Subtract.AutoButtonColor = false
-		Subtract.FontFace = Font.new("rbxassetid://12187371840")
+		Subtract.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Subtract.TextSize = Library.FontSize
 		Subtract.TextStrokeTransparency = 0
 		--
@@ -2161,7 +2161,7 @@ do
 		Title.BorderSizePixel = 0
 		Title.BorderColor3 = Color3.new(0,0,0)
 		Title.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
-		Title.FontFace = Font.new("rbxassetid://12187371840")
+		Title.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Title.TextSize = Library.FontSize
 		Title.TextXAlignment = Enum.TextXAlignment.Left
 		Title.Text = Slider.Name
@@ -2175,7 +2175,7 @@ do
 		Value.BorderSizePixel = 0
 		Value.BorderColor3 = Color3.new(0,0,0)
 		Value.TextColor3 = Color3.new(1,1,1)
-		Value.FontFace = Font.new("rbxassetid://12187371840")
+		Value.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Value.TextSize = Library.FontSize
 		Value.TextXAlignment = Enum.TextXAlignment.Right
 		Value.TextStrokeTransparency = 0
@@ -2350,7 +2350,7 @@ do
 		Value.BorderSizePixel = 0
 		Value.BorderColor3 = Color3.new(0,0,0)
 		Value.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
-		Value.FontFace = Font.new("rbxassetid://12187371840")
+		Value.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Value.TextSize = Library.FontSize
 		Value.TextXAlignment = Enum.TextXAlignment.Left
 		Value.TextStrokeTransparency = 0
@@ -2365,7 +2365,7 @@ do
 		Icon.BorderColor3 = Color3.new(0,0,0)
 		Icon.Text = "+"
 		Icon.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
-		Icon.FontFace = Font.new("rbxassetid://12187371840")
+		Icon.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Icon.TextSize = Library.FontSize
 		Icon.TextXAlignment = Enum.TextXAlignment.Right
 		Icon.TextStrokeTransparency = 0
@@ -2378,7 +2378,7 @@ do
 		Title.BorderSizePixel = 0
 		Title.BorderColor3 = Color3.new(0,0,0)
 		Title.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
-		Title.FontFace = Font.new("rbxassetid://12187371840")
+		Title.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Title.TextSize = Library.FontSize
 		Title.TextXAlignment = Enum.TextXAlignment.Left
 		Title.TextStrokeTransparency = 0
@@ -2507,7 +2507,7 @@ do
 				NewOption.Text = ""
 				NewOption.TextColor3 = Color3.new(0,0,0)
 				NewOption.AutoButtonColor = false
-				NewOption.FontFace = Font.new("rbxassetid://12187371840")
+				NewOption.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 				NewOption.TextSize = 14
 				NewOption.ZIndex = 7;
 				Dropdown.OptionInsts[option].button = NewOption
@@ -2521,7 +2521,7 @@ do
 				OptionName.BorderColor3 = Color3.new(0,0,0)
 				OptionName.Text = option
 				OptionName.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
-				OptionName.FontFace = Font.new("rbxassetid://12187371840")
+				OptionName.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 				OptionName.TextSize = Library.FontSize
 				OptionName.TextXAlignment = Enum.TextXAlignment.Left
 				OptionName.TextStrokeTransparency = 0
@@ -2703,7 +2703,7 @@ do
 		Value.BorderColor3 = Color3.new(0,0,0)
 		Value.Text = "MB2"
 		Value.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
-		Value.FontFace = Font.new("rbxassetid://12187371840")
+		Value.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Value.TextSize = Library.FontSize
 		Value.TextStrokeTransparency = 0
 		--
@@ -2715,7 +2715,7 @@ do
 		Title.BorderSizePixel = 0
 		Title.BorderColor3 = Color3.new(0,0,0)
 		Title.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
-		Title.FontFace = Font.new("rbxassetid://12187371840")
+		Title.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Title.TextSize = Library.FontSize
 		Title.TextXAlignment = Enum.TextXAlignment.Left
 		Title.Text = Keybind.Name
@@ -2748,7 +2748,7 @@ do
 		Hold.Text = "Hold"
 		Hold.TextColor3 = Keybind.Mode == "Hold" and Color3.new(1,1,1) or Color3.new(0.5686,0.5686,0.5686)
 		Hold.AutoButtonColor = false
-		Hold.FontFace = Font.new("rbxassetid://12187371840")
+		Hold.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Hold.TextSize = Library.FontSize
 		Hold.TextStrokeTransparency = 0
 		--
@@ -2761,7 +2761,7 @@ do
 		Toggle.Text = "Toggle"
 		Toggle.TextColor3 = Keybind.Mode == "Toggle" and Color3.new(1,1,1) or Color3.new(0.5686,0.5686,0.5686)
 		Toggle.AutoButtonColor = false
-		Toggle.FontFace = Font.new("rbxassetid://12187371840")
+		Toggle.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Toggle.TextSize = Library.FontSize
 		Toggle.TextStrokeTransparency = 0
 		--
@@ -2774,7 +2774,7 @@ do
 		Always.Text = "Always"
 		Always.TextColor3 = Keybind.Mode == "Always" and Color3.new(1,1,1) or Color3.new(0.5686,0.5686,0.5686)
 		Always.AutoButtonColor = false
-		Always.FontFace = Font.new("rbxassetid://12187371840")
+		Always.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Always.TextSize = Library.FontSize
 		Always.TextStrokeTransparency = 0
 
@@ -3033,7 +3033,7 @@ do
 		TextLabel.BorderColor3 = Color3.new(0,0,0)
 		TextLabel.Text = Colorpicker.Name
 		TextLabel.TextColor3 = Color3.fromRGB(145, 145, 145)
-		TextLabel.FontFace = Font.new("rbxassetid://12187371840")
+		TextLabel.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		TextLabel.TextSize = Library.FontSize
 		TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 		TextLabel.TextStrokeTransparency = 0
@@ -3144,7 +3144,7 @@ do
 		Value.BorderSizePixel = 0
 		Value.BorderColor3 = Color3.new(0,0,0)
 		Value.TextColor3 = Color3.fromRGB(145,145,145)
-		Value.FontFace = Font.new("rbxassetid://12187371840")
+		Value.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Value.TextSize = Library.FontSize
 		Value.TextXAlignment = Enum.TextXAlignment.Left
 		Value.TextStrokeTransparency = 0
@@ -3160,7 +3160,7 @@ do
 		Title.BorderSizePixel = 0
 		Title.BorderColor3 = Color3.new(0,0,0)
 		Title.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
-		Title.FontFace = Font.new("rbxassetid://12187371840")
+		Title.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Title.TextSize = Library.FontSize
 		Title.TextXAlignment = Enum.TextXAlignment.Left
 		Title.TextStrokeTransparency = 0
@@ -3224,7 +3224,7 @@ do
 		NewButton.Text = ""
 		NewButton.TextColor3 = Color3.new(0,0,0)
 		NewButton.AutoButtonColor = false
-		NewButton.FontFace = Font.new("rbxassetid://12187371840")
+		NewButton.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		NewButton.TextSize = 14
 		--
 		Outline.Name = "Outline"
@@ -3248,7 +3248,7 @@ do
 		Value.BorderSizePixel = 0
 		Value.BorderColor3 = Color3.new(0,0,0)
 		Value.TextColor3 = Color3.new(0.5686,0.5686,0.5686)
-		Value.FontFace = Font.new("rbxassetid://12187371840")
+		Value.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		Value.TextSize = Library.FontSize
 		Value.Text = Button.Name
 		Value.TextStrokeTransparency = 0
@@ -3290,7 +3290,7 @@ do
 		NewButton.BorderColor3 = Color3.new(0,0,0)
 		NewButton.Text = Label.Name
 		NewButton.TextColor3 = Color3.fromRGB(255,255,255)
-		NewButton.FontFace = Font.new("rbxassetid://12187371840")
+		NewButton.FontFace = Font.new("rbxasset://gca/ProggyClean.font")
 		NewButton.TextSize = Library.FontSize
 		NewButton.TextXAlignment = Label.Centered and Enum.TextXAlignment.Center or Enum.TextXAlignment.Left
 		NewButton.TextStrokeTransparency = 0
