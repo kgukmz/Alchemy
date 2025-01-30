@@ -1,7 +1,6 @@
 local Main = {}
 
 function Main:MovementGroup(WindowTab)
-    print(WindowTab)
     local MovementGroup = WindowTab:AddLeftGroupbox("[ MOVEMENT ]")
     MovementGroup:AddToggle("FlyToggle", { Text = "Enable Fly"; })
     MovementGroup:AddSlider("FlyVelSlider", {
