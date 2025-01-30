@@ -33,7 +33,7 @@ local Library = {
     AccentColor = Color3.fromRGB(55, 110, 134),
     OutlineColor = Color3.fromRGB(15, 43, 61),
     BackgroundColor = Color3.fromRGB(11, 22, 24),
-    FontColor = Color3.fromRGB(255, 227, 227),
+    FontColor = Color3.fromRGB(255, 255, 255),
     RiskColor = Color3.fromRGB(255, 50, 50),
 
     Black = Color3.new(0, 0, 0);

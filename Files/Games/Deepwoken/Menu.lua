@@ -8,7 +8,7 @@ function Menu:Load()
     self.Library = Library
 
     self.Window = Library:CreateWindow({
-        Title = ("ALCHEMY | [%s]"):format(identifyexecutor() or "EXECUTOR"),
+        Title = ("ALCHEMY | %s"):format(identifyexecutor() or "EXECUTOR"),
         Center = true,
         AutoShow = true,
     })

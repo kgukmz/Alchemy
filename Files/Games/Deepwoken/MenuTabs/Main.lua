@@ -1,8 +1,8 @@
 local Main = {}
 
 function Main:Init(Window)
-    local MainTab = Window:AddTab("Main")
-    local MovementGroup = MainTab:AddLeftGroupbox("Movement")
+    local MainTab = Window:AddTab("MAIN")
+    local MovementGroup = MainTab:AddLeftGroupbox("MOVEMENT")
 
     MovementGroup:AddToggle("FlyToggle", {
         Text = "Fly";
@@ -42,6 +42,28 @@ function Main:Init(Window)
         Min = 0;
         Max = 100;
         Compact = true;
+    })
+
+    local ClientGroup = MainTab:AddRightGroupbox("CLIENT")
+    
+    ClientGroup:AddToggle("NoFallToggle", {
+        Text = "No Fall Damage";
+    })
+
+    ClientGroup:AddToggle("NoKillBricksToggle", {
+        Text = "No Kill Bricks";
+    })
+
+    ClientGroup:AddToggle("NoAcidToggle", {
+        Text = "No Acid Pits";
+    })
+
+    ClientGroup:AddToggle("NoFallToggle", {
+        Text = "No Jump Penalty";
+    })
+
+    ClientGroup:AddToggle("RemoveVisualDefects", {
+        Text = "No Visual Defects";
     })
 end
 
