@@ -58,20 +58,28 @@ function TabGroups:Client(WindowTab)
 
     ClientGroup:AddDivider()
 
-    ClientGroup:AddToggle("DisableFallDamageToggle", { Text = "Disable Fall Damage"; Callback = print; })
+    ClientGroup:AddToggle("DisableFallDamageToggle", { 
+        Text = "Disable Fall Damage"; 
+        Callback = function(Value)
+            Removals:DisableFallDamage(Value)
+        end; 
+    })
+
     ClientGroup:AddToggle("DisableKillBricksToggle", { Text = "Disable Kill Bricks"; Callback = warn; })
     ClientGroup:AddToggle("DisablePoisonPitsToggle", { Text = "Disable Poison Pits"; Callback = warn; })
-    ClientGroup:AddToggle("DisableVisualDefectsToggle", { Text = "Disable Visual Defects"; Callback = function(Value) print(Value) end})
+    
+    ClientGroup:AddToggle("DisableVisualDefectsToggle", {
+        Text = "Disable Visual Defects"; 
+        Callback = function(Value) 
+            print(Value) 
+        end
+    })
+    
     ClientGroup:AddToggle("RemoveOrderlyFieldsToggle", {
         Text = "Remove Orderly Fields";
         Callback = function(Value) -- // Callback = module.func | doesnt work for some reason, fix later
             Removals:RemoveOrderFields(Value)
         end; 
-    })
-
-    ClientGroup:AddToggle("TESTFUNC", {
-        Text = "Remove Orderly Fields [TEST]";
-        Callback = Removals.RemoveOrderFields; 
     })
 
     ClientGroup:AddDivider()
