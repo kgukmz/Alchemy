@@ -11,7 +11,7 @@ function Menu:Load()
         Title = ("Alchemy | %s"):format(identifyexecutor() or "EXECUTOR") ,
         Centered = true,
         AutoShow = true,
-        Size = UDim2.fromOffset(550, 625)
+        Size = UDim2.fromOffset(570, 60)
     })
 
     self.Main = MainTab:Init(self.Window)

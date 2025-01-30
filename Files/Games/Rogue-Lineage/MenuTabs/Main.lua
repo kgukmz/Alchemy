@@ -1,9 +1,7 @@
 local Main = {}
 
-function Main:Init(Window)
-    local MainTab = Window:AddTab("[MAIN]")
-
-    local MovementGroup = MainTab:AddLeftGroupbox("MOVEMENT")
+function Main:MovementGroup(Tab)
+    local MovementGroup = MainTab:AddLeftGroupbox("[ MOVEMENT ]")
     MovementGroup:AddToggle("FlyToggle", { Text = "Enable Fly"; })
     MovementGroup:AddSlider("FlyVelSlider", {
         Text = "Velocity";
@@ -47,6 +45,31 @@ function Main:Init(Window)
         Max = 125;
         Compact = true;
     })
+end
+
+function Main:ClientGroup(Tab)
+    local ClientGroup = Tab:AddRightGroupbox("[ CLIENT ]")
+
+    ClientGroup:AddDropdown("KillMethodDropdown", {
+        Values = {
+            "Regular";
+            "Solans";
+            "Killbrick";
+        };
+
+        Default = 1;
+        Multi = false;
+        Tooltip = "Select a kill method [ THIS WILL TAKE LIVES ]"
+    })
+    ClientGroup:AddButton("Reset")
+    ClientGroup:AddButton("Kill Self")
+end
+
+function Main:Init(Window)
+    local MainTab = Window:AddTab("[ MAIN ]")
+
+    self:MovementGroup(MainTab)
+    self:ClientGroup(MainTab)
 end
 
 return Main
