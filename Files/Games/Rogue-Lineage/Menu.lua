@@ -1,6 +1,6 @@
 local Menu = {}
 
-local Library = require("Files/Utils/Library/ImGui.lua")
+local Library = require("Files/Utils/Library/Linoria.lua")
 
 local MainTab = require("Files/Games/Rogue-Lineage/MenuTabs/Main.lua")
 
@@ -8,10 +8,10 @@ function Menu:Load()
     self.Library = Library
 
     self.Window = Library:CreateWindow({
-        Title = ("Alchemy | [%s]"):format(identifyexecutor() or "EXECUTOR") ,
-        Size = UDim2.new(0, 425, 0, 275),
-        Position = UDim2.new(0.5, 0, 0, 70),
-        NoResize = true,
+        Title = ("Alchemy | %s"):format(identifyexecutor() or "EXECUTOR") ,
+        Centered = true,
+        AutoShow = true,
+        Size = UDim2.fromOffset(550, 625)
     })
 
     self.Main = MainTab:Init(self.Window)

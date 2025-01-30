@@ -1,55 +1,51 @@
 local Main = {}
 
-local Removals = require("Files/Games/Rogue-Lineage/Features/Removals.lua")
-
 function Main:Init(Window)
-    local MainTab = Window:CreateTab({ Name = "MAIN" })
-    MainTab:Separator({ Text = "MAIN" })
-    
-    -- // World Header
+    local MainTab = Window:AddTab("[MAIN]")
 
-    local WorldHeader = MainTab:CollapsingHeader({ Title = "WORLD" })
-    WorldHeader:Separator({ Text = "FULLBRIGHT" })
-    WorldHeader:Checkbox({
-        Label = "Enable Fullbright";
-        Callback = Removals.RemoveAmbient;
-    })
-    
-    WorldHeader:Slider({
-        Label = "[Intensity]";
-        Value = 0;
-        MinValue = 0;
-        MaxValue = 255;
+    local MovementGroup = MainTab:AddLeftGroupbox("MOVEMENT")
+    MovementGroup:AddToggle("FlyToggle", { Text = "Enable Fly"; })
+    MovementGroup:AddSlider("FlyVelSlider", {
+        Text = "Velocity";
+        Default = 0;
+        Rounding = 0;
+        Min = 0;
+        Max = 125;
+        Compact = true;
     })
 
-    WorldHeader:Separator({ Text = "VISUALS" })
-    WorldHeader:Checkbox({
-        Label = "No Shadows";
-        Callback = Removals.NoShadows;
-    })
-    
-    WorldHeader:Checkbox({
-        Label = "No Visual Defects"; -- // No sanity, no blur
-        Callback = Removals.NoVisualDefects;
-    })
-
-    WorldHeader:Checkbox({
-        Label = "No Fog";
-        Callback = Removals.NoFog;
+    MovementGroup:AddToggle("AutoFallToggle", { Text = "Use Auto Fall"; })
+    MovementGroup:AddSlider("AutoFallSlider", {
+        Text = "Speed";
+        Default = 0;
+        Rounding = 0;
+        Min = 0;
+        Max = 20;
+        Compact = true;
     })
 
-    WorldHeader:Separator({ Text = "REMOVALS" })
-    WorldHeader:Checkbox({
-        Label = "Remove Orderly Fields";
-        Callback = Removals.RemoveOrderFields;
+    MovementGroup:AddDivider()
+
+    MovementGroup:AddToggle("SpeedToggle", { Text = "Enable Speed"; })
+    MovementGroup:AddSlider("SpeedVelSlider", {
+        Text = "Velocity";
+        Default = 0;
+        Rounding = 0;
+        Min = 0;
+        Max = 125;
+        Compact = true;
     })
 
-    WorldHeader:Checkbox({
-        Label = "Disable Killbricks";
-    })
+    MovementGroup:AddDivider()
 
-    WorldHeader:Checkbox({
-        Label = "Disable Poison Bricks";
+    MovementGroup:AddToggle("InfiniteJumpToggle", { Text = "Enable Infinite Jump"; })
+    MovementGroup:AddSlider("InfiniteJumpSlider", {
+        Text = "Velocity";
+        Default = 0;
+        Rounding = 0;
+        Min = 0;
+        Max = 125;
+        Compact = true;
     })
 end
 
