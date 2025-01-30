@@ -3,10 +3,11 @@ local Removals = {}
 local OrderFieldCache = {}
 
 function Removals:RemoveOrderFields(...)
-    print("Test")
+    warn("Test")
     print(table.unpack({...}))
     local MapFolder = workspace:FindFirstChild("Map")
 
+    --[[
     if (Value == true) then
         if (MapFolder == nil) then
             return
@@ -33,6 +34,7 @@ function Removals:RemoveOrderFields(...)
 
         warn("readded")
     end
+    --]]
 end
 
 return Removals
