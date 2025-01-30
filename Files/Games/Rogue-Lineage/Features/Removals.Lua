@@ -3,7 +3,7 @@ local Removals = {}
 local OrderFieldCache = {}
 
 function Removals:RemoveOrderFields(Value)
-    local MapFolder = workspace.Map
+    local MapFolder = workspace:FindFirstChild("Map")
 
     if (Value == true) then
         if (MapFolder == nil) then
@@ -24,7 +24,9 @@ function Removals:RemoveOrderFields(Value)
         end
 
         for i, OrderField in next, OrderFieldCache do
-            OrderField.Parent = workspace.Map
+            local OrderFieldCached = OrderField[i]
+            OrderFieldCached.Parent = workspace.Map
+            table.remove(OrderField, i)
         end
 
         warn("readded")
