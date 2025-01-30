@@ -1,7 +1,7 @@
 local Main = {}
 local TabGroups = {}
 
-local Removals = require("Files/Games/Rogue-Lineage/Features/Removals.lua")
+-- local Removals = require("Files/Games/Rogue-Lineage/Features/Removals.lua")
 
 function TabGroups:Movement(WindowTab)
     local MovementGroup = WindowTab:AddLeftGroupbox("[ MOVEMENT ]")
