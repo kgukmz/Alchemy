@@ -51,6 +51,11 @@ end
 function TabGroups:Client(WindowTab)
     local ClientGroup = WindowTab:AddRightGroupbox("[ CLIENT ]")
 
+    ClientGroup:AddToggle("AntiFireToggle", { Text = "Enable Anti Fire"; })
+    ClientGroup:AddToggle("AntiInjuriesToggle", { Text = "Enable No Injuries"; })
+
+    ClientGroup:AddDivider()
+
     ClientGroup:AddToggle("DisableFallDamageToggle", { Text = "Disable Fall Damage"; })
     ClientGroup:AddToggle("DisableKillBricksToggle", { Text = "Disable Kill Bricks"; })
     ClientGroup:AddToggle("DisablePoisonPitsToggle", { Text = "Disable Poison Pits"; })
@@ -82,6 +87,25 @@ function TabGroups:Client(WindowTab)
         Tooltip = "[ THIS FEATURE CAN AND WILL TAKE LIVES ]";
     })
     --]]
+end
+
+function TabGroups:WorldInteractions(WindowTab)
+    local WorldInteractionsGroup = WindowTab:AddLeftGroupbox("[ WORLD INTERACTIONS ]")
+
+    WorldInteractionsGroup:AddToggle("BagPickupToggle", { Text = "Bag Pickup"; })
+    WorldInteractionsGroup:AddSlider("BagPickupRangeSlider", {
+        Text = "Range";
+        Default = 0;
+        Rounding = 0;
+        Min = 0;
+        Max = 100;
+        Compact = true;
+    })
+
+    WorldInteractionsGroup:AddDivider()
+
+    WorldInteractionsGroup:AddToggle("AutoPickupTrinketsToggle", { Text = "Auto Pickup Trinkets"; })
+    WorldInteractionsGroup:AddToggle("AutoPickupIngredientsToggle", { Text = "Auto Pickup Ingredients"; })
 end
 
 function TabGroups:WorldVisuals(WindowTab)
@@ -123,7 +147,7 @@ function TabGroups:ManaUtilities(WindowTab)
 
     ManaUtilitiesGroup:AddDivider()
 
-    ManaUtilitiesGroup:AddLabel("Aimbot Stuff")
+    ManaUtilitiesGroup:AddLabel("[ AIMBOT FEATURES ]")
 
     ManaUtilitiesGroup:AddDropdown("SpellAimbotDropdown", {
         Values = {
@@ -146,6 +170,7 @@ function Main:Init(Window)
 
     TabGroups:Movement(MainTab)
     TabGroups:Client(MainTab)
+    TabGroups:WorldInteractions(MainTab)
     TabGroups:WorldVisuals(MainTab)
     TabGroups:ManaUtilities(MainTab)
 end
