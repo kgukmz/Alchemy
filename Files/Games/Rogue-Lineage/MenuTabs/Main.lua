@@ -73,13 +73,12 @@ function Main:ClientGroup(WindowTab)
 
     ClientGroup:AddButton("ResetButton", {
         Text = "Reset";
-        Callback = function() end; -- // fix no callback arg support later
     })
+    
     ClientGroup:AddButton("KillSelfButton", {
         Text = "Kill Self";
         DoubleClick = true;
         Tooltip = "[ THIS FEATURE CAN AND WILL TAKE LIVES ]";
-        Callback = function() end;
     })
 end
 
