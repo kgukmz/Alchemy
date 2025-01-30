@@ -44,7 +44,7 @@ function Removals:DisableFallDamage(Value)
                 TouchedConnection = RaycastInstance.Touched:Connect(function()
                     task.delay(0.5, function()
                         RaycastInstance.Name = OldName
-                        TouchedConnection:Disconnect
+                        TouchedConnection:Disconnect()
                     end)
                 end)
             end
