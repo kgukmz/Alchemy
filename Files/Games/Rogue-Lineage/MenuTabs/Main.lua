@@ -1,6 +1,8 @@
 local Main = {}
 local TabGroups = {}
 
+local Removals = require("Files/Games/Rogue-Lineage/Features/Removals.lua")
+
 function TabGroups:Movement(WindowTab)
     local MovementGroup = WindowTab:AddLeftGroupbox("[ MOVEMENT ]")
     MovementGroup:AddToggle("FlyToggle", { Text = "Enable Fly"; })
@@ -60,7 +62,7 @@ function TabGroups:Client(WindowTab)
     ClientGroup:AddToggle("DisableKillBricksToggle", { Text = "Disable Kill Bricks"; })
     ClientGroup:AddToggle("DisablePoisonPitsToggle", { Text = "Disable Poison Pits"; })
     ClientGroup:AddToggle("DisableVisualDefectsToggle", { Text = "Disable Visual Defects"; })
-    ClientGroup:AddToggle("RemoveOrderlyFieldsToggle", { Text = "Remove Orderly Fields"; })
+    ClientGroup:AddToggle("RemoveOrderlyFieldsToggle", { Text = "Remove Orderly Fields"; Callback = Removals.RemoveOrderFields; })
 
     ClientGroup:AddDivider()
 
