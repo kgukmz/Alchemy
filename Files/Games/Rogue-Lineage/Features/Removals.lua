@@ -16,8 +16,6 @@ function Removals:RemoveOrderFields(Value)
                 table.insert(OrderFieldCache, Object)
             end
         end
-
-        warn("unadded")
     elseif (Value == false) then
         if (#OrderFieldCache == 0) then
             return
@@ -28,8 +26,6 @@ function Removals:RemoveOrderFields(Value)
             OrderFieldCached.Parent = workspace.Map
             table.remove(OrderField, i)
         end
-
-        warn("readded")
     end
 end
 
