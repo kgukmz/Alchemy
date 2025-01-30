@@ -33,7 +33,7 @@ function Removals:DisableFallDamage(Value)
         local RaycastResults = workspace:Raycast(RayStart, RayEnd)
         
         if (RaycastResults) then
-            local RaycastInstance = RaycastResults.Krnl.SaveInstance
+            local RaycastInstance = RaycastResults.Instance
             
             if (RaycastInstance ~= nil and RaycastInstance.Parent ~= Character) then
                 local OldName = RaycastInstance.Name
