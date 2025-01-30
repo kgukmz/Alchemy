@@ -62,7 +62,12 @@ function TabGroups:Client(WindowTab)
     ClientGroup:AddToggle("DisableKillBricksToggle", { Text = "Disable Kill Bricks"; })
     ClientGroup:AddToggle("DisablePoisonPitsToggle", { Text = "Disable Poison Pits"; })
     ClientGroup:AddToggle("DisableVisualDefectsToggle", { Text = "Disable Visual Defects"; Callback = function(Value) print(Value) end})
-    ClientGroup:AddToggle("RemoveOrderlyFieldsToggle", { Text = "Remove Orderly Fields"; Callback = Removals.RemoveOrderFields; })
+    ClientGroup:AddToggle("RemoveOrderlyFieldsToggle", {
+        Text = "Remove Orderly Fields";
+        Callback = function(Value) -- // Callback = module.func | doesnt work for some reason, fix later
+            Removals:RemoveOrderFields(Value)
+        end; 
+    })
 
     ClientGroup:AddDivider()
 

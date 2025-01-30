@@ -1938,10 +1938,12 @@ do
                     Addon:Update()
                 end
             end
-	    pcall(function()
-            Library:SafeCallback(Toggle.Callback, Toggle.Value);
-            Library:SafeCallback(Toggle.Changed, Toggle.Value);
-	    end)
+            
+	        pcall(function()
+                Library:SafeCallback(Toggle.Callback, Toggle.Value);
+                Library:SafeCallback(Toggle.Changed, Toggle.Value);
+	        end)
+
             Library:UpdateDependencyBoxes();
         end;
 
