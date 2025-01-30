@@ -61,7 +61,7 @@ function TabGroups:Client(WindowTab)
     ClientGroup:AddToggle("DisableFallDamageToggle", { Text = "Disable Fall Damage"; })
     ClientGroup:AddToggle("DisableKillBricksToggle", { Text = "Disable Kill Bricks"; })
     ClientGroup:AddToggle("DisablePoisonPitsToggle", { Text = "Disable Poison Pits"; })
-    ClientGroup:AddToggle("DisableVisualDefectsToggle", { Text = "Disable Visual Defects"; })
+    ClientGroup:AddToggle("DisableVisualDefectsToggle", { Text = "Disable Visual Defects"; Callback = function(Value) print(Value) end})
     ClientGroup:AddToggle("RemoveOrderlyFieldsToggle", { Text = "Remove Orderly Fields"; Callback = Removals.RemoveOrderFields; })
 
     ClientGroup:AddDivider()
