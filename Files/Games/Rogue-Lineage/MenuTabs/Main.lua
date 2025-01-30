@@ -1,6 +1,7 @@
 local Main = {}
+local TabGroups = {}
 
-function Main:MovementGroup(WindowTab)
+function TabGroups:Movement(WindowTab)
     local MovementGroup = WindowTab:AddLeftGroupbox("[ MOVEMENT ]")
     MovementGroup:AddToggle("FlyToggle", { Text = "Enable Fly"; })
     MovementGroup:AddSlider("FlyVelSlider", {
@@ -47,7 +48,7 @@ function Main:MovementGroup(WindowTab)
     })
 end
 
-function Main:ClientGroup(WindowTab)
+function TabGroups:Client(WindowTab)
     local ClientGroup = WindowTab:AddRightGroupbox("[ CLIENT ]")
 
     ClientGroup:AddToggle("DisableFallDamageToggle", { Text = "Disable Fall Damage"; })
@@ -83,7 +84,7 @@ function Main:ClientGroup(WindowTab)
     --]]
 end
 
-function Main:WorldVisualsGroup(WindowTab)
+function TabGroups:WorldVisuals(WindowTab)
     local WorldVisualsGroup = WindowTab:AddLeftGroupbox("[ WORLD VISUALS ]")
 
     WorldVisualsGroup:AddToggle("DisableAmbientToggle", { Text = "Disable Ambient"; })
@@ -98,15 +99,55 @@ function Main:WorldVisualsGroup(WindowTab)
 
     WorldVisualsGroup:AddDivider()
 
-    WorldVisualsGroup:AddToggle("Disable Fog")
+    WorldVisualsGroup:AddToggle("DisableFogToggle", { Text = "Disable Fog"; })
+end
+
+function TabGroups:ManaUtilities(WindowTab)
+    local ManaUtilitiesGroup = WindowTab:AddLeftGroupbox("[ MANA UTILITIES ]")
+
+    ManaUtilitiesGroup:AddToggle("ManaChargeToggle", { Text = "Begin Mana Charge"; })
+    ManaUtilitiesGroup:AddSlider("ManaChargeSlider", {
+        Text = "Mana %";
+        Default = 0;
+        Rounding = 0;
+        Min = 0;
+        Max = 100;
+        Compact = true;
+    })
+
+    ManaUtilitiesGroup:AddDivider()
+
+    ManaUtilitiesGroup:AddToggle("AutoSpellTrain", { Text = "Auto Spell Training"; })
+    ManaUtilitiesGroup:AddToggle("AutoClimbTrainToggle", { Text = "Auto Climb Training"; })
+    ManaUtilitiesGroup:AddToggle("AntiSpellBackfireToggle", { Text = "Anti Spell Backfire"; })
+
+    ManaUtilitiesGroup:AddDivider()
+
+    ManaUtilitiesGroup:AddLabel("Aimbot Stuff")
+
+    ManaUtilitiesGroup:AddDropdown("SpellAimbotDropdown", {
+        Values = {
+            "Armis";
+            "Inferi";
+            "Fimbulvetr";
+            "Manus Dei";
+        };
+
+        Default = 1;
+        Multi = true;
+        Tooltip = "[ SELECT AIMBOT FOR SPELLS ]"
+    })
+
+    ManaUtilitiesGroup:AddToggle("SpellAimbotToggle", { Text = "Enable Spell Aimbot"; })
 end
 
 function Main:Init(Window)
     local MainTab = Window:AddTab("[ MAIN ]")
 
-    Main:MovementGroup(MainTab)
-    Main:ClientGroup(MainTab)
-    Main:WorldVisualsGroup(MainTab)
+    TabGroups:Movement(MainTab)
+    TabGroups:Client(MainTab)
+    TabGroups:WorldVisuals(MainTab)
+    TabGroups:ManaUtilities(MainTab)
 end
 
 return Main
