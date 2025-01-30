@@ -24,7 +24,7 @@ function Removals:RemoveOrderFields(Value)
         end
 
         for i, OrderField in next, OrderFieldCache do
-            local OrderFieldCached = OrderField[i]
+            local OrderFieldCached = OrderFieldCache[i]
             OrderFieldCached.Parent = workspace.Map
             table.remove(OrderField, i)
         end
