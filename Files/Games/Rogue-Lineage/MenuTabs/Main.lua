@@ -71,15 +71,35 @@ function Main:ClientGroup(WindowTab)
         Tooltip = "Select a kill method"
     })
 
+    --[[ FIX BUTTONS LATER
     ClientGroup:AddButton("ResetButton", {
         Text = "Reset";
     })
-    
+
     ClientGroup:AddButton("KillSelfButton", {
         Text = "Kill Self";
         DoubleClick = true;
         Tooltip = "[ THIS FEATURE CAN AND WILL TAKE LIVES ]";
     })
+    --]]
+end
+
+function Main:WorldVisuals(WindowTab)
+    local WorldVisualsGroup = WindowTab:AddLeftGroupbox("[ WORLD VISUALS ]")
+
+    WorldVisualsGroup:AddToggle("DisableAmbientToggle", { Text = "Disable Ambient"; })
+    WorldVisualsGroup:AddSlider("AmbientIntensitySlider", {
+        Text = "Intensity";
+        Default = 0;
+        Rounding = 0;
+        Min = 0;
+        Max = 255;
+        Compact = true;
+    })
+
+    WorldVisualsGroup:AddDivider()
+
+    WorldVisualsGroup:AddToggle("Disable Fog")
 end
 
 function Main:Init(Window)
@@ -87,6 +107,7 @@ function Main:Init(Window)
 
     Main:MovementGroup(MainTab)
     Main:ClientGroup(MainTab)
+    Main:WorldVisualsGroup(MainTab)
 end
 
 return Main
