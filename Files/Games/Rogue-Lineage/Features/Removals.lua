@@ -2,9 +2,9 @@ local Removals = {}
 
 local OrderFieldCache = {}
 
-function Removals:RemoveOrderFields(Value)
+function Removals:RemoveOrderFields(...)
     print("Test")
-    print(Value)
+    print(table.unpack({...}))
     local MapFolder = workspace:FindFirstChild("Map")
 
     if (Value == true) then
