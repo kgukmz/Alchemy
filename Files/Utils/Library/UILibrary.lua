@@ -189,7 +189,7 @@ local Library = {
 	};
 	Connections = {};
 	Font = Enum.Font.Ubuntu;
-	FontSize = 9;
+	FontSize = 13;
 	Notifs = {};
 	KeyList = nil;
 	UIKey = Enum.KeyCode.End;
