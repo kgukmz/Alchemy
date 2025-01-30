@@ -103,7 +103,7 @@ function TabGroups:WorldVisuals(WindowTab)
 end
 
 function TabGroups:ManaUtilities(WindowTab)
-    local ManaUtilitiesGroup = WindowTab:AddLeftGroupbox("[ MANA UTILITIES ]")
+    local ManaUtilitiesGroup = WindowTab:AddRightGroupbox("[ MANA UTILITIES ]")
 
     ManaUtilitiesGroup:AddToggle("ManaChargeToggle", { Text = "Begin Mana Charge"; })
     ManaUtilitiesGroup:AddSlider("ManaChargeSlider", {
