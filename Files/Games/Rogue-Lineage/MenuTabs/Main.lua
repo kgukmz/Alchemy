@@ -69,6 +69,11 @@ function TabGroups:Client(WindowTab)
         end; 
     })
 
+    ClientGroup:AddToggle("TESTFUNC", {
+        Text = "Remove Orderly Fields [TEST]";
+        Callback = Removals.RemoveOrderFields; 
+    })
+
     ClientGroup:AddDivider()
 
     ClientGroup:AddDropdown("KillMethodDropdown", {
