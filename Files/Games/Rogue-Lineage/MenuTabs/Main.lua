@@ -84,7 +84,7 @@ function Main:ClientGroup(WindowTab)
     --]]
 end
 
-function Main:WorldVisuals(WindowTab)
+function Main:WorldVisualsGroup(WindowTab)
     local WorldVisualsGroup = WindowTab:AddLeftGroupbox("[ WORLD VISUALS ]")
 
     WorldVisualsGroup:AddToggle("DisableAmbientToggle", { Text = "Disable Ambient"; })
