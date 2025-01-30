@@ -1,7 +1,7 @@
 local Main = {}
 
 function Main:MovementGroup(Tab)
-    local MovementGroup = MainTab:AddLeftGroupbox("[ MOVEMENT ]")
+    local MovementGroup = Tab:AddLeftGroupbox("[ MOVEMENT ]")
     MovementGroup:AddToggle("FlyToggle", { Text = "Enable Fly"; })
     MovementGroup:AddSlider("FlyVelSlider", {
         Text = "Velocity";
