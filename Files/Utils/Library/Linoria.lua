@@ -1969,13 +1969,13 @@ do
         assert(Info.Text, 'AddSlider: Missing slider text.');
         assert(Info.Min, 'AddSlider: Missing minimum value.');
         assert(Info.Max, 'AddSlider: Missing maximum value.');
-        assert(Info.Rounding, 'AddSlider: Missing rounding value.');
+        -- assert(Info.Rounding, 'AddSlider: Missing rounding value.');
 
         local Slider = {
             Value = Info.Default;
             Min = Info.Min;
             Max = Info.Max;
-            Rounding = Info.Rounding;
+            Rounding = Info.Rounding or 1;
             MaxSize = 232;
             Type = 'Slider';
             Callback = Info.Callback or function(Value) end;
