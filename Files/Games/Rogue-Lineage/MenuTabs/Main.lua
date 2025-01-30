@@ -103,6 +103,7 @@ function TabGroups:WorldInteractions(WindowTab)
     })
 
     WorldInteractionsGroup:AddDropdown("BagPickupTypeDropdown", {
+        Text = "Bag Pickup Type";
         Values = {
             "Artifacts";
             "Silver";
