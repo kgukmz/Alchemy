@@ -5,7 +5,7 @@ function Main:Init(Window)
     local MovementGroup = MainTab:AddLeftGroupbox("MOVEMENT")
 
     MovementGroup:AddToggle("FlyToggle", {
-        Text = "Fly";
+        Text = "Enable Fly";
     })
 
     MovementGroup:AddSlider("FlySlider", {
@@ -16,10 +16,22 @@ function Main:Init(Window)
         Compact = true;
     })
 
+    MovementGroup:AddToggle("FlyToggle", {
+        Text = "Enable Auto Fall";
+    })
+
+    MovementGroup:AddSlider("FlySlider", {
+        Text = "Speed";
+        Default = 0;
+        Min = 0;
+        Max = 150;
+        Compact = true;
+    })
+
     MovementGroup:AddDivider()
 
     MovementGroup:AddToggle("SpeedToggle", {
-        Text = "Speed";
+        Text = "Enable Speed";
     })
 
     MovementGroup:AddSlider("SpeedSlider", {
@@ -33,7 +45,7 @@ function Main:Init(Window)
     MovementGroup:AddDivider()
 
     MovementGroup:AddToggle("InfiniteJumpToggle", {
-        Text = "Infinite Jump";
+        Text = "Enable Infinite Jump";
     })
 
     MovementGroup:AddSlider("InfiniteJumpSplider", {
