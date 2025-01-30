@@ -102,6 +102,17 @@ function TabGroups:WorldInteractions(WindowTab)
         Compact = true;
     })
 
+    WorldInteractionsGroup:AddDropdown("BagPickupTypeDropdown", {
+        Values = {
+            "Artifacts";
+            "Silver";
+            "Other";
+        };
+
+        Default = 1;
+        Multi = true;
+    })
+
     WorldInteractionsGroup:AddDivider()
 
     WorldInteractionsGroup:AddToggle("AutoPickupTrinketsToggle", { Text = "Auto Pickup Trinkets"; })
