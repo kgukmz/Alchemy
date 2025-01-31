@@ -39,14 +39,20 @@ function TabGroups:Movement(WindowTab)
     })
 
     MovementGroup:AddDivider()
-
+    --[[
     MovementGroup:AddToggle("InfiniteJumpToggle", { 
         Text = "Enable Infinite Jump"; 
         Callback = function(Value)
             Movement:InfiniteJump(Value)
         end;
     })
+    --]]
 
+    MovementGroup:AddToggle("InfiniteJumpToggle", { 
+        Text = "Enable Infinite Jump"; 
+        Callback = Movement.InfiniteJump;
+    })
+    
     MovementGroup:AddSlider("InfiniteJumpSlider", {
         Text = "Velocity";
         Default = 0;

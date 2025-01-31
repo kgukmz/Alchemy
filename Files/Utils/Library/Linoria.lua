@@ -97,9 +97,7 @@ function Library:SafeCallback(f, ...)
         return;
     end;
 
-  
-
-    local success, event = pcall(f, ...);
+    local success, event = pcall(f, f, ...);
 
     if not success then
         local _, i = event:find(":%d+: ");

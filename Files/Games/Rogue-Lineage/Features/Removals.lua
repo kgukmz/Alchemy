@@ -11,6 +11,7 @@ function Removals:DisableFallDamage(Value)
 
     -- // No Fall Damage Method [1, FREE EXECUTOR SUPPORTED]
 
+    --[[
     repeat
         task.wait(0.1)
 
@@ -50,8 +51,8 @@ function Removals:DisableFallDamage(Value)
             end
         end
     until getgenv().Toggles.DisableFallDamageToggle.Value == false
-
-    warn("SHA!")
+    -- // ts got me banned ☠️☠️
+    ]]
 end
 
 function Removals:DisableKillBricks(Value)
