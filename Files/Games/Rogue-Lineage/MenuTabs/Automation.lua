@@ -10,6 +10,8 @@ end
 
 function Automation:Init(Window)
     local AutomationTab = Window:AddTab("[ AUTOMATION ]")
+
+    TabGroups:Test(AutomationTab)
 end
 
 return Automation
