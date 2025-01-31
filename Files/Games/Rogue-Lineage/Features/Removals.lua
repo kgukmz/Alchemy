@@ -44,8 +44,6 @@ function Removals:DisableFallDamage(Value)
         end)
     elseif (Value == false) then
         NofallCheck:Disconnect()
-        print(NofallCheck)
-        warn("DISCONNECTED")
 
         local Character = LocalPlayer.Character
         local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
