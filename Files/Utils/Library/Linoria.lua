@@ -1419,16 +1419,20 @@ do
         local function ProcessButtonParams(Class, Obj, ...)
             local Props = select(1, ...)
             if type(Props) == 'table' then
+                warn("TABLE")
                 Obj.Text = Props.TextBounds
                 Obj.DoubleClick = Props.DoubleClick
                 Obj.Tooltip = Props.Tooltip
 
                 if (Props.Callback == nil) then
+                    warn("NO CALLBACK REFERENCED, SETTING DEFAULT...")
                     Obj.Callback = function(...) end
+                    warn("new:", Obj.Callback)
                 else
                     Obj.Callback = Props.Callback
                 end
             else
+                warn("NOT TABLE")
                 Obj.Text = select(1, ...)
                 Obj.Callback = select(2, ...)
             end
