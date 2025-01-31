@@ -1418,6 +1418,8 @@ do
         local Button = {};
         local function ProcessButtonParams(Class, Obj, ...)
             local Props = select(1, ...)
+            table.foreach({...}, warn)
+            table.foreach(Props, warn)
             if type(Props) == 'table' then
                 Obj.Text = Props.TextBounds
                 Obj.DoubleClick = Props.DoubleClick
@@ -1427,7 +1429,7 @@ do
                 Obj.Text = select(1, ...)
                 Obj.Callback = select(2, ...)
             end
-            
+
             assert(type(Obj.Callback) == 'function', 'AddButton: Callback is missing.');            
         end
 

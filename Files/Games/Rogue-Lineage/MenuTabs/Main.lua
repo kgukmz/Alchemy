@@ -107,6 +107,8 @@ function TabGroups:Client(WindowTab)
         Tooltip = "Select a kill method"
     })
 
+    --[[ Completely fix butons later ts pmo me off
+
     ClientGroup:AddButton("ResetButton", {
         Text = "Reset";
         Callback = function() end
@@ -118,6 +120,8 @@ function TabGroups:Client(WindowTab)
         Tooltip = "[ THIS FEATURE CAN AND WILL TAKE LIVES ]";
         Callback = function() end
     })
+        
+    --]]
 end
 
 function TabGroups:WorldInteractions(WindowTab)
