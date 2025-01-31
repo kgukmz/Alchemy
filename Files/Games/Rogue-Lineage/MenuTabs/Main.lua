@@ -131,8 +131,9 @@ end
 function TabGroups:WorldFunctions(WindowTab)
     local WorldGroup = WindowTab:AddTabbox({ Side = 1; })
     
-    local WorldInteractionsGroup = WorldGroup:AddTab("[ WORLD INTERACTIONS ]")
+    local WorldInteractionsGroup = WorldGroup:AddTab("[ WORLD: 1 ]")
     do -- // World Interactions
+        WorldInteractionsGroup:AddLabel("[ INTERACTIONS ]")
         WorldInteractionsGroup:AddToggle("BagPickupToggle", {
             Text = "Bag Pickup";
         })
@@ -168,8 +169,9 @@ function TabGroups:WorldFunctions(WindowTab)
         })
     end
 
-    local WorldVisualsGroup = WorldGroup:AddTab("[ WORLD VISUALS ]")
+    local WorldVisualsGroup = WorldGroup:AddTab("[ WORLD: 2 ]")
     do -- // World Visuals 
+        WorldVisualsGroup:AddLabel("[ VISUALS ]")
         WorldVisualsGroup:AddToggle("DisableAmbientToggle", {
             Text = "Disable Ambient";
         })
