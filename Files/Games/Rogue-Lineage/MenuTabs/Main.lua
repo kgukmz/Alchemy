@@ -2,6 +2,7 @@ local Main = {}
 local TabGroups = {}
 
 local Removals = require("Files/Games/Rogue-Lineage/Features/Removals.lua")
+local Removals = require("Files/Games/Rogue-Lineage/Features/Movement.lua")
 
 function TabGroups:Movement(WindowTab)
     local MovementGroup = WindowTab:AddLeftGroupbox("[ MOVEMENT ]")
@@ -39,7 +40,12 @@ function TabGroups:Movement(WindowTab)
 
     MovementGroup:AddDivider()
 
-    MovementGroup:AddToggle("InfiniteJumpToggle", { Text = "Enable Infinite Jump"; })
+    MovementGroup:AddToggle("InfiniteJumpToggle", { 
+        Text = "Enable Infinite Jump"; 
+        Callback = function(Value)
+            Movement:InfiniteJump(Value)
+        end;
+    })
     MovementGroup:AddSlider("InfiniteJumpSlider", {
         Text = "Velocity";
         Default = 0;
