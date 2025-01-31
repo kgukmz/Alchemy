@@ -128,62 +128,71 @@ function TabGroups:Client(WindowTab)
     return ClientGroup
 end
 
-function TabGroups:WorldInteractions(WindowTab)
-    local WorldInteractionsGroup = WindowTab:AddLeftGroupbox("[ WORLD INTERACTIONS ]")
+function TabGroups:WorldFunctions(WindowTab)
+    local WorldGroup = WindowTab:AddTabbox({ Side = 1; })
+    
+    local WorldInteractionsGroup = WorldGroup:AddTab("[ WORLD INTERACTIONS ]")
+    do -- // World Interactions
+        WorldInteractionsGroup:AddToggle("BagPickupToggle", {
+            Text = "Bag Pickup";
+        })
 
-    WorldInteractionsGroup:AddToggle("BagPickupToggle", { Text = "Bag Pickup"; })
-    WorldInteractionsGroup:AddSlider("BagPickupRangeSlider", {
-        Text = "Range";
-        Default = 0;
-        Rounding = 0;
-        Min = 0;
-        Max = 100;
-        Compact = true;
-    })
+        WorldInteractionsGroup:AddSlider("BagPickupRangeSlider", {
+            Text = "Range";
+            Default = 0;
+            Rounding = 0;
+            Min = 0;
+            Max = 100;
+            Compact = true;
+        })
 
-    WorldInteractionsGroup:AddDropdown("BagPickupTypeDropdown", {
-        Values = {
-            "Artifacts";
-            "Silver";
-            "Other";
-        };
+        WorldInteractionsGroup:AddDropdown("BagPickupTypeDropdown", {
+            Values = {
+                "Artifacts";
+                "Silver";
+                "Other";
+            };
 
-        Default = 1;
-        Multi = true;
-    })
+            Default = 1;
+            Multi = true;
+        })
 
-    WorldInteractionsGroup:AddDivider()
+        WorldInteractionsGroup:AddDivider()
 
-    WorldInteractionsGroup:AddToggle("AutoPickupTrinketsToggle", { Text = "Auto Pickup Trinkets"; })
-    WorldInteractionsGroup:AddToggle("AutoPickupIngredientsToggle", { Text = "Auto Pickup Ingredients"; })
+        WorldInteractionsGroup:AddToggle("AutoPickupTrinketsToggle", {
+            Text = "Auto Pickup Trinkets";
+        })
 
-    return WorldInteractionsGroup
-end
+        WorldInteractionsGroup:AddToggle("AutoPickupIngredientsToggle", {
+            Text = "Auto Pickup Ingredients";
+        })
+    end
 
-function TabGroups:WorldVisuals(WindowTab)
-    local WorldVisualsGroup = WindowTab:AddLeftGroupbox("[ WORLD VISUALS ]")
+    local WorldVisualsGroup = WorldGroup:AddTab("[ WORLD VISUALS ]")
+    do -- // World Visuals 
+        WorldVisualsGroup:AddToggle("DisableAmbientToggle", {
+            Text = "Disable Ambient";
+        })
 
-    WorldVisualsGroup:AddToggle("DisableAmbientToggle", { Text = "Disable Ambient"; })
-    WorldVisualsGroup:AddSlider("AmbientIntensitySlider", {
-        Text = "Intensity";
-        Default = 0;
-        Rounding = 0;
-        Min = 0;
-        Max = 255;
-        Compact = true;
-    })
+        WorldVisualsGroup:AddSlider("AmbientIntensitySlider", {
+            Text = "Intensity";
+            Default = 0;
+            Rounding = 0;
+            Min = 0;
+            Max = 255;
+            Compact = true;
+        })
 
-    WorldVisualsGroup:AddDivider()
+        WorldVisualsGroup:AddDivider()
 
-    WorldVisualsGroup:AddToggle("DisableFogToggle", {
-        Text = "Disable Fog";
-    })
+        WorldVisualsGroup:AddToggle("DisableFogToggle", {
+            Text = "Disable Fog";
+        })
 
-    WorldVisualsGroup:AddToggle("DisableShadowsToggle", {
-        Text = "Disable Shadows";
-    })
-
-    return WorldVisualsGroup
+        WorldVisualsGroup:AddToggle("DisableShadowsToggle", {
+            Text = "Disable Shadows";
+        })
+    end
 end
 
 function TabGroups:ManaUtilities(WindowTab)
@@ -232,8 +241,7 @@ function Main:Init(Window)
 
     TabGroups:Movement(MainTab)
     TabGroups:Client(MainTab)
-    TabGroups:WorldInteractions(MainTab)
-    TabGroups:WorldVisuals(MainTab)
+    TabGroups:WorldFunctions(MainTab)
     TabGroups:ManaUtilities(MainTab)
 end
 
