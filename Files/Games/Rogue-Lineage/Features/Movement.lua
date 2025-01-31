@@ -20,6 +20,8 @@ function Movement:InfiniteJump(Value)
     end
 
     repeat
+        task.wait()
+        
         local Character = LocalPlayer.Character
 
         if (Character == nil) then
