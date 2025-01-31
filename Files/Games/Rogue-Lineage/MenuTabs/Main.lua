@@ -107,7 +107,6 @@ function TabGroups:Client(WindowTab)
         Tooltip = "Select a kill method"
     })
 
-    --[[ FIX BUTTONS LATER
     ClientGroup:AddButton("ResetButton", {
         Text = "Reset";
     })
@@ -117,7 +116,6 @@ function TabGroups:Client(WindowTab)
         DoubleClick = true;
         Tooltip = "[ THIS FEATURE CAN AND WILL TAKE LIVES ]";
     })
-    --]]
 end
 
 function TabGroups:WorldInteractions(WindowTab)
@@ -165,7 +163,13 @@ function TabGroups:WorldVisuals(WindowTab)
 
     WorldVisualsGroup:AddDivider()
 
-    WorldVisualsGroup:AddToggle("DisableFogToggle", { Text = "Disable Fog"; })
+    WorldVisualsGroup:AddToggle("DisableFogToggle", {
+        Text = "Disable Fog";
+    })
+
+    WorldVisualsGroup:AddToggle("DisableShadowsToggle", {
+        Text = "Disable Shadows";
+    })
 end
 
 function TabGroups:ManaUtilities(WindowTab)
@@ -183,13 +187,13 @@ function TabGroups:ManaUtilities(WindowTab)
 
     ManaUtilitiesGroup:AddDivider()
 
-    ManaUtilitiesGroup:AddToggle("AutoSpellTrain", { Text = "Auto Spell Training"; })
-    ManaUtilitiesGroup:AddToggle("AutoClimbTrainToggle", { Text = "Auto Climb Training"; })
+    ManaUtilitiesGroup:AddToggle("AutoSpellTrain", { Text = "Begin Spell Training"; })
+    ManaUtilitiesGroup:AddToggle("AutoClimbTrainToggle", { Text = "Begin Climb Training"; })
     ManaUtilitiesGroup:AddToggle("AntiSpellBackfireToggle", { Text = "Anti Spell Backfire"; })
 
     ManaUtilitiesGroup:AddDivider()
 
-    ManaUtilitiesGroup:AddLabel("[ AIMBOT FEATURES ]")
+    ManaUtilitiesGroup:AddLabel("[ SPELL AIMBOT ]")
 
     ManaUtilitiesGroup:AddDropdown("SpellAimbotDropdown", {
         Values = {

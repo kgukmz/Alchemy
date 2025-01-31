@@ -1548,13 +1548,13 @@ do
                     task.defer(rawset, Button, 'Locked', false)
 
                     if clicked then
-                        Library:SafeCallback(Button.Func)
+                        Library:SafeCallback(Button.Callback)
                     end
 
                     return
                 end
 
-                Library:SafeCallback(Button.Func);
+                Library:SafeCallback(Button.Callback);
             end)
         end
 

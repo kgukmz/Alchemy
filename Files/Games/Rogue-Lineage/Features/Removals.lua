@@ -136,7 +136,7 @@ function Removals:RemoveOrderFields(Value)
             return
         end
 
-        for i, Object in next, MapFolder:GetChildren() do
+        for i, Object in pairs(MapFolder:GetChildren()) do
             if (Object.Name == "OrderField" or Object.Name == "MageField") then
                 Object.Parent = nil
                 table.insert(OrderFieldCache, Object)
@@ -147,7 +147,7 @@ function Removals:RemoveOrderFields(Value)
             return
         end
 
-        for i, OrderField in next, OrderFieldCache do
+        for i, OrderField in pairs(OrderFieldCache) do
             local OrderFieldCached = OrderFieldCache[i]
             OrderFieldCached.Parent = workspace.Map
             table.remove(OrderField, i)
