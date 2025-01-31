@@ -1419,17 +1419,18 @@ do
         local function ProcessButtonParams(Class, Obj, ...)
             local Props = select(1, ...)
             if type(Props) == 'table' then
-                Obj.Text = Props.Text
-                Obj.Callback = Props.Callback
+                Obj.Text = Props.TextBounds
                 Obj.DoubleClick = Props.DoubleClick
                 Obj.Tooltip = Props.Tooltip
+
+                if (Props.Callback == nil) then
+                    Obj.Callback = function(...) end
+                else
+                    Obj.Callback = Props.Callback
+                end
             else
                 Obj.Text = select(1, ...)
                 Obj.Callback = select(2, ...)
-            end
-
-            if (Obj.Callback == nil) then
-                Obj.Callback = function() end
             end
 
             warn(Props.Callback)
