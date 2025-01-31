@@ -2,30 +2,64 @@ local Removals = {}
 
 local Players = GetService("Players")
 local Lighting = GetService("Lighting")
+local RunService = GetService("RunService")
+
+local Event = require("Files/Utils/Event.lua")
 
 local LocalPlayer = Players.LocalPlayer
+
+local NofallCheck = Event:Create(RunService.Heartbeat)
 
 local OrderFieldCache = {}
 local OldDustInstance
 local FakeDust
 
 function Removals:DisableFallDamage(Value)
-    local Character = LocalPlayer.Character
-    local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart", true)
+    if (Value == false) then
+        return
+    end
 
     if (Value == true) then
-        local DustInstance = HumanoidRootPart:FindFirstChild("DUST")
-        OldDustInstance = DustInstance
-        DustInstance.Parent = nil
-        
-        FakeDust = Instance.new("Weld")
-        FakeDust.Name = "DUST"
-        FakeDust.Parent = HumanoidRootPart
+        NofallCheck:Connect(function()
+            local Character = LocalPlayer.Character
+            local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+
+            if (Character == nil or HumanoidRootPart == nil) then
+                return
+            end
+
+            local DustInstance = HumanoidRootPart:FindFirstChild("DUST")
+
+            if (DustInstance ~= nil and DustInstance.ClassName == "ParticleEmitter") then
+                OldDustInstance = DustInstance
+                DustInstance.Parent = nil
+
+                if (FakeDust ~= nil) then
+                    FakeDust:Destroy()
+                    FakeDust = nil
+                end
+                
+                FakeDust = Instance.new("Sound")
+                FakeDust.Name = "DUST"
+                FakeDust.Parent = HumanoidRootPart
+            end
+        end)
     elseif (Value == false) then
-        if (OldDustInstance ~= nil) then
+        NofallCheck:Disconnect()
+
+        local Character = LocalPlayer.Character
+        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+
+        if (HumanoidRootPart == nil) then
+            return
+        end
+
+        if (FakeDust ~= nil) then
             FakeDust:Destroy()
             FakeDust = nil
+        end
 
+        if (OldDustInstance ~= nil) then
             OldDustInstance.Parent = HumanoidRootPart
         end
     end
