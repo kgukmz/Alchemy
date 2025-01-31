@@ -148,18 +148,13 @@ function Removals:RemoveOrderFields(Value)
         for i, Object in pairs(MapFolder:GetChildren()) do
             if (Object.Name == "OrderField" or Object.Name == "MageField") then
                 Object.Parent = nil
-                table.insert(OrderFieldCache, Object)
             end
         end
     elseif (Value == false) then
-        if (#OrderFieldCache == 0) then
-            return
-        end
-
-        for i, OrderField in pairs(OrderFieldCache) do
-            local OrderFieldCached = OrderFieldCache[i]
-            OrderFieldCached.Parent = workspace.Map
-            OrderField[i] = nil
+        for i, OrderField in pairs(getnilinstances()) do
+            if (OrderField.Name == "OrderField" or OrderField.Name == "Magefield") then
+                OrderField.Parent = MapFolder
+            end
         end
     end
 end
