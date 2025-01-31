@@ -1419,35 +1419,16 @@ do
         local function ProcessButtonParams(Class, Obj, ...)
             local Props = select(1, ...)
             if type(Props) == 'table' then
-                warn("TABLE")
                 Obj.Text = Props.TextBounds
                 Obj.DoubleClick = Props.DoubleClick
                 Obj.Tooltip = Props.Tooltip
-
-                if (Props.Callback == nil) then
-                    warn("NO CALLBACK REFERENCED, SETTING DEFAULT...")
-                    Obj.Callback = function(...) end
-                    warn("new:", Obj.Callback)
-                else
-                    Obj.Callback = Props.Callback
-                end
+                Obj.Callback = Props.Callback
             else
-                warn("NOT TABLE")
                 Obj.Text = select(1, ...)
                 Obj.Callback = select(2, ...)
             end
-
-            warn(Props.Callback)
-            print(Obj.Callback)
-
-            table.foreach(Obj.Callback, warn)
-
-            if (type(Obj.Callback) ~= "function") then
-                print("rah")
-                error("AddButton: Callback is not a valid function.")
-            end
-
-            -- // assert(type(Obj.Callback) == 'function', 'AddButton: Callback is missing.');            
+            
+            assert(type(Obj.Callback) == 'function', 'AddButton: Callback is missing.');            
         end
 
         ProcessButtonParams('Button', Button, ...)
