@@ -1,58 +1,34 @@
 local Removals = {}
 
 local Players = GetService("Players")
+local Lighting = GetService("Lighting")
+
+local LocalPlayer = Players.LocalPlayer
 
 local OrderFieldCache = {}
+local OldDustInstance
+local FakeDust
 
 function Removals:DisableFallDamage(Value)
-    if (Value == false) then
-        return;
+    local Character = LocalPlayer.Character
+    local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart", true)
+
+    if (Value == true) then
+        local DustInstance = HumanoidRootPart:FindFirstChild("DUST")
+        OldDustInstance = DustInstance
+        DustInstance.Parent = nil
+        
+        FakeDust = Instance.new("Weld")
+        FakeDust.Name = "DUST"
+        FakeDust.Parent = HumanoidRootPart
+    elseif (Value == false) then
+        if (OldDustInstance ~= nil) then
+            FakeDust:Destroy()
+            FakeDust = nil
+
+            OldDustInstance.Parent = HumanoidRootPart
+        end
     end
-
-    -- // No Fall Damage Method [1, FREE EXECUTOR SUPPORTED]
-
-    --[[
-    repeat
-        task.wait(0.1)
-
-        local LocalPlayer = Players.LocalPlayer
-        local Character = LocalPlayer.Character
-        local Humanoid = Character:FindFirstChild("Humanoid")
-        local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
-
-        if (Character == nil or Humanoid == nil or HumanoidRootPart == nil) then
-            continue
-        end
-
-        if (Humanoid:GetState() ~= Enum.HumanoidStateType.Freefall) then
-            continue
-        end
-        
-        local RayStart = (HumanoidRootPart.Position + Vector3.new(0, -5, 0))
-        local RayEnd = Vector3.new(0, -1000, 0)
-
-        local RaycastResults = workspace:Raycast(RayStart, RayEnd)
-        
-        if (RaycastResults) then
-            local RaycastInstance = RaycastResults.Instance
-            
-            if (RaycastInstance ~= nil and RaycastInstance.Parent ~= Character) then
-                local OldName = RaycastInstance.Name
-
-                RaycastInstance.Name = "PITBASE"
-
-                local TouchedConnection;
-                TouchedConnection = RaycastInstance.Touched:Connect(function()
-                    task.delay(0.5, function()
-                        RaycastInstance.Name = OldName
-                        TouchedConnection:Disconnect()
-                    end)
-                end)
-            end
-        end
-    until getgenv().Toggles.DisableFallDamageToggle.Value == false
-    -- // ts got me banned ☠️☠️
-    ]]
 end
 
 function Removals:DisableKillBricks(Value)
@@ -153,6 +129,18 @@ function Removals:RemoveOrderFields(Value)
             table.remove(OrderField, i)
         end
     end
+end
+
+function Removals:DisableVisualDefectsToggle(Value)
+    local Blindness = Lighting:WaitForChild("Blindness", true)
+    local Chokeout = Lighting:WaitForChild("Chokeout", true)
+    local BagBlind = Lighting:WaitForChild("BagBlind", true)
+    local Blur = Lighting:WaitForChild("Blur", true)
+
+    Blindness.Enabled = (not Value)
+    Chokeout.Enabled = (not Value)
+    BagBlind.Enabled = (not Value)
+    Blur.Enabled = (not Value)
 end
 
 return Removals

@@ -87,7 +87,7 @@ function TabGroups:Client(WindowTab)
     
     ClientGroup:AddToggle("DisableVisualDefectsToggle", {
         Text = "Disable Visual Defects";
-        Callback = print;
+        Callback = Removals.DisableVisualDefectsToggle;
     })
     
     ClientGroup:AddToggle("RemoveOrderlyFieldsToggle", {
@@ -195,12 +195,17 @@ function TabGroups:WorldFunctions(WindowTab)
             Text = "Disable Shadows";
         })
     end
+    
+    return WorldGroup
 end
 
 function TabGroups:ManaUtilities(WindowTab)
     local ManaUtilitiesGroup = WindowTab:AddRightGroupbox("[ MANA UTILITIES ]")
 
-    ManaUtilitiesGroup:AddToggle("ManaChargeToggle", { Text = "Begin Mana Charge"; })
+    ManaUtilitiesGroup:AddToggle("ManaChargeToggle", {
+        Text = "Begin Mana Charge";
+    })
+
     ManaUtilitiesGroup:AddSlider("ManaChargeSlider", {
         Text = "Mana %";
         Default = 0;
