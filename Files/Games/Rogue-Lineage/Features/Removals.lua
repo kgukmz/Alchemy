@@ -36,7 +36,7 @@ function Removals:DisableFallDamage(Value)
                 FakeDustInstance.Parent = HumanoidRootPart
             end
 
-            -- // boost performance by destroying unused dust particles
+            -- // boost performance by destroying unused dust instances created by inputhandler
             if (RightLeg ~= nil and RightLeg:FindFirstChild("DUST")) then
                 local DustSound = RightLeg.DUST
                 DustSound:Destroy()
@@ -159,19 +159,19 @@ function Removals:RemoveOrderFields(Value)
         for i, OrderField in pairs(OrderFieldCache) do
             local OrderFieldCached = OrderFieldCache[i]
             OrderFieldCached.Parent = workspace.Map
-            table.remove(OrderField, i)
+            OrderField[i] = nil
         end
     end
 end
 
 function Removals:DisableVisualDefectsToggle(Value)
     local Blindness = Lighting:WaitForChild("Blindness", true)
-    local Chokeout = Lighting:WaitForChild("Chokeout", true)
+   -- local Chokeout = Lighting:WaitForChild("Chokeout", true)
     local BagBlind = Lighting:WaitForChild("BagBlind", true)
     local Blur = Lighting:WaitForChild("Blur", true)
 
     Blindness.Enabled = (not Value)
-    Chokeout.Enabled = (not Value)
+    --Chokeout.Enabled = (not Value)
     BagBlind.Enabled = (not Value)
     Blur.Enabled = (not Value)
 end
