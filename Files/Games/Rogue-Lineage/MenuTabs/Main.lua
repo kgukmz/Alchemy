@@ -46,6 +46,7 @@ function TabGroups:Movement(WindowTab)
             Movement:InfiniteJump(Value)
         end;
     })
+
     MovementGroup:AddSlider("InfiniteJumpSlider", {
         Text = "Velocity";
         Default = 0;
@@ -71,8 +72,19 @@ function TabGroups:Client(WindowTab)
         end; 
     })
 
-    ClientGroup:AddToggle("DisableKillBricksToggle", { Text = "Disable Kill Bricks"; Callback = warn; })
-    ClientGroup:AddToggle("DisablePoisonPitsToggle", { Text = "Disable Poison Pits"; Callback = warn; })
+    ClientGroup:AddToggle("DisableKillBricksToggle", { 
+        Text = "Disable Kill Bricks"; 
+        Callback = function(Value)
+           Removals:DisableKillBricks(Value)
+        end; 
+    })
+
+    ClientGroup:AddToggle("DisablePoisonPitsToggle", { 
+        Text = "Disable Poison Pits"; 
+        Callback = function(Value)
+            Removals:DisablePoisonPits(Value)
+        end; 
+    })
     
     ClientGroup:AddToggle("DisableVisualDefectsToggle", {
         Text = "Disable Visual Defects"; 

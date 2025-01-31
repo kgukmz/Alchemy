@@ -54,6 +54,79 @@ function Removals:DisableFallDamage(Value)
     warn("SHA!")
 end
 
+function Removals:DisableKillBricks(Value)
+    local Map = workspace:FindFirstChild("Map")
+    
+    if (Map == nil) then
+        return
+    end
+
+    local AllowedParts = {
+        "Fire";
+        "SolansGate";
+        "SolanBall";
+        "Elevator";
+        "TeleportIn";
+        "TeleportOut";
+        "BaalField";
+        "OrderField";
+        "MageField";
+        "PoisonField";
+    }
+
+    if (Value == true) then
+        for i, Object in pairs(Map:GetChildren()) do
+            if (Object:FindFirstChild("TouchInterest") == nil) then
+                continue
+            end
+
+            if (table.find(AllowedParts, Object.Name)) then
+                continue
+            end
+
+            Object.CanTouch = false
+        end
+    elseif (Value == false) then
+        for i, Object in pairs(Map:GetChildren()) do
+            if (Object:FindFirstChild("TouchInterest") == nil) then
+                continue
+            end
+
+            if (table.find(AllowedParts, Object.Name)) then
+                continue
+            end
+
+            Object.CanTouch = true
+        end
+    end
+end
+
+function Removals:DisablePoisonPits(Value)
+    local Map = workspace:FindFirstChild("Map")
+    
+    if (Map == nil) then
+        return
+    end
+
+    if (Value == true) then
+        for i, Object in pairs(Map:GetChildren()) do
+            if (Object.Name ~= "PoisonField") then
+                continue
+            end
+
+            Object.CanTouch = false
+        end   
+    elseif (Value == false) then
+        for i, Object in pairs(Map:GetChildren()) do
+            if (Object.Name ~= "PoisonField") then
+                continue
+            end
+
+            Object.CanTouch = true
+        end
+    end
+end
+
 function Removals:RemoveOrderFields(Value)
     local MapFolder = workspace:FindFirstChild("Map")
 
