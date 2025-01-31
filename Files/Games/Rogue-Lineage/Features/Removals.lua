@@ -49,7 +49,7 @@ function Removals:DisableFallDamage(Value)
                 end)
             end
         end
-    until getgenv().Toggles.DisableFallDamageToggle == false
+    until getgenv().Toggles.DisableFallDamageToggle.Value == false
 
     warn("SHA!")
 end
