@@ -18,7 +18,11 @@ function Menu:Load()
     })
 
     for i, Tab in next, Tabs do
-        Tab:Init(self.Window)
+        if (Tab.Init) then
+            Tab:Init(self.Window)
+        else
+            warn("UNABLE TO INITIALIZE TAB:", i)
+        end
     end
 
     return Menu
