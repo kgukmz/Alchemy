@@ -39,20 +39,12 @@ function TabGroups:Movement(WindowTab)
     })
 
     MovementGroup:AddDivider()
-    --[[
-    MovementGroup:AddToggle("InfiniteJumpToggle", { 
-        Text = "Enable Infinite Jump"; 
-        Callback = function(Value)
-            Movement:InfiniteJump(Value)
-        end;
-    })
-    --]]
 
     MovementGroup:AddToggle("InfiniteJumpToggle", { 
         Text = "Enable Infinite Jump"; 
         Callback = Movement.InfiniteJump;
     })
-    
+
     MovementGroup:AddSlider("InfiniteJumpSlider", {
         Text = "Velocity";
         Default = 0;
@@ -66,44 +58,39 @@ end
 function TabGroups:Client(WindowTab)
     local ClientGroup = WindowTab:AddRightGroupbox("[ CLIENT ]")
 
-    ClientGroup:AddToggle("AntiFireToggle", { Text = "Enable Anti Fire"; })
-    ClientGroup:AddToggle("AntiInjuriesToggle", { Text = "Enable No Injuries"; })
+    ClientGroup:AddToggle("AntiFireToggle", {
+        Text = "Enable Anti Fire";
+    })
+
+    ClientGroup:AddToggle("AntiInjuriesToggle", {
+        Text = "Enable No Injuries";
+    })
 
     ClientGroup:AddDivider()
 
     ClientGroup:AddToggle("DisableFallDamageToggle", { 
-        Text = "Disable Fall Damage"; 
-        Callback = function(Value)
-            Removals:DisableFallDamage(Value)
-        end; 
+        Text = "Disable Fall Damage";
+        Callback = Removals.DisableFallDamage;
     })
 
     ClientGroup:AddToggle("DisableKillBricksToggle", { 
-        Text = "Disable Kill Bricks"; 
-        Callback = function(Value)
-           Removals:DisableKillBricks(Value)
-        end; 
+        Text = "Disable Kill Bricks";
+        Callback = Removals.DisableKillBricks;
     })
 
     ClientGroup:AddToggle("DisablePoisonPitsToggle", { 
-        Text = "Disable Poison Pits"; 
-        Callback = function(Value)
-            Removals:DisablePoisonPits(Value)
-        end; 
+        Text = "Disable Poison Pits";
+        Callback = Removals.DisablePoisonPits;
     })
     
     ClientGroup:AddToggle("DisableVisualDefectsToggle", {
-        Text = "Disable Visual Defects"; 
-        Callback = function(Value) 
-            print(Value) 
-        end
+        Text = "Disable Visual Defects";
+        Callback = print;
     })
     
     ClientGroup:AddToggle("RemoveOrderlyFieldsToggle", {
         Text = "Remove Orderly Fields";
-        Callback = function(Value) -- // Callback = module.func | doesnt work for some reason, fix later
-            Removals:RemoveOrderFields(Value)
-        end; 
+        Callback = Removals.RemoveOrderFields;
     })
 
     ClientGroup:AddDivider()
