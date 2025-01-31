@@ -1432,7 +1432,10 @@ do
                 Obj.Callback = function() end
             end
 
+            warn(Props.Callback)
             print(Obj.Callback)
+
+            table.foreach(Obj.Callback, warn)
 
             if (type(Obj.Callback) ~= "function") then
                 print("rah")
