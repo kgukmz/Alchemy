@@ -23,29 +23,33 @@ function Removals:DisableFallDamage(Value)
     if (Value == true) then
         NofallCheck:Connect(function()
             local Character = LocalPlayer.Character
+            local RightLeg = Character:FindFirstChild("Right Leg")
             local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
 
             if (Character == nil or HumanoidRootPart == nil) then
                 return
             end
 
-            local DustInstance = HumanoidRootPart:FindFirstChild("DUST")
+            local DustParticle = HumanoidRootPart:FindFirstChild("DUST")
 
-            if (DustInstance ~= nil and DustInstance.ClassName == "ParticleEmitter") then
-                DustInstance:Destroy()
+            if (DustParticle ~= nil and DustParticle.ClassName == "ParticleEmitter") then
+                DustParticle:Destroy()
 
-                if (FakeDust ~= nil) then
-                    FakeDust:Destroy()
-                    FakeDust = nil
-                end
-                
-                FakeDust = Instance.new("Sound")
-                FakeDust.Name = "DUST"
-                FakeDust.Parent = HumanoidRootPart
+                local FakeDustInstance = Instance.new("Sound")
+                FakeDustInstance.Name = "DUST"
+                FakeDustInstance.Parent = HumanoidRootPart
+            end
+
+            -- // boost performance by destroying unused dust particles
+            if (RightLeg ~= nil and RightLeg:FindFirstChild("DUST")) then
+                local DustSound = RightLeg.DUST
+                DustSound:Destroy()
             end
         end)
     elseif (Value == false) then
         NofallCheck:Disconnect()
+        print(NofallCheck)
+        warn("DISCONNECTED")
 
         local Character = LocalPlayer.Character
         local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
@@ -54,14 +58,15 @@ function Removals:DisableFallDamage(Value)
             return
         end
 
-        if (FakeDust ~= nil) then
-            FakeDust:Destroy()
-            FakeDust = nil
-        end
+        local DustInstance = HumanoidRootPart:FindFirstChild("DUST")
 
-        local NewDustInstance = ReplicatedStorage.CharacterSoundFiles:FindFirstChild("DUST")
-        NewDustInstance = NewDustInstance:Clone()
-        NewDustInstance.Parent = HumanoidRootPart
+        if (DustInstance ~= nil and DustInstance.ClassName == "Sound") then
+            DustInstance:Destroy()
+            
+            local NewDustInstance = ReplicatedStorage.CharacterSoundFiles:FindFirstChild("DUST")
+            NewDustInstance = NewDustInstance:Clone()
+            NewDustInstance.Parent = HumanoidRootPart
+        end
     end
 end
 
