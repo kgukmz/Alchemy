@@ -21,7 +21,7 @@ function Movement:InfiniteJump(Value)
 
     repeat
         task.wait()
-        
+
         local Character = LocalPlayer.Character
 
         if (Character == nil) then
@@ -35,7 +35,7 @@ function Movement:InfiniteJump(Value)
         end
 
         if (UserInputService:IsKeyDown(Enum.KeyCode.Space) == true and IsTextboxFocused == false) then
-            local RootVelocity = HumanoidRootPart.RootVelocity
+            local RootVelocity = HumanoidRootPart.Velocity
             local JumpVelocity = getgenv().Options.InfiniteJumpSlider.Value
             HumanoidRootPart.Velocity = Vector3.new(RootVelocity.X, JumpVelocity, RootVelocity.Z)
         end
