@@ -16,10 +16,6 @@ local OldDustInstance
 local FakeDust
 
 function Removals:DisableFallDamage(Value)
-    if (Value == false) then
-        return
-    end
-
     if (Value == true) then
         NofallCheck:Connect(function()
             local Character = LocalPlayer.Character
