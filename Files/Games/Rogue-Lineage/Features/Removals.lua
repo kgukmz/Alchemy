@@ -3,6 +3,7 @@ local Removals = {}
 local Players = GetService("Players")
 local Lighting = GetService("Lighting")
 local RunService = GetService("RunService")
+local ReplicatedStorage = GetService("ReplicatedStorage")
 
 local Event = require("Files/Utils/Event.lua")
 
@@ -31,8 +32,7 @@ function Removals:DisableFallDamage(Value)
             local DustInstance = HumanoidRootPart:FindFirstChild("DUST")
 
             if (DustInstance ~= nil and DustInstance.ClassName == "ParticleEmitter") then
-                OldDustInstance = DustInstance
-                DustInstance.Parent = nil
+                DustInstance:Destroy()
 
                 if (FakeDust ~= nil) then
                     FakeDust:Destroy()
@@ -59,9 +59,9 @@ function Removals:DisableFallDamage(Value)
             FakeDust = nil
         end
 
-        if (OldDustInstance ~= nil) then
-            OldDustInstance.Parent = HumanoidRootPart
-        end
+        local NewDustInstance = ReplicatedStorage.CharacterSoundFiles:FindFirstChild("DUST")
+        NewDustInstance = NewDustInstance:Clone()
+        NewDustInstance.Parent = HumanoidRootPart
     end
 end
 
