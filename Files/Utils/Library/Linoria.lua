@@ -1432,6 +1432,8 @@ do
                 Obj.Callback = function() end
             end
 
+            print(Obj.Callback)
+
             if (type(Obj.Callback) ~= "function") then
                 print("rah")
                 error("AddButton: Callback is not a valid function.")

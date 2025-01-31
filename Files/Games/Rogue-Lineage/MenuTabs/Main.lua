@@ -111,8 +111,8 @@ function TabGroups:Client(WindowTab)
         Text = "Reset";
     })
 
-    ClientGroup:AddButton("KillSelfButton", {
-        Text = "Kill Self";
+    ClientGroup:AddButton("SuicideButton", {
+        Text = "Suicide";
         DoubleClick = true;
         Tooltip = "[ THIS FEATURE CAN AND WILL TAKE LIVES ]";
     })
