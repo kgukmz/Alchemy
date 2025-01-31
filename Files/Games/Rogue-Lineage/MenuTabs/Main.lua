@@ -53,6 +53,8 @@ function TabGroups:Movement(WindowTab)
         Max = 125;
         Compact = true;
     })
+
+    return MovementGroup
 end
 
 function TabGroups:Client(WindowTab)
@@ -122,6 +124,8 @@ function TabGroups:Client(WindowTab)
     })
         
     --]]
+
+    return ClientGroup
 end
 
 function TabGroups:WorldInteractions(WindowTab)
@@ -152,6 +156,8 @@ function TabGroups:WorldInteractions(WindowTab)
 
     WorldInteractionsGroup:AddToggle("AutoPickupTrinketsToggle", { Text = "Auto Pickup Trinkets"; })
     WorldInteractionsGroup:AddToggle("AutoPickupIngredientsToggle", { Text = "Auto Pickup Ingredients"; })
+
+    return WorldInteractionsGroup
 end
 
 function TabGroups:WorldVisuals(WindowTab)
@@ -176,6 +182,8 @@ function TabGroups:WorldVisuals(WindowTab)
     WorldVisualsGroup:AddToggle("DisableShadowsToggle", {
         Text = "Disable Shadows";
     })
+
+    return WorldVisualsGroup
 end
 
 function TabGroups:ManaUtilities(WindowTab)
@@ -215,6 +223,8 @@ function TabGroups:ManaUtilities(WindowTab)
     })
 
     ManaUtilitiesGroup:AddToggle("SpellAimbotToggle", { Text = "Enable Spell Aimbot"; })
+
+    return ManaUtilitiesGroup
 end
 
 function Main:Init(Window)

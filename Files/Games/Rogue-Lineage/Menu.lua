@@ -2,7 +2,10 @@ local Menu = {}
 
 local Library = require("Files/Utils/Library/Linoria.lua")
 
-local MainTab = require("Files/Games/Rogue-Lineage/MenuTabs/Main.lua")
+local Tabs = {
+    Main = require("Files/Games/Rogue-Lineage/MenuTabs/Main.lua");
+    Automation = require("Files/Games/Rogue-Lineage/MenuTabs/Automation.lua");
+}
 
 function Menu:Load()
     self.Library = Library
@@ -14,7 +17,9 @@ function Menu:Load()
         Size = UDim2.fromOffset(560, 600)
     })
 
-    self.Main = MainTab:Init(self.Window)
+    for i, Tab in next, Tabs do
+        Tab:Init(self.Window)
+    end
 
     return Menu
 end
