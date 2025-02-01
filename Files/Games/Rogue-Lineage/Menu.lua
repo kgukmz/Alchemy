@@ -20,7 +20,7 @@ function Menu:Load()
         MenuFadeTime = 0,
     })
 
-    for i, MenuTab in pairs(Tabs) do
+    for i, MenuTab in ipairs(Tabs) do
         local Success, Error = pcall(MenuTab.Init, self.Window, self.Window)
 
         if (Success == false) then
