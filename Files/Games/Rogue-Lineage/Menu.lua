@@ -21,7 +21,7 @@ function Menu:Load()
     })
 
     for i, MenuTab in pairs(Tabs) do
-        local Success, Error = pcall(MenuTab.Init, self.Window)
+        local Success, Error = pcall(MenuTab.Init, self.Window, self.Window)
 
         if (Success == false) then
             warn("UNABLE TO INITIALIZE TAB '" .. i .. "'", Error) 
