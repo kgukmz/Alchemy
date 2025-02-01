@@ -142,16 +142,19 @@ function Removals:RemoveOrderFields(Value)
 
     if (Value == true) then
         for i, Object in pairs(MapFolder:GetChildren()) do
-            if (Object.Name == "OrderlyField" or Object.Name == "MageField") then
+            if (Object.Name == "OrderField" or Object.Name == "MageField") then
                 Object.Parent = nil
                 table.insert(OrderFieldCache, Object)
             end
         end
     elseif (Value == false) then
+        if (#OrderFieldCache == 0) then
+            return
+        end
+
         for i, Field in pairs(OrderFieldCache) do
-            local FieldInstance = OrderFieldCache[i]
+            Field.Parent = MapFolder
             table.remove(OrderFieldCache, i)
-            FieldInstance.Parent = MapFolder
         end
     end
 end
