@@ -65,9 +65,9 @@ function Removals:DisableFallDamage(Value)
 end
 
 function Removals:DisableKillBricks(Value)
-    local Map = workspace:FindFirstChild("Map")
+    local MapFolder = workspace:FindFirstChild("Map")
     
-    if (Map == nil) then
+    if (MapFolder == nil) then
         return
     end
 
@@ -85,7 +85,7 @@ function Removals:DisableKillBricks(Value)
     }
 
     if (Value == true) then
-        for i, Object in pairs(Map:GetChildren()) do
+        for i, Object in pairs(MapFolder:GetChildren()) do
             if (Object:FindFirstChild("TouchInterest") == nil) then
                 continue
             end
@@ -97,7 +97,7 @@ function Removals:DisableKillBricks(Value)
             Object.CanTouch = false
         end
     elseif (Value == false) then
-        for i, Object in pairs(Map:GetChildren()) do
+        for i, Object in pairs(MapFolder:GetChildren()) do
             if (Object:FindFirstChild("TouchInterest") == nil) then
                 continue
             end
@@ -112,14 +112,14 @@ function Removals:DisableKillBricks(Value)
 end
 
 function Removals:DisablePoisonPits(Value)
-    local Map = workspace:FindFirstChild("Map")
+    local MapFolder = workspace:FindFirstChild("Map")
     
-    if (Map == nil) then
+    if (MapFolder == nil) then
         return
     end
 
     if (Value == true) then
-        for i, Object in pairs(Map:GetChildren()) do
+        for i, Object in pairs(MapFolder:GetChildren()) do
             if (Object.Name ~= "PoisonField") then
                 continue
             end
@@ -127,7 +127,7 @@ function Removals:DisablePoisonPits(Value)
             Object.CanTouch = false
         end   
     elseif (Value == false) then
-        for i, Object in pairs(Map:GetChildren()) do
+        for i, Object in pairs(MapFolder:GetChildren()) do
             if (Object.Name ~= "PoisonField") then
                 continue
             end
@@ -141,20 +141,17 @@ function Removals:RemoveOrderFields(Value)
     local MapFolder = workspace:FindFirstChild("Map")
 
     if (Value == true) then
-        if (MapFolder == nil) then
-            return
-        end
-
         for i, Object in pairs(MapFolder:GetChildren()) do
-            if (Object.Name == "OrderField" or Object.Name == "MageField") then
+            if (Object.Name == "OrderlyField" or Object.Name == "MageField") then
                 Object.Parent = nil
+                table.insert(OrderFieldCache, Object)
             end
         end
     elseif (Value == false) then
-        for i, OrderField in pairs(getnilinstances()) do
-            if (OrderField.Name == "OrderField" or OrderField.Name == "Magefield") then
-                OrderField.Parent = MapFolder
-            end
+        for i, Field in pairs(OrderFieldCache) do
+            local FieldInstance = OrderFieldCache[i]
+            table.remove(OrderFieldCache, i)
+            FieldInstance.Parent = MapFolder
         end
     end
 end
