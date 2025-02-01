@@ -87,7 +87,7 @@ function TabGroups:Client(WindowTab)
     
     ClientGroup:AddToggle("DisableVisualDefectsToggle", {
         Text = "Disable Visual Defects";
-        Callback = Removals.DisableVisualDefectsToggle;
+        Callback = Removals.DisableVisualDefects;
     })
     
     ClientGroup:AddToggle("RemoveOrderlyFieldsToggle", {
@@ -246,10 +246,14 @@ end
 function Main:Init(Window)
     local MainTab = Window:AddTab("[ MAIN ]")
 
-    TabGroups:Movement(MainTab)
-    TabGroups:Client(MainTab)
-    TabGroups:WorldFunctions(MainTab)
-    TabGroups:ManaUtilities(MainTab)
+    self.GroupBoxes = {
+        TabGroups:Movement(MainTab);
+        TabGroups:Client(MainTab);
+        TabGroups:WorldFunctions(MainTab);
+        TabGroups:ManaUtilities(MainTab);
+    }
+
+    return self
 end
 
 return Main

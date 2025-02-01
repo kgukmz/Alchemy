@@ -142,32 +142,27 @@ function Removals:RemoveOrderFields(Value)
 
     if (Value == true) then
         for i, Object in pairs(MapFolder:GetChildren()) do
-            if (Object.Name == "OrderField" or Object.Name == "MageField") then
-                Object.Parent = nil
-                table.insert(OrderFieldCache, Object)
+            if (Object.Name ~= "OrderField" and Object.Name ~= "MageField") then
+                continue
             end
+
+            Object.Parent = nil
+            table.insert(OrderFieldCache, Object)
         end
     elseif (Value == false) then
-        if (#OrderFieldCache == 0) then
-            return
-        end
-
-        for i, Field in pairs(OrderFieldCache) do
-            Field.Parent = MapFolder
-            table.remove(OrderFieldCache, i)
+        for i = 1, #OrderFieldCache do
+            local OrderField = OrderFieldCache[i]
+            OrderField.Parent = workspace.Map
+            OrderFieldCache[i] = nil
         end
     end
 end
 
-function Removals:DisableVisualDefectsToggle(Value)
+function Removals:DisableVisualDefects(Value)
     local Blindness = Lighting:WaitForChild("Blindness", true)
-   -- local Chokeout = Lighting:WaitForChild("Chokeout", true)
-    local BagBlind = Lighting:WaitForChild("BagBlind", true)
     local Blur = Lighting:WaitForChild("Blur", true)
 
     Blindness.Enabled = (not Value)
-    --Chokeout.Enabled = (not Value)
-    BagBlind.Enabled = (not Value)
     Blur.Enabled = (not Value)
 end
 
