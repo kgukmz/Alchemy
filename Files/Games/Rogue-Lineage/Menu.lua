@@ -3,8 +3,10 @@ local Menu = {}
 local Library = require("Files/Utils/Library/Linoria.lua")
 
 local Tabs = {
-    Main = require("Files/Games/Rogue-Lineage/MenuTabs/Main.lua");
-    Automation = require("Files/Games/Rogue-Lineage/MenuTabs/Automation.lua");
+    MainTab = require("Files/Games/Rogue-Lineage/MenuTabs/MainTab.lua");
+    AutomationTab = require("Files/Games/Rogue-Lineage/MenuTabs/AutomationTab.lua");
+    SettingsTab = require("Files/Games/Rogue-Lineage/MenuTabs/SettingsTab.lua");
+    KeybindsTab = require("Files/Games/Rogue-Lineage/MenuTabs/KeybindsTab.lua");
 }
 
 function Menu:Load()
@@ -25,6 +27,9 @@ function Menu:Load()
         end
     end
 
+    -- // temp
+    Library.ToggleKeybind = getgenv().Options.MenuKeybind
+    
     return Menu
 end
 
