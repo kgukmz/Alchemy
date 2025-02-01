@@ -5,8 +5,8 @@ local Library = require("Files/Utils/Library/Linoria.lua")
 local Tabs = {
     MainTab = require("Files/Games/Rogue-Lineage/MenuTabs/MainTab.lua");
     AutomationTab = require("Files/Games/Rogue-Lineage/MenuTabs/AutomationTab.lua");
-    SettingsTab = require("Files/Games/Rogue-Lineage/MenuTabs/SettingsTab.lua");
     KeybindsTab = require("Files/Games/Rogue-Lineage/MenuTabs/KeybindsTab.lua");
+    SettingsTab = require("Files/Games/Rogue-Lineage/MenuTabs/SettingsTab.lua");
 }
 
 function Menu:Load()
@@ -16,14 +16,15 @@ function Menu:Load()
         Title = ("Alchemy | %s"):format(identifyexecutor() or "EXECUTOR") ,
         Centered = true,
         AutoShow = true,
-        Size = UDim2.fromOffset(560, 600)
+        Size = UDim2.fromOffset(560, 600),
+        MenuFadeTime = 0,
     })
 
-    for i, Tab in next, Tabs do
-        if (Tab.Init) then
-            Tab:Init(self.Window)
-        else
-            warn("UNABLE TO INITIALIZE TAB:", i)
+    for i, MenuTab in pairs(Tabs) do
+        local Success, Error = pcall(MenuTab.Init, self.Window)
+
+        if (Success == false) then
+            warn("UNABLE TO INITIALIZE TAB '" .. i .. "'", Error) 
         end
     end
 

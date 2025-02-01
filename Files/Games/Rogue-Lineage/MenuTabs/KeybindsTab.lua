@@ -15,7 +15,7 @@ function TabGroups:MenuBind(WindowTab)
 end
 
 function Keybinds:Init(Window)
-    local KeybindsTab = Window:AddTab(" [ KEYBINDS ]")
+    local KeybindsTab = Window:AddTab("[ KEYBINDS ]")
 
     TabGroups:MenuBind(KeybindsTab)
 end
