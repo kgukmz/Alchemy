@@ -208,7 +208,7 @@ function TabGroups:ManaUtilities(WindowTab)
 end
 
 function Main:Init(Library, Window)
-    local MainTab = Window:AddTab("[ MAIN ]")
+    local MainTab = Window:Tab({ Name = "[ MAIN ]"; })
 
     TabGroups:Movement(Library, MainTab);
     TabGroups:Client(Library, MainTab);
