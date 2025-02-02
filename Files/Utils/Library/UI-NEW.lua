@@ -362,48 +362,49 @@ return a + (b - a) * c
 end
 
 function Utility:Round(number, float)
-local multiplier = 1 / (float or 1)
-return mathfloor(number * multiplier + 0.5) / multiplier
+    local multiplier = 1 / (float or 1)
+    return mathfloor(number * multiplier + 0.5) / multiplier
 end
 
 function Utility:ConvertToEnum(Value)
-local enumParts = {}
-for part in string.gmatch(Value, "[%w_]+") do
-    tableinsert(enumParts, part)
+    local enumParts = {}
+    for part in string.gmatch(Value, "[%w_]+") do
+        tableinsert(enumParts, part)
+    end
+
+    local enumTable = Enum
+    for i = 2, #enumParts do
+        local enumItem = enumTable[enumParts[i]]
+
+        enumTable = enumItem
+    end
+
+    return enumTable
 end
 
-local enumTable = Enum
-for i = 2, #enumParts do
-    local enumItem = enumTable[enumParts[i]]
+function Library:GetFiles(folder, extensions)
+    local LibraryFolder = `{Library.Folder}/{folder}/`
 
-    enumTable = enumItem
-end
+    if not isfolder(LibraryFolder) then
+        makefolder(LibraryFolder)
+    end
 
-return enumTable
-end
+    local Files = isfolder(LibraryFolder) and listfiles(LibraryFolder) or {}
+    local StoredFiles = {}
+    local FileNames = {}
 
-function Utility.GetFiles(folder, extensions)
-local LibraryFolder = `{Library.Folder}/{folder}/`
-
-if not isfolder(LibraryFolder) then
-    makefolder(LibraryFolder)
-end
-
-local Files = isfolder(LibraryFolder) and listfiles(LibraryFolder) or {}
-local StoredFiles = {}
-local FileNames = {}
-
-for _,v in Files do
-    for _,ext in extensions do
-        if v:find(ext) then
-            StoredFiles[#StoredFiles + 1] = v
-            FileNames[#FileNames + 1] = v:gsub(LibraryFolder, ""):gsub(ext, "")
+    for _,v in Files do
+        for _,ext in extensions do
+            if v:find(ext) then
+                StoredFiles[#StoredFiles + 1] = v
+                FileNames[#FileNames + 1] = v:gsub(LibraryFolder, ""):gsub(ext, "")
+            end
         end
     end
+
+    return StoredFiles, FileNames
 end
 
-return StoredFiles, FileNames
-end
 
 -- Functions to change for multi-game support.
 function Utility:GetTeam(player)
