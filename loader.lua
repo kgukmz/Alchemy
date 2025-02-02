@@ -32,5 +32,4 @@ for GameID, MenuName in next, GameList do
 end
 
 local LoadedMenu = GameMenu:Load()
-
 warn("[ALCHEMY] Took:", tick() - StartTick .. ".s", "to load")

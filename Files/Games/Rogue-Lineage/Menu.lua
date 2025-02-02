@@ -28,6 +28,7 @@ function Menu:Load()
         if (Success == false) then
             warn("UNABLE TO INITIALIZE TAB '" .. i .. "'", Error) 
         end
+        print(Success, Error)
     end
     
     return Menu
