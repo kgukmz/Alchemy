@@ -29,9 +29,6 @@ function Menu:Load()
             warn("UNABLE TO INITIALIZE TAB '" .. i .. "'", Error) 
         end
     end
-
-    -- // temp
-    Library.ToggleKeybind = getgenv().Options.MenuKeybind
     
     return Menu
 end

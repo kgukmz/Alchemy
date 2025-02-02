@@ -39,7 +39,7 @@ function Movement:InfiniteJump(Value)
             local JumpVelocity = getgenv().Options.InfiniteJumpSlider.Value
             HumanoidRootPart.Velocity = Vector3.new(RootVelocity.X, JumpVelocity, RootVelocity.Z)
         end
-    until getgenv().Toggles.InfiniteJumpToggle.Value == false
+    until getgenv().StopInfJumpPleaseBoi
 end
 
 return Movement
