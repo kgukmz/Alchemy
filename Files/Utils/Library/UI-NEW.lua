@@ -16,9 +16,7 @@ local TeleportService = GetService("TeleportService")
 local Lighting = GetService("Lighting")
 local Stats = GetService("Stats")
 local TweenService = GetService("TweenService")
-local Debris = GetService("Debris")
 local TextChatService = GetService("TextChatService")
-local ReplicatedStorage = GetService("ReplicatedStorage")
 --
 
 -- Game
@@ -169,10 +167,10 @@ OriginalTheme = {
     ["Element Background"] = Color3fromRGB(45, 45, 45),
     ["Dark Text"] = Color3fromRGB(190, 190, 190)
 },
-Folder = "Puppyware",
+Folder = "Alchemy",
 ScreenGui = nil,
-TweenSpeed = 0.2,
-LerpSpeed = 0.02,
+TweenSpeed = 0,
+LerpSpeed = 0,
 TweenEasingStyle = Enum.EasingStyle.Quint,
 Flags = {},
 ConfigFlags = {},
@@ -288,13 +286,6 @@ local Fonts = {
 
 -- Utility
 -- define random utils 
-local BLRayParams = RaycastParams.new()
-BLRayParams.FilterDescendantsInstances = { Camera, workspace:FindFirstChild("Ignore"), workspace:FindFirstChild("Ignored"), workspace:FindFirstChild("ignored"), workspace:FindFirstChild("ignore"), workspace:FindFirstChild("Debris"), workspace:FindFirstChild("debris") }
-BLRayParams.FilterType = Enum.RaycastFilterType.Exclude
-BLRayParams.IgnoreWater = true
-
-Utility.Blacklist = BLRayParams 
-
 function Utility:New(type, props, secondarg)
 local IsDrawing = tablefind(Utility.DrawingTypes, type)
 
@@ -359,11 +350,6 @@ RunService:BindToRenderStep(name, enum, callback)
 
 Utility.BindToRenderSteps[name] = name
 end 
-
-function Utility:CFrameToVector3(cframe)
-return Vector3new(cframe.X, cframe.Y, cframe.Z)
-end
-
 function Utility:Lerp(a, b, c)
 c = c or 1 / 8
 
@@ -380,24 +366,6 @@ local multiplier = 1 / (float or 1)
 return mathfloor(number * multiplier + 0.5) / multiplier
 end
 
-function Utility:CalculateVelocity(part)
-local OldPosition = part.Position
-local OldTime = tick()
-
-taskwait()
-
-local NewPosition = part.Position
-local NewTime = tick()
-
-local DistanceTraveled = NewPosition - OldPosition
-
-local TimeInterval = NewTime - OldTime
-
-local Velocity = DistanceTraveled / TimeInterval
-
-return Velocity
-end
-
 function Utility:ConvertToEnum(Value)
 local enumParts = {}
 for part in string.gmatch(Value, "[%w_]+") do
@@ -412,113 +380,6 @@ for i = 2, #enumParts do
 end
 
 return enumTable
-end
-
-function Utility:GetRotate(Vec, Rads)
-local vec = Vec.Unit
-local sin = mathsin(Rads)
-local cos = mathcos(Rads)
-local x = (cos * vec.x) - (sin * vec.y)
-local y = (sin * vec.x) + (cos * vec.y)
-
-return Vector2new(x, y).Unit * Vec.Magnitude
-end
-
-function Utility:MouseOver(object)
-local posX, posY = object.AbsolutePosition.X, object.AbsolutePosition.Y
-local size = object.AbsoluteSize
-local sizeX, sizeY = posX + size.X, posY + size.Y
-local position = UserInputService:GetMouseLocation() - Vector2new(0, 38)
-
-if position.X >= posX and position.Y >= posY and position.X <= sizeX and position.Y <= sizeY then
-    return true
-end
-
-return false
-end
-
-function Utility:CreateBulletTracer(origin, endpos, color, trans, time, decal)
-local Decal = Visuals.BulletTracers[decal] or "rbxassetid://446111271"
-
-local OriginAttachment = Utility:New("Attachment", {
-    Position = origin,
-    Parent = workspace.Terrain
-})
-
-local EndAttachment = Utility:New("Attachment", {
-    Position = endpos,
-    Parent = workspace.Terrain
-})
-
-local Beam = Utility:New("Beam", {
-    Texture = Decal,
-    LightEmission = 1,
-    LightInfluence = 0,
-    TextureSpeed = 10,
-    Color = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, color),
-        ColorSequenceKeypoint.new(1, color)
-    }),
-    Transparency = NumberSequence.new({
-        NumberSequenceKeypoint.new(0, trans),
-        NumberSequenceKeypoint.new(1, trans),
-    }),
-    Width0 = 1.2,
-    Width1 = 1.2,
-    Attachment0 = OriginAttachment,
-    Attachment1 = EndAttachment,
-    Enabled = true,
-    Parent = Workspace.Terrain
-})
-
-Debris:AddItem(OriginAttachment, time)
-Debris:AddItem(EndAttachment, time)
-Debris:AddItem(Beam, time)
-end
-
-function Utility:PlaySound(id, volume, pitch)	
-local Sound = Utility:New("Sound", {
-    Parent = Camera,
-    Volume = volume / 100,
-    Pitch = pitch / 100,
-    SoundId = id,
-    PlayOnRemove = true
-}):Destroy()
-end
-
-function Utility:GetPrediction(ping, distance)
-local PingTable = distance <= 37 and Misc.Prediction.Close or distance <= 68 and Misc.Prediction.Mid or distance <= 9e9 and Misc.Prediction.Far
-
-if ping <= 30 then
-    return PingTable[30]
-elseif ping <= 40 then
-    return PingTable[40]
-elseif ping <= 50 then
-    return PingTable[50]
-elseif ping <= 60 then
-    return PingTable[60]
-elseif ping <= 80 then
-    return PingTable[80]
-elseif ping <= 90 then
-    return PingTable[90]
-elseif ping <= 120 then
-    return PingTable[120]
-elseif ping <= 140 then
-    return PingTable[140]
-elseif ping <= 200 then
-    return PingTable[200]
-end
-end
-
-function Utility:Line(obj, from, to)
-local direction = (to - from)
-local center = (to + from) / 2
-local distance = direction.Magnitude
-local theta = math.deg(math.atan2(direction.Y, direction.X))
-
-obj.Position = UDim2new(0, math.floor(center.X), 0, math.floor(center.Y))
-obj.Rotation = theta
-obj.Size = UDim2new(0, math.floor(distance), 0, 1)
 end
 
 function Utility.GetFiles(folder, extensions)
@@ -1379,7 +1240,7 @@ function Library:Notify(cfg)
 cfg = {
     Time = cfg.Time or 5,
     Text = cfg.Text or "this is a test notification.",
-    Prefix = cfg.Prefix or "[Puppyware] ",
+    Prefix = cfg.Prefix or "[UI] ",
     Type = cfg.Type or "Normal",
     Animation = cfg.Animation or "None"
 }
