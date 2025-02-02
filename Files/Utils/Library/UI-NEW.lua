@@ -1465,12 +1465,6 @@ for _,v in Library.Notifications do
 end
 end, "Main UI Loop")
 
-local LoadingNotification = Library:Notify({
-Text = "Loading cheat, might take a bit...",
-Time = 9e9,
-Animation = "Bounce"
-})
-
 function Library:Window(cfg)
 cfg = {
     Name = cfg.Name or "New Window",
