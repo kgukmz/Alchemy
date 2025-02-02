@@ -4054,12 +4054,12 @@ function Colorpicker.SetVisibility(status)
         ColorpickerOutline.Visible = status
     end
 end
-
+--[[
 Colorpicker.Set({
     c = Colorpicker.Color,
     a = Colorpicker.Transparency
 })
-
+--]]
 Utility:Connect(ColorpickerButton.MouseButton1Down, function()
     local ColorpickerSelect = Library.Selectables.Colorpicker
 
