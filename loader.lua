@@ -21,6 +21,7 @@ for GameID, MenuName in next, GameList do
 
     warn(MenuName)
     GameMenu = require(("Files/Games/" .. MenuName .. "/Menu.lua"))
+    warn("Loading")
     break
 end
 
