@@ -4,128 +4,92 @@ local TabGroups = {}
 local Removals = require("Files/Games/Rogue-Lineage/Features/Removals.lua")
 local Movement = require("Files/Games/Rogue-Lineage/Features/Movement.lua")
 
-function TabGroups:Movement(WindowTab)
-    local MovementGroup = WindowTab:AddLeftGroupbox("[ MOVEMENT ]")
-    MovementGroup:AddToggle("FlyToggle", { Text = "Enable Fly"; })
-    MovementGroup:AddSlider("FlyVelSlider", {
-        Text = "Velocity";
-        Default = 0;
-        Rounding = 0;
-        Min = 0;
-        Max = 125;
-        Compact = true;
-    })
+function TabGroups:Movement(Library, WindowTab)
+    local MovementSection = WindowTab:Section("[ MOVEMENT ]")
 
-    MovementGroup:AddToggle("AutoFallToggle", { Text = "Use Auto Fall"; })
-    MovementGroup:AddSlider("AutoFallSlider", {
-        Text = "Speed";
-        Default = 0;
-        Rounding = 0;
-        Min = 0;
-        Max = 20;
-        Compact = true;
-    })
+    do -- // Movement Section
+        MovementSection:Toggle({ Name = "Enable Fly", Flag = "EnableFlyToggle", Callback = function(...)
+           print(unpack({...})) 
+        end})
 
-    MovementGroup:AddDivider()
+        MovementSection:Slider({
+            Name = "Velocity",
+            Suffix = "%",
+            Value = 0,
+            Flag = "FlyVelocitySlider",
+            Min = 0,
+            Max = 125,
+            Float = 1
+        })
 
-    MovementGroup:AddToggle("SpeedToggle", { Text = "Enable Speed"; })
-    MovementGroup:AddSlider("SpeedVelSlider", {
-        Text = "Velocity";
-        Default = 0;
-        Rounding = 0;
-        Min = 0;
-        Max = 125;
-        Compact = true;
-    })
+        MovementSection:Toggle({ Name = "Enable Speed", Flag = "EnableSpeedToggle", Callback = function(...)
+            print(unpack({...})) 
+         end})
+ 
+         MovementSection:Slider({
+             Name = "Velocity",
+             Suffix = "%",
+             Value = 0,
+             Flag = "SpeedVelocitySlider",
+             Min = 0,
+             Max = 125,
+             Float = 1
+         })
 
-    MovementGroup:AddDivider()
-
-    MovementGroup:AddToggle("InfiniteJumpToggle", { 
-        Text = "Enable Infinite Jump"; 
-        Callback = Movement.InfiniteJump;
-    })
-
-    MovementGroup:AddSlider("InfiniteJumpSlider", {
-        Text = "Velocity";
-        Default = 0;
-        Rounding = 0;
-        Min = 0;
-        Max = 125;
-        Compact = true;
-    })
-
-    return MovementGroup
+         MovementSection:Toggle({
+            Name = "Enable Infinite Jump",
+            Flag = "EnableInfiniteJumpToggle",
+            Callback = Movement.InfiniteJump
+        })
+ 
+         MovementSection:Slider({
+             Name = "Velocity",
+             Suffix = "%",
+             Value = 0,
+             Flag = "InfiniteJumpVelocitySlider",
+             Min = 0,
+             Max = 150,
+             Float = 1
+         })
+    end
 end
 
-function TabGroups:Client(WindowTab)
-    local ClientGroup = WindowTab:AddRightGroupbox("[ CLIENT ]")
+function TabGroups:Client(Library, WindowTab)
+    local ClientSection = WindowTab:Section({ Name = "[ CLIENT ] "; })
 
-    ClientGroup:AddToggle("AntiFireToggle", {
-        Text = "Enable Anti Fire";
+    ClientSection:Toggle({
+        Name = "Enable Anti Fire",
+        Flag = "EnableAntiFireToggle",
     })
 
-    ClientGroup:AddToggle("AntiInjuriesToggle", {
-        Text = "Enable No Injuries";
+    ClientSection:Toggle({
+        Name = "Enable No Injuries",
+        Flag = "EnableNoInjuriesToggle",
     })
 
-    ClientGroup:AddDivider()
-
-    ClientGroup:AddToggle("DisableFallDamageToggle", { 
-        Text = "Disable Fall Damage";
-        Callback = Removals.DisableFallDamage;
+    ClientSection:Toggle({
+        Name = "Disable Fall Damage",
+        Flag = "DisableFallDamageToggle",
+        Callback = Removals.DisableFallDamage,
     })
 
-    ClientGroup:AddToggle("DisableKillBricksToggle", { 
-        Text = "Disable Kill Bricks";
-        Callback = Removals.DisableKillBricks;
+    ClientSection:Toggle({
+        Name = "Disable Kill Bricks",
+        Flag = "DisableKillBricksToggle",
+        Callback = Removals.DisableKillBricks,
     })
 
-    ClientGroup:AddToggle("DisablePoisonPitsToggle", { 
-        Text = "Disable Poison Pits";
-        Callback = Removals.DisablePoisonPits;
-    })
-    
-    ClientGroup:AddToggle("DisableVisualDefectsToggle", {
-        Text = "Disable Visual Defects";
-        Callback = Removals.DisableVisualDefects;
-    })
-    
-    ClientGroup:AddToggle("RemoveOrderlyFieldsToggle", {
-        Text = "Remove Orderly Fields";
-        Callback = Removals.RemoveOrderFields;
+    ClientSection:Toggle({
+        Name = "Disable Poison Pits",
+        Flag = "DisablePoisonPitsToggle",
+        Callback = Removals.DisablePoisonPits,
     })
 
-    ClientGroup:AddDivider()
-
-    ClientGroup:AddDropdown("KillMethodDropdown", {
-        Values = {
-            "Regular";
-            "Solans";
-            "Killbrick";
-        };
-
-        Default = 1;
-        Multi = false;
-        Tooltip = "Select a kill method"
+    ClientSection:Toggle({
+        Name = "Remove Order Fields",
+        Flag = "RemoveOrderFieldsToggle",
+        Callback = Removals.RemoveOrderFields,
     })
-
-    --[[ Completely fix butons later ts pmo me off
-
-    ClientGroup:AddButton("ResetButton", {
-        Text = "Reset";
-        Callback = function() end
-    })
-
-    ClientGroup:AddButton("DeathButton", {
-        Text = "Death";
-        DoubleClick = true;
-        Tooltip = "[ THIS FEATURE CAN AND WILL TAKE LIVES ]";
-        Callback = function() end
-    })
-        
-    --]]
-
-    return ClientGroup
 end
 
 function TabGroups:WorldFunctions(WindowTab)
@@ -243,15 +207,13 @@ function TabGroups:ManaUtilities(WindowTab)
     return ManaUtilitiesGroup
 end
 
-function Main:Init(Window)
+function Main:Init(Library, Window)
     local MainTab = Window:AddTab("[ MAIN ]")
 
-    self.GroupBoxes = {
-        TabGroups:Movement(MainTab);
-        TabGroups:Client(MainTab);
-        TabGroups:WorldFunctions(MainTab);
-        TabGroups:ManaUtilities(MainTab);
-    }
+    TabGroups:Movement(Library, MainTab);
+    TabGroups:Client(Library, MainTab);
+    -- TabGroups:WorldFunctions(MainTab);
+    -- TabGroups:ManaUtilities(MainTab);
 
     return self
 end
