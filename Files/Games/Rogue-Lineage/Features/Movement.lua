@@ -36,7 +36,7 @@ function Movement:InfiniteJump(Value)
 
         if (UserInputService:IsKeyDown(Enum.KeyCode.Space) == true and IsTextboxFocused == false) then
             local RootVelocity = HumanoidRootPart.Velocity
-            local JumpVelocity = getgenv().Options.InfiniteJumpSlider.Value
+            local JumpVelocity = 100
             HumanoidRootPart.Velocity = Vector3.new(RootVelocity.X, JumpVelocity, RootVelocity.Z)
         end
     until getgenv().StopInfJumpPleaseBoi
