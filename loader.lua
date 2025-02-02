@@ -20,7 +20,13 @@ for GameID, MenuName in next, GameList do
     end
 
     warn(MenuName)
-    GameMenu = require(("Files/Games/" .. MenuName .. "/Menu.lua"))
+    local Success, GetMenu = pcall(require, "Files/Games/" .. MenuName .. "/Menu.lua")
+
+    if (Success == false) then
+        warn(GetMenu)
+    else
+        GameMenu = GetMenu
+    end
     warn("Loading")
     break
 end
