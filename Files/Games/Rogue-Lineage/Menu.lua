@@ -1,7 +1,7 @@
 local Menu = {}
 local Tabs = {}
 
-local Library = require("Files/Utils/Library/UI-NEW.lua")
+local Library = require("Files/Utils/Library/UILatest.lua")
 
 table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/MainTab.lua"))
 table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/AutomationTab.lua"))
