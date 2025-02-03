@@ -8,6 +8,7 @@ function Menu:Load()
 
     if (Success == false) then
         warn("[ALCHEMY] Error:", Error)
+        return
     end
 end
 

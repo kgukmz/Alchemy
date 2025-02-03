@@ -10,6 +10,8 @@ function Interface:Setup(Library)
     })
     
     local MainTab = Window:Tab({ Name = "Main" })
+    local AutomationTab = Window:Tab({ Name = "Automation" })
+    local SettingsTab = Window:Tab({ Name = "Settings" })
 
     do -- // Main
        local MovementSection = MainTab:Section({ Name = "Movement" })
