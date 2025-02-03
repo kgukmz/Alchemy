@@ -16,7 +16,11 @@ function Interface:Setup(Library)
     do -- // Main
        local MovementSection = MainTab:Section({ Name = "Movement" })
        
+       local ClientSection = MainTab:Section({ Name = "Client" })
+
+       local WorldInteractionsSection = MainTab:Section({ Name = "World Interaction" })
        
+       local WorldVisualsSection = MainTab:Section({ Name = "World Visuals" })
     end
 end
 
