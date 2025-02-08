@@ -29,6 +29,14 @@ function Sections:Movement(WindowTab)
         Name = "Fly";
     })
 
+    MovementSection:Toggle({
+        Name = "Speedhack";
+    })
+
+    MovementSection:Toggle({
+        Name = "Infinite Jump";
+    })
+
     MovementSection:Slider({
         Name = "Fly";
         Min = 0;
@@ -36,19 +44,11 @@ function Sections:Movement(WindowTab)
         State = 0;
     })
 
-    MovementSection:Toggle({
-        Name = "Speedhack";
-    })
-
     MovementSection:Slider({
         Name = "Speedhack";
         Min = 0;
         Max = 125;
         State = 0;
-    })
-
-    MovementSection:Toggle({
-        Name = "Infinite Jump";
     })
 
     MovementSection:Slider({
@@ -67,21 +67,27 @@ function Sections:Client(WindowTab)
         AutoSize = true;
         Side = "Right";
     })
-    
-    CheckEnv("hookfunction", function()
-        ClientSection:Toggle({
-            Name = "Disable Fall Damage";
-        })
-    end)
+
+    ClientSection:Toggle({
+        Name = "Disable Fall Damage";
+        Callback = Removals.DisableFallDamage;
+    })
 
     ClientSection:Toggle({
         Name = "Disable Kill Bricks";
+        Callback = Removals.DisableKillBricks;
     })
 
     ClientSection:Toggle({
         Name = "Disable Poison Pits";
+        Callback = Removals.DisablePoisonPits;
     })
     
+    ClientSection:Toggle({
+        Name = "Remove Orderly Fields";
+        Callback = Removals.RemoveOrderFields;
+    })
+
     ClientSection:Button({
         Name = "Suicide";
     })
