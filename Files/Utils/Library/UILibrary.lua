@@ -10,7 +10,11 @@ writefile("ProggyClean.ttf", game:HttpGet("https://github.com/f1nobe7650/other/r
 
 -- // Custom Font
 do
-	getsynasset = getcustomasset or getsynasset
+    local function getCustomAsset(Asset)
+        return "rbxasset://" .. Asset
+    end
+
+	getsynasset = getcustomasset ~= nil and getcustomasset or getCustomAsset
 	Font = setreadonly(Font, false);
 	function Font:Register(Name, Weight, Style, Asset)
 		if not isfile(Name .. ".font") then

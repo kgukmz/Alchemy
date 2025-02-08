@@ -19,6 +19,7 @@ function Sections:Movement(WindowTab)
     local MovementSection = WindowTab:Section({
         Name = "Movement";
         AutoSize = true;
+        Side = "Left";
     })
     
     MovementSection:Toggle({
@@ -58,40 +59,27 @@ function Sections:Movement(WindowTab)
 end
 
 function Sections:Client(WindowTab)
-    local RemovalSection = WindowTab:Section({
+    local ClientSection = WindowTab:Section({
         Name = "Client";
         AutoSize = true;
+        Side = "Right";
     })
     
     CheckEnv("hookfunction", function()
-        RemovalSection:Toggle({
+        ClientSection:Toggle({
             Name = "Disable Fall Damage";
         })
     end)
 
-    CheckEnv("bootyfucker", function()
-        RemovalSection:Toggle({
-            Name = "Disable Fall Damage";
-        })
-    end)
-
-    local YhSection = WindowTab:Section({
-        Name = "Yh";
-        AutoSize = true;
+    ClientSection:Toggle({
+        Name = "Disable Kill Bricks";
     })
 
-    local Sections = {}
-    table.insert(Sections, RemovalSection)
-    table.insert(Sections. YhSection)
-
-    local MultiSection = WindowTab:MultiSection({
-        Sections = {
-            "Removals";
-            "Modification";
-        }
+    ClientSection:Toggle({
+        Name = "Disable Poison Pits";
     })
 
-    return MultiSection
+    return ClientSection
 end
 
 function Main:Initialize(Window)
