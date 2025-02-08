@@ -95,6 +95,8 @@ function Drawification:Notification(...)
     end
 
     return {
+        Instance = NotifDrawing;
+
         Remove = function()
             self:RemoveDrawing(NotifDrawing)
         end;

@@ -13,7 +13,7 @@ local RunService = GetService("RunService")
 
 local CurrentAction = "Loading..."
 
-local Drawificiation = require("Files/Utils/Drawification.lua")
+local Drawificiation = require("Files/Utils/Modules/Drawification.lua")
 local LoadingNotif = Drawificiation:Notification({
     Text = "[ALCHEMY]: " .. CurrentAction;
     Size = 18;
@@ -21,7 +21,7 @@ local LoadingNotif = Drawificiation:Notification({
 
 local HeartbeatConnection;
 HeartbeatConnection = RunService.Heartbeat:Connect(function()
-    LoadingNotif:ChangeText(tostring(CurrentAction))
+    LoadingNotif.Instance.Text = CurrentAction
 end)
 
 if (isfolder("ALCHEMY") == false) then
