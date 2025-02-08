@@ -2,6 +2,24 @@ local Utility = {}
 
 local ReplicatedStorage = GetService("ReplicatedStorage")
 local HttpService = GetService("HttpService")
+local Players = GetService("Players")
+
+function Utility:CharacterReset()
+    local LocalPlayer = Players.LocalPlayer
+    local Character = LocalPlayer.Character
+    
+    if (Character == nil) then
+        return
+    end
+
+    local Head = Character:FindFirstChild("Head")
+
+    if (Head == nil) then
+        return
+    end
+
+    Head:Destroy()
+end
 
 function Utility:ServerHop()
     local ServerInfo = ReplicatedStorage.ServerInfo

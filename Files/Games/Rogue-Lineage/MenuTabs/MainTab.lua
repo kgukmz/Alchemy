@@ -95,6 +95,7 @@ function Sections:Client(WindowTab)
 
     ClientSection:Button({
         Name = "Reset";
+        Callback = Utility.CharacterReset;
     })
 
     return ClientSection
