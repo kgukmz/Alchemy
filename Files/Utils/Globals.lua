@@ -38,5 +38,5 @@ local function RequireHook(Value)
     return RequiredDirecory()
 end
 
-getgenv().require = RequireHook
+getgenv().require = newcclosure(RequireHook)
 getgenv().GetService = GetService
