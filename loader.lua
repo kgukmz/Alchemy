@@ -21,7 +21,7 @@ local LoadingNotif = Drawificiation:Notification({
 
 local HeartbeatConnection;
 HeartbeatConnection = RunService.Heartbeat:Connect(function()
-    LoadingNotif:ChangeText(CurrentAction)
+    LoadingNotif:ChangeText(tostring(CurrentAction))
 end)
 
 if (isfolder("ALCHEMY") == false) then
@@ -56,7 +56,7 @@ for i, v in next, GameList do
     end
 
     GameMenu = require(string.format("Files/Games/%s/Menu.lua", v))
-    CurrentAction = string.format("Loading Game: %s", v)
+    CurrentAction = "Loading Game: " .. v
     break
 end
 
