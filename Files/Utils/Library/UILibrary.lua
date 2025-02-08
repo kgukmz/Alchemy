@@ -1800,7 +1800,7 @@ do
 				Toggle.Toggled = not Toggle.Toggled
 				ToggleAccent.Visible = Toggle.Toggled
 				Library.Flags[Toggle.Flag] = Toggle.Toggled
-				Toggle.Callback(Toggle.Toggled)
+				Toggle.Callback(Toggle.Callback, Toggle.Toggled)
 			end
 			--
 			Library:Connection(NewToggle.MouseButton1Down, SetState)
