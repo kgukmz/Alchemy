@@ -29,14 +29,6 @@ function Sections:Movement(WindowTab)
         Name = "Fly";
     })
 
-    MovementSection:Toggle({
-        Name = "Speedhack";
-    })
-
-    MovementSection:Toggle({
-        Name = "Infinite Jump";
-    })
-
     MovementSection:Slider({
         Name = "Fly";
         Min = 0;
@@ -44,11 +36,19 @@ function Sections:Movement(WindowTab)
         State = 0;
     })
 
+    MovementSection:Toggle({
+        Name = "Speedhack";
+    })
+
     MovementSection:Slider({
         Name = "Speedhack";
         Min = 0;
         Max = 125;
         State = 0;
+    })
+
+    MovementSection:Toggle({
+        Name = "Infinite Jump";
     })
 
     MovementSection:Slider({
