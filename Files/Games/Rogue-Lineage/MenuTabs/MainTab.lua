@@ -99,6 +99,47 @@ function Sections:Client(WindowTab)
     return ClientSection
 end
 
+function Sections:Utility(WindowTab)
+    local UtilitySection = WindowTab:Section({
+        Name = "Utility";
+        AutoSize = true;
+        Side = "Right";
+    })
+
+    UtilitySection:List({
+        Name = "Teleport Locations";
+        Options = {
+            "Alana";
+            "Oresfall";
+            "Castle Sanctuary";
+            "Flowerlight";
+        }
+    })
+
+    UtilitySection:Button({
+        Name = "Teleport";
+    })
+
+    UtilitySection:Textbox({
+        Name = "Job-ID";
+        Placeholder = "Enter a Job-ID...";
+    })
+
+    UtilitySection:Button({
+        Name = "Join Job-ID";
+    })
+
+    UtilitySection:Button({
+        Name = "Server Hop";
+    })
+
+    UtilitySection:Button({
+        Name = "Server Hop To Smallest";
+    })
+
+    return UtilitySection
+end
+
 function Main:Initialize(Window)
     local MainPage = Window:Page({ Name = "Main"} )
 
