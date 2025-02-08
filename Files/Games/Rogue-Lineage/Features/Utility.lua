@@ -34,6 +34,7 @@ function Utility:HopToSmallest()
         return Result1.PlayerCount < Result2.PlayerCount
     end)
 
+    warn(Servers[1].Job_Id)
     ReplicatedStorage.Requests.JoinPublicServer:FireServer(Servers[1].Job_Id)
 end
 
