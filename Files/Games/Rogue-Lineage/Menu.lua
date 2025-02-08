@@ -1,39 +1,30 @@
 local Menu = {}
 local Tabs = {}
 
-local Library = require("Files/Utils/Library/UILatest.lua")
+local Library = require("Files/Utils/Library/UILibrary.lua")
 
 table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/MainTab.lua"))
 table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/SettingsTab.lua"))
 
 function Menu:Load()
-    --[[
     self.Library = Library
 
     self.Window = Library:Window({
-        Name = ("Alchemy | %s"):format(identifyexecutor());
-        Watermark = false;
-        Keybinds = false;
-        Size = Vector2.new(600, 450);
-        Folder = "Alchemy";
-        Selects = true;
+        Name = ("Alchemy [%s]"):format(identifyexecutor());
     })
 
-    self.Library:Colorpicker({
-        Name = "GlobalColorpicker";
-    })
-
-    for i, MenuTab in next, Tabs do
-        local Success, Error = pcall(MenuTab.Init, self.Window, self.Library, self.Window)
+    for i, WindowTab in next, Tabs do
+        local Success, Error = pcall(WindowTab.Initialize, WindowTab, Window)
 
         if (Success == false) then
-            warn("UNABLE TO INITIALIZE TAB '" .. i .. "'", Error) 
+            Drawification:Notification("l_error", {
+                Text = string.format("Unable to initialize tab: %s, %s", i, Error);
+                Size = 18;
+                Time = 10;
+            })
         end
-        print(Success, Error)
     end
-    --]]
 
-    print("Yo!")
     return Menu
 end
 

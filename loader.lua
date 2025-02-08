@@ -19,6 +19,8 @@ local LoadingNotif = Drawificiation:Notification({
     Size = 18;
 })
 
+getgenv().Drawificiation = Drawificiation
+
 local HeartbeatConnection;
 HeartbeatConnection = RunService.Heartbeat:Connect(function()
     LoadingNotif.Instance.Text = CurrentAction
