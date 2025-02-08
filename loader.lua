@@ -19,6 +19,8 @@ local LoadingNotif = Drawification:Notification({
     Size = 18;
 })
 
+getgenv().Drawification = Drawification
+
 local HeartbeatConnection;
 HeartbeatConnection = RunService.Heartbeat:Connect(function()
     LoadingNotif.Instance.Text =  "[ALCHEMY]: " .. CurrentAction
