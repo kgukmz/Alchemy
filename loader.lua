@@ -1,7 +1,7 @@
 local StartTick = tick()
 
 local Success, Error = pcall(function()
-    loadstring(game:HttpGet("https://github.com/kgukmz/Alchemy/raw/refs/heads/main/Files/Utils/GetEnv.lua"))()
+    loadstring(game:HttpGet("https://github.com/kgukmz/Alchemy/raw/refs/heads/main/Files/Utils/Globals.lua"))()
 end)
 
 if (Success == false) then

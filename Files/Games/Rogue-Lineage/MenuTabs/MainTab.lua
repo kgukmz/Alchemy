@@ -1,6 +1,9 @@
 local Main = {}
 local Sections = {}
 
+local Removals = require("Files/Games/Rogue-Lineage/Features/Removals.lua")
+local Movement = require("Files/Games/Rogue-Lineage/Features/Movement.lua")
+
 function CheckEnv(Global, Callback)
     if (getgenv == nil) then
         return
@@ -77,6 +80,14 @@ function Sections:Client(WindowTab)
 
     ClientSection:Toggle({
         Name = "Disable Poison Pits";
+    })
+    
+    ClientSection:Button({
+        Name = "Suicide";
+    })
+
+    ClientSection:Button({
+        Name = "Reset";
     })
 
     return ClientSection

@@ -22,9 +22,8 @@ local function GetService(Service)
 end
 
 local function RequireHook(Value)
-    if (not (typeof(Value) == "string")) then
-        local Module = OldRequire(Value)
-        return Module
+    if (not (typeof(Value) == "string") or not checkcaller()) then
+        return OldRequire(Value)
     end
 
     if (RequireCache[Value] ~= nil) then
@@ -32,9 +31,10 @@ local function RequireHook(Value)
         return CachedDirectory()
     end
 
-    local RequiredDirecory = loadstring(game:HttpGet("https://github.com/kgukmz/Alchemy/raw/refs/heads/main/" .. Value))
+    local URL = "https://github.com/kgukmz/Alchemy/raw/refs/heads/main/" .. Value
+    local RequiredDirecory = loadstring(game:HttpGet(URL), "[ALCHEMY]")
+    
     RequireCache[Value] = RequiredDirecory
-
     return RequiredDirecory()
 end
 
