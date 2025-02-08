@@ -2674,7 +2674,7 @@ function library:Init()
 			dragObject:TweenPosition(UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, yPos), "Out", "Quint", 0.1, true)
 		end
 	end)
-
+	--[[
 	local Old_index
 	Old_index = hookmetamethod(game, "__index", function(t, i)
 		if checkcaller() then return Old_index(t, i) end
@@ -2697,6 +2697,7 @@ function library:Init()
 
 		return Old_new(t, i, v)
 	end)
+	--]]
 
 	if not getgenv().silent then
 		delay(1, function() self:Close() end)
