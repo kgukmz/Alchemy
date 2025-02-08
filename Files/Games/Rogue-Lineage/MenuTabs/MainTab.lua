@@ -145,6 +145,7 @@ function Main:Initialize(Window)
 
     Sections:Movement(MainPage)
     Sections:Client(MainPage)
+    Sections:Utility(MainPage)
 end
 
 return Main
