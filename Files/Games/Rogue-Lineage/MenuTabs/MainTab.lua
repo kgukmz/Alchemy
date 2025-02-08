@@ -34,21 +34,21 @@ function Sections:Movement(WindowTab)
     })
 
     MovementSection:Slider({
-        Name = "Fly Velocity";
+        Name = "Fly";
         Min = 0;
         Max = 125;
         State = 0;
     })
 
     MovementSection:Slider({
-        Name = "Speedhack Velocity";
+        Name = "Speedhack";
         Min = 0;
         Max = 125;
         State = 0;
     })
 
     MovementSection:Slider({
-        Name = "Infinite Jump Velocity";
+        Name = "Infinite Jump";
         Min = 0;
         Max = 125;
         State = 0;
@@ -58,24 +58,36 @@ function Sections:Movement(WindowTab)
 end
 
 function Sections:Client(WindowTab)
-    local ClientSection = WindowTab:Section({
+    local RemovalSection = WindowTab:Section({
         Name = "Client";
         AutoSize = true;
     })
     
     CheckEnv("hookfunction", function()
-        ClientSection:Toggle({
+        RemovalSection:Toggle({
             Name = "Disable Fall Damage";
         })
     end)
 
-    CheckEnv("getscriptclosure", function()
-        ClientSection:Toggle({
+    CheckEnv("bootyfucker", function()
+        RemovalSection:Toggle({
             Name = "Disable Fall Damage";
         })
     end)
 
-    return ClientSection
+    local YhSection = WindowTab:Section({
+        Name = "Yh";
+        AutoSize = true;
+    })
+
+    local MultiSection = WindowTab:MultiSection({
+        Sections = {
+            RemovalSection;
+            YhSection;
+        }
+    })
+
+    return MultiSection
 end
 
 function Main:Initialize(Window)
