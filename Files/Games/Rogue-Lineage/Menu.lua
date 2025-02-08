@@ -2,6 +2,7 @@ local Menu = {}
 local Tabs = {}
 
 local Library = require("Files/Utils/Library/UILibrary.lua")
+local Drawification = require("Files/Utils/Modules/Drawification.lua")
 
 table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/MainTab.lua"))
 table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/SettingsTab.lua"))

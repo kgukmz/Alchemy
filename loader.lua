@@ -13,17 +13,15 @@ local RunService = GetService("RunService")
 
 local CurrentAction = "Loading..."
 
-local Drawificiation = require("Files/Utils/Modules/Drawification.lua")
-local LoadingNotif = Drawificiation:Notification({
+local Drawification = require("Files/Utils/Modules/Drawification.lua")
+local LoadingNotif = Drawification:Notification({
     Text = "[ALCHEMY]: " .. CurrentAction;
     Size = 18;
 })
 
-getgenv().Drawificiation = Drawificiation
-
 local HeartbeatConnection;
 HeartbeatConnection = RunService.Heartbeat:Connect(function()
-    LoadingNotif.Instance.Text = CurrentAction
+    LoadingNotif.Instance.Text =  "[ALCHEMY]: " .. CurrentAction
 end)
 
 if (isfolder("ALCHEMY") == false) then
@@ -51,9 +49,8 @@ end
 local GameList = require("Files/Utils/GameList.lua")
 local GameMenu = require("Files/Games/Universal/Menu.lua")
 
-local PlaceId = game.PlaceId
 for i, v in next, GameList do
-    if (i ~= PlaceId) then
+    if (i ~= game.PlaceId) then
         continue
     end
 
@@ -67,7 +64,7 @@ local Menu = GameMenu:Load()
 HeartbeatConnection:Disconnect()
 LoadingNotif:Remove()
 
-Drawificiation:Notification("success", {
+Drawification:Notification("success", {
     Text = "[ALCHEMY]: Took: " .. tick() - StartTick .. "/s to load";
     Size = 18;
     Time = 5;
