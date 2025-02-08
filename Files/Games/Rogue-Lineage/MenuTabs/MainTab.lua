@@ -85,7 +85,10 @@ function Sections:Client(WindowTab)
     table.insert(Sections. YhSection)
 
     local MultiSection = WindowTab:MultiSection({
-        Sections = Sections
+        Sections = {
+            "Removals";
+            "Modification";
+        }
     })
 
     return MultiSection
