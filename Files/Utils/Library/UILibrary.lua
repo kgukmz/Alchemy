@@ -3520,7 +3520,7 @@ do
 			ToggleFrame.Parent = NewButton
 			--
 			Library:Connection(NewButton.MouseButton1Down, function()
-				Button.Callback()
+				Button.Callback(Button.Callback)
 				Value.TextColor3 = Library.Accent
 				task.spawn(function()
 					task.wait(0.1)
