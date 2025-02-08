@@ -56,7 +56,7 @@ for i, v in next, GameList do
         continue
     end
 
-    GameMenu = require(string.format("Files/Games/%s/Menu.lua", v))
+    GameMenu = require("Files/Games/" .. v .. "/Menu.lua")
     CurrentAction = "Loading Game: " .. v
     break
 end
