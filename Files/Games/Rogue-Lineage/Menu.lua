@@ -4,7 +4,6 @@ local Tabs = {}
 local Library = require("Files/Utils/Library/UILibrary.lua")
 
 table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/MainTab.lua"))
-table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/SettingsTab.lua"))
 
 function Menu:Load()
     self.Library = Library
@@ -14,7 +13,7 @@ function Menu:Load()
     })
 
     for i, WindowTab in next, Tabs do
-        local Success, Error = pcall(WindowTab.Initialize, Library, Window)
+        local Success, Error = pcall(WindowTab.Initialize, Library, self.Window)
 
         if (Success == false) then
             getgenv().Drawification:Notification("l_error", {
