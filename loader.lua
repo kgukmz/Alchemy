@@ -24,26 +24,43 @@ HeartbeatConnection = RunService.Heartbeat:Connect(function()
     LoadingNotif:ChangeText(CurrentAction)
 end)
 
+if (isfolder("ALCHEMY") == false) then
+    CurrentAction = "Creating environment..."
+    makefolder("ALCHEMY")
+end
+
+do
+    CurrentAction = "Verifying dependencies..."
+
+    if (isfolder("ALCHEMY/Configurations") == false) then
+        CurrentAction = "Installing dependencies..."
+        makefolder("ALCHEMY/Configurations")
+    end
+
+    if (isfolder("ALCHEMY/Dependencies") == false) then
+        makefolder("ALCHEMY/Dependencies")
+    end
+
+    if (isfile("ALCHEMY/Dependencies/ProggyClean.ttf") == false) then
+        writefile("ProggyClean.ttf", game:HttpGet("https://github.com/f1nobe7650/other/raw/main/ProggyClean.ttf"))
+    end
+end
+
 local GameList = require("Files/Utils/GameList.lua")
 local GameMenu = require("Files/Games/Universal/Menu.lua")
 
-for GameID, MenuName in next, GameList do
-    if (game.PlaceId ~= GameID) then
+local PlaceId = game.PlaceId
+for i, v in next, GameList do
+    if (i ~= PlaceId) then
         continue
     end
-    
-    local Success, GetMenu = pcall(require, "Files/Games/" .. MenuName .. "/Menu.lua")
-    CurrentAction = "Loading Game: " .. MenuName
 
-    if (Success == false) then
-        warn(GetMenu)
-    else
-        GameMenu = GetMenu
-    end
+    GameMenu = require(string.format("Files/Games/%s/Menu.lua", v))
+    CurrentAction = string.format("Loading Game: %s", v)
     break
 end
 
-local LoadedMenu = GameMenu:Load()
+local Menu = GameMenu:Load()
 
 HeartbeatConnection:Disconnect()
 LoadingNotif:Remove()
