@@ -14,7 +14,10 @@ function CheckEnv(Global, Callback)
 end
 
 function Sections:Movement(WindowTab)
-    local MovementSection = WindowTab:Section({Name = "Movement"})
+    local MovementSection = WindowTab:Section({
+        Name = "Movement";
+        AutoSize = true;
+    })
     
     MovementSection:Toggle({
         Name = "Fly";
@@ -48,9 +51,18 @@ function Sections:Movement(WindowTab)
 end
 
 function Sections:Client(WindowTab)
-    local ClientSection = WindowTab:Section({Name = "Client"})
+    local ClientSection = WindowTab:Section({
+        Name = "Client";
+        AutoSize = true;
+    })
     
     CheckEnv("hookfunction", function()
+        ClientSection:Toggle({
+            Name = "Disable Fall Damage";
+        })
+    end)
+
+    CheckEnv("getscriptclosure", function()
         ClientSection:Toggle({
             Name = "Disable Fall Damage";
         })
