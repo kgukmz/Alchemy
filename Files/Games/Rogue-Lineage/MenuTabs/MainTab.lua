@@ -1,5 +1,5 @@
-local Workspace = game:GetService("Workspace")
 local Main = {}
+local Sections = {}
 
 function CheckEnv(Global, Callback)
     if (getgenv == nil) then
@@ -13,11 +13,55 @@ function CheckEnv(Global, Callback)
     coroutine.wrap(Callback)()
 end
 
+function Sections:Movement(WindowTab)
+    local MovementSection = WindowTab:Section({Name = "Movement"})
+    
+    MovementSection:Toggle({
+        Name = "Fly";
+    })
+
+    MovementSection:Toggle({
+        Name = "Speedhack";
+    })
+
+    MovementSection:Toggle({
+        Name = "Infinite Jump";
+    })
+
+    MovementSection:Slider({
+        Name = "Fly [Velocity]";
+        Min = 0;
+        Max = 125;
+    })
+
+    MovementSection:Slider({
+        Name = "Speedhack [Velocity]";
+        Min = 0;
+        Max = 125;
+    })
+
+    MovementSection:Slider({
+        Name = "Infinite Jump [Velocity]";
+        Min = 0;
+        Max = 125;
+    })
+end
+
+function Sections:Client(WindowTab)
+    local ClientSection = WindowTab:Section({Name = "Client"})
+    
+    CheckEnv("hookfunction", function()
+        ClientSection:Toggle({
+            Name = "Disable Fall Damage";
+        })
+    end)
+end
+
 function Main:Initialize(Window)
     local MainPage = Window:Page({ Name = "Main"} )
-    local AutomationPage = Window:Page({ Name = "Automation"} )
-    local VisualPage = Window:Page({ Name = "Visual"} )
-    local SettingsPage = Window:Page({ Name = "Settings"})
+
+    Sections:Movement(MainPage)
+    Sections:Client(MainPage)
 end
 
 return Main
