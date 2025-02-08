@@ -11,7 +11,7 @@ end
 
 local Drawificiation = require("Files/Utils/Drawification.lua")
 
-local Loading = Drawificiation:Notification({
+local LoadingNotif = Drawificiation:Notification({
     Text = "[ALCHEMY]: Loading...";
     Size = 18;
 })
@@ -41,6 +41,7 @@ end
 
 local LoadedMenu = GameMenu:Load()
 
+LoadingNotif:Remove()
 Drawificiation:Notification("success", {
     Text = "[ALCHEMY]: Took: " .. tick() - StartTick .. "/s to load";
     Size = 18;
