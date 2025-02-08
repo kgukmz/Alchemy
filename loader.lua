@@ -9,12 +9,20 @@ if (Success == false) then
     return
 end
 
-local Drawificiation = require("Files/Utils/Drawification.lua")
+local RunService = GetService("RunService")
 
+local CurrentAction = "Loading..."
+
+local Drawificiation = require("Files/Utils/Drawification.lua")
 local LoadingNotif = Drawificiation:Notification({
-    Text = "[ALCHEMY]: Loading...";
+    Text = "[ALCHEMY]: " .. CurrentAction;
     Size = 18;
 })
+
+local HeartbeatConnection;
+HeartbeatConnection = RunService.Heartbeat:Connect(function()
+    LoadingNotif:ChangeText(CurrentAction)
+end)
 
 local GameList = require("Files/Utils/GameList.lua")
 local GameMenu = require("Files/Games/Universal/Menu.lua")
@@ -23,13 +31,9 @@ for GameID, MenuName in next, GameList do
     if (game.PlaceId ~= GameID) then
         continue
     end
-
-    Drawificiation:Notification({
-        Text =  "[ALCHEMY]: Game: " .. MenuName;
-        Size = 18;
-        Time = 5;
-    })
+    
     local Success, GetMenu = pcall(require, "Files/Games/" .. MenuName .. "/Menu.lua")
+    CurrentAction = "Loading Game: " .. MenuName
 
     if (Success == false) then
         warn(GetMenu)
@@ -41,7 +45,9 @@ end
 
 local LoadedMenu = GameMenu:Load()
 
+HeartbeatConnection:Disconnect()
 LoadingNotif:Remove()
+
 Drawificiation:Notification("success", {
     Text = "[ALCHEMY]: Took: " .. tick() - StartTick .. "/s to load";
     Size = 18;
