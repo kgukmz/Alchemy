@@ -25,7 +25,7 @@ for GameID, MenuName in next, GameList do
     end
 
     Drawificiation:Notification({
-        Text =  "[ALCHEMY: Game: " .. MenuName;
+        Text =  "[ALCHEMY]: Game: " .. MenuName;
         Size = 18;
         Time = 5;
     })
@@ -43,5 +43,6 @@ local LoadedMenu = GameMenu:Load()
 
 Drawificiation:Notification("success", {
     Text = "[ALCHEMY]: Took: " .. tick() - StartTick .. "/s to load";
+    Size = 18;
     Time = 5;
 })
