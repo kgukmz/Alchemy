@@ -3,6 +3,7 @@ local Sections = {}
 
 local Removals = require("Files/Games/Rogue-Lineage/Features/Removals.lua")
 local Movement = require("Files/Games/Rogue-Lineage/Features/Movement.lua")
+local Utility = require("Files/Games/Rogue-Lineage/Features/Utility.lua")
 
 function CheckEnv(Global, Callback)
     if (getgenv == nil) then
@@ -131,10 +132,12 @@ function Sections:Utility(WindowTab)
 
     UtilitySection:Button({
         Name = "Server Hop";
+        Callback = Utility.ServerHop;
     })
 
     UtilitySection:Button({
         Name = "Server Hop To Smallest";
+        Callback = Utility.HopToSmallest;
     })
 
     return UtilitySection
