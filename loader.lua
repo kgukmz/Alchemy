@@ -9,7 +9,12 @@ if (Success == false) then
     return
 end
 
-print("[ALCHEMY] Loading...")
+local Drawificiation = require("Files/Utils/Drawification.lua")
+
+local Loading = Drawificiation:Notification({
+    Text = "[ALCHEMY]: Loading...";
+    Size = 18;
+})
 
 local GameList = require("Files/Utils/GameList.lua")
 local GameMenu = require("Files/Games/Universal/Menu.lua")
@@ -19,7 +24,11 @@ for GameID, MenuName in next, GameList do
         continue
     end
 
-    warn(MenuName)
+    Drawificiation:Notification({
+        Text =  "[ALCHEMY: Game: " .. MenuName;
+        Size = 18;
+        Time = 5;
+    })
     local Success, GetMenu = pcall(require, "Files/Games/" .. MenuName .. "/Menu.lua")
 
     if (Success == false) then
@@ -27,9 +36,12 @@ for GameID, MenuName in next, GameList do
     else
         GameMenu = GetMenu
     end
-    warn("Loading")
     break
 end
 
 local LoadedMenu = GameMenu:Load()
-warn("[ALCHEMY] Took:", tick() - StartTick .. ".s", "to load")
+
+Drawificiation:Notification("success", {
+    Text = "[ALCHEMY]: Took: " .. tick() - StartTick .. "/s to load";
+    Time = 5;
+})

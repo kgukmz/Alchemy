@@ -7,6 +7,7 @@ table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/MainTab.lua"))
 table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/SettingsTab.lua"))
 
 function Menu:Load()
+    --[[
     self.Library = Library
 
     self.Window = Library:Window({
@@ -30,7 +31,9 @@ function Menu:Load()
         end
         print(Success, Error)
     end
-    
+    --]]
+
+    print("Yo!")
     return Menu
 end
 
