@@ -80,11 +80,12 @@ function Sections:Client(WindowTab)
         AutoSize = true;
     })
 
+    local Sections = {}
+    table.insert(Sections, RemovalSection)
+    table.insert(Sections. YhSection)
+
     local MultiSection = WindowTab:MultiSection({
-        Sections = {
-            RemovalSection;
-            YhSection;
-        }
+        Sections = Sections
     })
 
     return MultiSection

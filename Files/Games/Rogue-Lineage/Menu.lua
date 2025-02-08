@@ -2,7 +2,6 @@ local Menu = {}
 local Tabs = {}
 
 local Library = require("Files/Utils/Library/UILibrary.lua")
-Library.Accent = Color3.fromRGB(245, 187, 63)
 
 table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/MainTab.lua"))
 
