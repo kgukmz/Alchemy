@@ -6,6 +6,8 @@ function CheckEnv(Global, Callback)
         return
     end
 
+    warn(getgenv()[Global])
+
     if (getgenv()[Global] == nil) then
         return
     end
@@ -32,22 +34,27 @@ function Sections:Movement(WindowTab)
     })
 
     MovementSection:Slider({
-        Name = "Fly [Velocity]";
+        Name = "Fly Velocity";
         Min = 0;
         Max = 125;
+        State = 0;
     })
 
     MovementSection:Slider({
-        Name = "Speedhack [Velocity]";
+        Name = "Speedhack Velocity";
         Min = 0;
         Max = 125;
+        State = 0;
     })
 
     MovementSection:Slider({
-        Name = "Infinite Jump [Velocity]";
+        Name = "Infinite Jump Velocity";
         Min = 0;
         Max = 125;
+        State = 0;
     })
+
+    return MovementSection
 end
 
 function Sections:Client(WindowTab)
@@ -67,6 +74,8 @@ function Sections:Client(WindowTab)
             Name = "Disable Fall Damage";
         })
     end)
+
+    return ClientSection
 end
 
 function Main:Initialize(Window)
