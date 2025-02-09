@@ -30,7 +30,7 @@ function Sections:Configs(WindowTab)
         Name = "Refresh";
         Callback = function()
             local NewConfigsList = GetFiles()
-            ConfigsList:Set(NewConfigsList)
+            ConfigsList.Options = NewConfigsList
         end
     })
     
