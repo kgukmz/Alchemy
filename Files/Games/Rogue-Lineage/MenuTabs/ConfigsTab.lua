@@ -28,7 +28,10 @@ function Sections:Configs(WindowTab)
 
     ConfigSection:Button({
         Name = "Refresh";
-        Callback = GetFiles
+        Callback = function()
+            local NewConfigsList = GetFiles()
+            ConfigsList:Set(NewConfigsList)
+        end
     })
     
     ConfigSection:Textbox({
