@@ -52,7 +52,11 @@ function Sections:Configs(WindowTab)
     })
 
     ConfigSection:Button({
-        Name = "Auto Load Config";
+        Name = "Set Auto Load Config";
+    })
+
+    ConfigSection:Button({
+        Name = "Reset Auto Load Config";
     })
 
     return ConfigSection
