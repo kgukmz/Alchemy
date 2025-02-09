@@ -43,7 +43,7 @@ function Sections:Configs(WindowTab)
         Name = "Auto Load Config";
     })
 
-    for i, ConfigFile in next, listfiles(ConfigsList) do
+    for i, ConfigFile in next, listfiles(FolderPath) do
         print(i, ConfigFile)
     end
 
