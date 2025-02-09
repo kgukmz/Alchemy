@@ -4,6 +4,9 @@ local Sections = {}
 local CurrentGame = "Rogue-Lineage"
 local FolderPath = string.format("ALCHEMY/Configurations/%s/", CurrentGame)
 
+local ConfigSelected = nil
+local ConfigName = ""
+
 function GetFiles()
     local FileList = {}
 
@@ -41,6 +44,33 @@ function Sections:Configs(WindowTab)
 
     ConfigSection:Button({
         Name = "Save Config";
+        Callback = function()
+            if (ConfigName == "") then
+                getgenv().Drawification:Notification("l_error", {
+                    Text = "[ALCHEMY]: Config name cannot be blank";
+                })
+                return
+            end
+
+            local FileFormat = string.format("%s.txt", ConfigName)
+
+            if (isfile(FolderPath .. FileFormat == true)) then
+                delfile(FolderPath .. FileFormat)
+            end
+
+            local Success, Error = pcall(writefile, FolderPath .. FileFormat)
+
+            if (Success == false) then
+                getgenv().Drawification:Notification("l_error", {
+                    Text = string.format("[ALCHEMY]: Cannot save config: %s", Error);
+                })
+                return
+            end
+
+            getgenv().Drawification:Notification("success", {
+                Text = string.format("[ALCHEMY]: Successfully written config: %s", ConfigName);
+            })
+        end
     })
 
     ConfigSection:Button({
