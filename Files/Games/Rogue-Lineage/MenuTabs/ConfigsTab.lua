@@ -26,15 +26,18 @@ function Sections:Configs(WindowTab)
 
     local ConfigsList = ConfigSection:List({
         Name = "Config List";
-        Options = GetFiles()
+        Options = GetFiles();
+        Callback = function(Selected)
+            ConfigSelected = Selected
+        end
     })
 
-    ConfigSection:Button({
+    local ConfigRefresh = ConfigSection:Button({
         Name = "Refresh";
         Callback = function()
             local NewConfigsList = GetFiles()
             ConfigsList:Refresh(NewConfigsList)
-        end
+        end;
     })
     
     ConfigSection:Textbox({
@@ -42,7 +45,7 @@ function Sections:Configs(WindowTab)
         Placeholder = "Enter your config name...";
         Callback = function(Input)
             ConfigName = Input
-        end
+        end;
     })
 
     ConfigSection:Button({
@@ -77,11 +80,51 @@ function Sections:Configs(WindowTab)
                 Size = 18;
                 Time = 4;
             })
-        end
+
+            ConfigRefresh:Callback()
+        end;
     })
 
     ConfigSection:Button({
         Name = "Load Config";
+        Callback = function()
+            if (ConfigSelected == nil) then
+                getgenv().Drawification:Notification("l_error", {
+                    Text = string.format("[ALCHEMY]: Unable to read config: %s | %s", ConfigSelected, ConfigData);
+                    Size = 18;
+                    Time = 4;
+                })
+                return
+            end
+
+            local Success, ConfigData = pcall(readfile, FolderPath .. ConfigSelected)
+
+            if (Success == false) then
+                getgenv().Drawification:Notification("l_error", {
+                    Text = string.format("[ALCHEMY]: Unable to read config: %s | %s", ConfigSelected, ConfigData);
+                    Size = 18;
+                    Time = 4;
+                })
+                return
+            end
+
+            local Success, Error = pcall(getgenv().Library.LoadConfig, getgenv().Library, ConfigData)
+
+            if (Success == false) then
+                getgenv().Drawification:Notification("l_error", {
+                    Text = string.format("[ALCHEMY]: Unable to load config: %s | %s", ConfigSelected, Error);
+                    Size = 18;
+                    Time = 4;
+                })
+                return
+            end
+
+            getgenv().Drawification:Notification("success", {
+                Text = string.format("[ALCHEMY]: Loaded config %s", ConfigSelected);
+                Size = 18;
+                Time = 4;
+            })
+        end
     })
 
     ConfigSection:Button({
