@@ -18,14 +18,54 @@ function Menu:Load()
 
         if (Success == false) then
             getgenv().Drawification:Notification("l_error", {
-                Text = string.format("Unable to initialize tab: %s, %s", i, Error);
+                Text = string.format("[ALCHEMY]: Unable to initialize tab: %s, %s", i, Error);
                 Size = 18;
                 Time = 10;
             })
         end
     end
 
-    getgenv().Library = self.Library
+    local ConfigFolder = "ALCHEMY/Configurations/"
+    local GameConfig = ConfigFolder .. "Rogue-Lineage"
+
+    if (isfolder(GameConfig) == false) then
+        makefolder(GameConfig)
+    end
+
+    if (isfile(GameConfig .. "/Auto-Load.txt") == true) then
+        local Success, AutoLoad = pcall(readfile, GameConfig .. "/Auto-Load.txt")
+
+        if (Success == false) then
+            return
+        end
+
+        local ConfigPath = string.format(GameConfig .. "/%s", AutoLoad)
+        local Success, ConfigData = pcall(readfile, ConfigPath)
+
+        if (Success == true) then
+            local Success, Error = pcall(Library.LoadConfig, Library, ConfigData)
+
+            if (Success == true) then
+                getgenv().Drawification:Notification("success", {
+                    Text = string.format("[ALCHEMY]: Auto Loaded Config: %s", AutoLoad);
+                    Size = 18;
+                    Time = 6;
+                })
+            else
+                getgenv().Drawification:Notification("l_error", {
+                    Text = string.format("[ALCHEMY]: Library error loading config, : %s", Error);
+                    Size = 18;
+                    Time = 6;
+                })
+            end
+        else
+            getgenv().Drawification:Notification("l_error", {
+                Text = string.format("[ALCHEMY]: Unable to load config: %s", AutoLoad);
+                Size = 18;
+                Time = 6;
+            })
+        end
+    end
 
     return Menu
 end

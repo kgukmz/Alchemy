@@ -19,6 +19,11 @@ function Removals:DisableFallDamage(Value)
     if (Value == true) then
         NofallCheck:Connect(function()
             local Character = LocalPlayer.Character
+
+            if (Character == nil) then
+                return
+            end
+
             local RightLeg = Character:FindFirstChild("Right Leg")
             local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
 
