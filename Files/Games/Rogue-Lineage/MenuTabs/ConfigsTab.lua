@@ -11,7 +11,8 @@ function GetFiles()
     local FileList = {}
 
     for i, ConfigFile in next, listfiles(FolderPath) do
-        table.insert(FileList, string.split(ConfigFile, "//")[2])
+        local FileName = string.split(ConfigFile, ".")
+        table.insert(FileList, FileName[1] .. "." .. FileName[2])
     end
 
     return FileList
