@@ -11,9 +11,8 @@ function GetFiles()
     local FileList = {}
 
     for i, ConfigFile in next, listfiles(FolderPath) do
-        local FileName = string.split(ConfigFile, ".")
-        print(FileName[1] .. "." .. FileName[2])
-        table.insert(FileList, FileName[1] .. "." .. FileName[2])
+        local Path = ConfigFile:match("([^/]+)$")
+        table.insert(FileList, Path)
     end
 
     return FileList
