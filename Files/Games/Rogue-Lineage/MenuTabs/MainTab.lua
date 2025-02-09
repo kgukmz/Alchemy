@@ -150,6 +150,16 @@ function Sections:Utility(WindowTab)
         }
     })
 
+    UtilitySection:List({
+        Name = "Server Hop Mode";
+        Options = {
+            "Smallest";
+            "Largest";
+            "Any";
+        };
+        Default = "Any";
+    })
+
     UtilitySection:Button({
         Name = "Server Hop";
         Callback = Utility.ServerHop;
