@@ -131,15 +131,36 @@ function Sections:Utility(WindowTab)
         Name = "Join Job-ID";
     })
 
+    UtilitySection:Toggle({
+        Name = "Region Check";
+    })
+
+    UtilitySection:List({
+        Name = "Region Filter";
+        Options = {
+            "Hesse, Germany";
+            "England, United Kingdom";
+            "California, United States";
+            "Washington, United States";
+            "North Holland, The Netherlands";
+            "Florida, United States";
+            "New South Wales, Australia";
+            "Tokyo, Japan";
+            "Unknown Region";
+        }
+    })
+
     UtilitySection:Button({
         Name = "Server Hop";
         Callback = Utility.ServerHop;
     })
 
+    --[[
     UtilitySection:Button({
         Name = "Server Hop To Smallest";
         Callback = Utility.HopToSmallest;
     })
+    --]]
 
     return UtilitySection
 end
