@@ -122,15 +122,6 @@ function Sections:Utility(WindowTab)
         Name = "Teleport";
     })
 
-    UtilitySection:Textbox({
-        Name = "Job-ID";
-        Placeholder = "Enter a Job-ID...";
-    })
-
-    UtilitySection:Button({
-        Name = "Join Job-ID";
-    })
-
     UtilitySection:Toggle({
         Name = "Region Check";
     })
@@ -163,6 +154,15 @@ function Sections:Utility(WindowTab)
     UtilitySection:Button({
         Name = "Server Hop";
         Callback = Utility.ServerHop;
+    })
+    
+    UtilitySection:Textbox({
+        Name = "Job-ID";
+        Placeholder = "Enter a Job-ID...";
+    })
+
+    UtilitySection:Button({
+        Name = "Join Job-ID";
     })
 
     --[[
