@@ -12,6 +12,7 @@ function GetFiles()
 
     for i, ConfigFile in next, listfiles(FolderPath) do
         local FileName = string.split(ConfigFile, ".")
+        print(FileName[1] .. "." .. FileName[2])
         table.insert(FileList, FileName[1] .. "." .. FileName[2])
     end
 
