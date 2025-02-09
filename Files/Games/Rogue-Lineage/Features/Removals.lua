@@ -18,12 +18,7 @@ local FakeDust
 function Removals:DisableFallDamage(Value)
     if (Value == true) then
         NofallCheck:Connect(function()
-            local Character = LocalPlayer.Character
-
-            if (Character == nil) then
-                return
-            end
-
+            local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
             local RightLeg = Character:FindFirstChild("Right Leg")
             local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
 
@@ -50,7 +45,7 @@ function Removals:DisableFallDamage(Value)
     elseif (Value == false) then
         NofallCheck:Disconnect()
 
-        local Character = LocalPlayer.Character
+        local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
         local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
 
         if (HumanoidRootPart == nil) then
