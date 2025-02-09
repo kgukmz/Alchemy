@@ -40,6 +40,9 @@ function Sections:Configs(WindowTab)
     ConfigSection:Textbox({
         Name = "Config Alias";
         Placeholder = "Enter your config name...";
+        Callback = function(Input)
+            ConfigName = Input
+        end
     })
 
     ConfigSection:Button({
