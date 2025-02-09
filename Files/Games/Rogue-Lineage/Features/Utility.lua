@@ -42,6 +42,10 @@ function Utility:HopToSmallest()
         local Players = Server:FindFirstChild("Players")
         local PlayersDecoded = HttpService:JSONDecode(Players.Value)
 
+        if (#PlayersDecoded == 0) then
+            continue
+        end
+
         table.insert(Servers, {
             Job_Id = Server.Name;
             PlayerCount = #PlayersDecoded;
