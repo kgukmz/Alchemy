@@ -28,14 +28,17 @@ function Sections:Movement(WindowTab)
     
     MovementSection:Toggle({
         Name = "Fly";
+        Pointer = "FlyToggle";
     })
 
     MovementSection:Toggle({
         Name = "Speedhack";
+        Pointer = "SpeedhackToggle";
     })
 
     MovementSection:Toggle({
         Name = "Infinite Jump";
+        Pointer = "InfiniteJumpToggle";
     })
 
     MovementSection:Slider({
@@ -43,6 +46,7 @@ function Sections:Movement(WindowTab)
         Min = 0;
         Max = 125;
         State = 0;
+        Pointer = "FlySlider";
     })
 
     MovementSection:Slider({
@@ -50,6 +54,7 @@ function Sections:Movement(WindowTab)
         Min = 0;
         Max = 125;
         State = 0;
+        Pointer = "SpeedhackSilder";
     })
 
     MovementSection:Slider({
@@ -57,6 +62,7 @@ function Sections:Movement(WindowTab)
         Min = 0;
         Max = 125;
         State = 0;
+        Pointer = "InfiniteJumpSlider";
     })
 
     return MovementSection
@@ -72,21 +78,25 @@ function Sections:Client(WindowTab)
     ClientSection:Toggle({
         Name = "Disable Fall Damage";
         Callback = Removals.DisableFallDamage;
+        Pointer = "DisableFallDamageToggle";
     })
 
     ClientSection:Toggle({
         Name = "Disable Kill Bricks";
         Callback = Removals.DisableKillBricks;
+        Pointer = "DisableKillBricksToggle";
     })
 
     ClientSection:Toggle({
         Name = "Disable Poison Pits";
         Callback = Removals.DisablePoisonPits;
+        Pointer = "DisablePoisonToggle";
     })
     
     ClientSection:Toggle({
         Name = "Remove Orderly Fields";
         Callback = Removals.RemoveOrderFields;
+        Pointer = "RemoveFieldsToggle";
     })
 
     ClientSection:Button({
@@ -122,8 +132,18 @@ function Sections:Utility(WindowTab)
         Name = "Teleport";
     })
 
+    UtilitySection:Textbox({
+        Name = "Job-ID";
+        Placeholder = "Enter a Job-ID...";
+    })
+
+    UtilitySection:Button({
+        Name = "Join Job-ID";
+    })
+
     UtilitySection:Toggle({
         Name = "Region Check";
+        Pointer = "RegionCheckToggle";
     })
 
     UtilitySection:List({
@@ -138,7 +158,8 @@ function Sections:Utility(WindowTab)
             "New South Wales, Australia";
             "Tokyo, Japan";
             "Unknown Region";
-        }
+        };
+        Pointer = "ServerRegionList";
     })
 
     UtilitySection:List({
@@ -149,20 +170,12 @@ function Sections:Utility(WindowTab)
             "Any";
         };
         Default = "Any";
+        Pointer = "ServerModeList";
     })
 
     UtilitySection:Button({
         Name = "Server Hop";
         Callback = Utility.ServerHop;
-    })
-    
-    UtilitySection:Textbox({
-        Name = "Job-ID";
-        Placeholder = "Enter a Job-ID...";
-    })
-
-    UtilitySection:Button({
-        Name = "Join Job-ID";
     })
 
     --[[

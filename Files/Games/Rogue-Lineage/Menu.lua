@@ -25,6 +25,8 @@ function Menu:Load()
         end
     end
 
+    getgenv().Library = self.Library
+
     return Menu
 end
 
