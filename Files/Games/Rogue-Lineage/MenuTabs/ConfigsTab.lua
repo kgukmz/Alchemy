@@ -17,7 +17,7 @@ function GetFiles()
     return FileList
 end
 
-function Sections:Configs(WindowTab)
+function Sections:Configs(WindowTab, Library)
     local ConfigSection = WindowTab:Section({
         Name = "Configurations";
         AutoSize = true;
@@ -62,7 +62,7 @@ function Sections:Configs(WindowTab)
             end
 
             local FileFormat = string.format("%s.txt", ConfigName)
-            local CurrentConfig = getgenv().Library:GetConfig()
+            local CurrentConfig = Library:GetConfig()
 
             if (isfile(FolderPath .. FileFormat) == true) then
                 delfile(FolderPath .. FileFormat)
@@ -113,7 +113,7 @@ function Sections:Configs(WindowTab)
                 return
             end
 
-            local Success, Error = pcall(getgenv().Library.LoadConfig, getgenv().Library, ConfigData)
+            local Success, Error = pcall(Library.LoadConfig, Library, ConfigData)
 
             if (Success == false) then
                 getgenv().Drawification:Notification("l_error", {
@@ -148,10 +148,10 @@ function Sections:Configs(WindowTab)
 end
 
 
-function Configs:Initialize(Window)
+function Configs:Initialize(Window, Library)
     local Configs = Window:Page({ Name = "Configuration" })
 
-    Sections:Configs(Configs)
+    Sections:Configs(Configs, Library)
 end
 
 return Configs

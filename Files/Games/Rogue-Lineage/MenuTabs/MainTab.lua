@@ -19,7 +19,7 @@ function CheckEnv(Global, Callback)
     coroutine.wrap(Callback)()
 end
 
-function Sections:Movement(WindowTab)
+function Sections:Movement(WindowTab, Library)
     local MovementSection = WindowTab:Section({
         Name = "Movement";
         AutoSize = true;
@@ -68,7 +68,7 @@ function Sections:Movement(WindowTab)
     return MovementSection
 end
 
-function Sections:Client(WindowTab)
+function Sections:Client(WindowTab, Library)
     local ClientSection = WindowTab:Section({
         Name = "Client";
         AutoSize = true;
@@ -111,7 +111,7 @@ function Sections:Client(WindowTab)
     return ClientSection
 end
 
-function Sections:Utility(WindowTab)
+function Sections:Utility(WindowTab, Library)
     local UtilitySection = WindowTab:Section({
         Name = "Utility";
         AutoSize = true;
@@ -188,12 +188,12 @@ function Sections:Utility(WindowTab)
     return UtilitySection
 end
 
-function Main:Initialize(Window)
+function Main:Initialize(Window, Library)
     local MainPage = Window:Page({ Name = "Main"} )
 
-    Sections:Movement(MainPage)
-    Sections:Client(MainPage)
-    Sections:Utility(MainPage)
+    Sections:Movement(MainPage, Library)
+    Sections:Client(MainPage, Library)
+    Sections:Utility(MainPage, Library)
 end
 
 return Main

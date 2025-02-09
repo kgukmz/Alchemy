@@ -15,7 +15,7 @@ function Menu:Load()
     })
 
     for i, WindowTab in next, Tabs do
-        local Success, Error = pcall(WindowTab.Initialize, Library, self.Window)
+        local Success, Error = pcall(WindowTab.Initialize, Library, self.Window, self.Library)
 
         if (Success == false) then
             getgenv().Drawification:Notification("l_error", {
