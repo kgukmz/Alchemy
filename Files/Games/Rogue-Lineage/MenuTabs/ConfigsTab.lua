@@ -8,7 +8,7 @@ function GetFiles()
     local FileList = {}
 
     for i, ConfigFile in next, listfiles(FolderPath) do
-        table.insert(FileList, ConfigFile)
+        table.insert(FileList, string.split(ConfigFile, "//")[2])
     end
 
     return FileList
