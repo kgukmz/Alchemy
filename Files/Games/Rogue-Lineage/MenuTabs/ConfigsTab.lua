@@ -45,7 +45,6 @@ function Sections:Configs(WindowTab, Library)
         Placeholder = "Enter your config name...";
         Callback = function(Input)
             ConfigName = Input
-            warn(Input, ConfigName)
         end;
     })
 
