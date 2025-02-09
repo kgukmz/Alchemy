@@ -57,7 +57,7 @@ function Sections:Configs(WindowTab)
 
             local FileFormat = string.format("%s.txt", ConfigName)
 
-            if (isfile(FolderPath .. FileFormat == true)) then
+            if (isfile(FolderPath .. FileFormat) == true) then
                 delfile(FolderPath .. FileFormat)
             end
 
@@ -66,12 +66,16 @@ function Sections:Configs(WindowTab)
             if (Success == false) then
                 getgenv().Drawification:Notification("l_error", {
                     Text = string.format("[ALCHEMY]: Cannot save config: %s", Error);
+                    Size = 18;
+                    Time = 4;
                 })
                 return
             end
 
             getgenv().Drawification:Notification("success", {
                 Text = string.format("[ALCHEMY]: Successfully written config: %s", ConfigName);
+                Size = 18;
+                Time = 4;
             })
         end
     })
