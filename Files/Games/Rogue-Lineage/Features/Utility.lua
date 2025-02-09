@@ -42,7 +42,7 @@ function Utility:HopToSmallest()
         local Players = Server:FindFirstChild("Players")
         local PlayersDecoded = HttpService:JSONDecode(Players.Value)
 
-        if (#PlayersDecoded == 0) then
+        if (#PlayersDecoded < 2) then
             continue
         end
 
