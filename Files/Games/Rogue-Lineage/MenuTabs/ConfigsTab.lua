@@ -31,6 +31,7 @@ function Sections:Configs(WindowTab)
         Callback = function()
             local NewConfigsList = GetFiles()
             ConfigsList.Options = NewConfigsList
+            ConfigsList:Refresh()
         end
     })
     
