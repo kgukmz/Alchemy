@@ -4,6 +4,16 @@ local Sections = {}
 local CurrentGame = "Rogue-Lineage"
 local FolderPath = string.format("ALCHEMY/Configurations/%s/", CurrentGame)
 
+function GetFiles()
+    local FileList = {}
+
+    for i, ConfigFile in next, listfiles(FolderPath) do
+        table.insert(FileList, ConfigFile)
+    end
+
+    return FileList
+end
+
 function Sections:Configs(WindowTab)
     local ConfigSection = WindowTab:Section({
         Name = "Configurations";
@@ -13,13 +23,12 @@ function Sections:Configs(WindowTab)
 
     local ConfigsList = ConfigSection:List({
         Name = "Config List";
-        Options = {}
+        Options = GetFiles()
     })
 
     ConfigSection:Button({
         Name = "Refresh";
-        Callback = function()
-        end
+        Callback = GetFiles
     })
     
     ConfigSection:Textbox({
@@ -42,10 +51,6 @@ function Sections:Configs(WindowTab)
     ConfigSection:Button({
         Name = "Auto Load Config";
     })
-
-    for i, ConfigFile in next, listfiles(FolderPath) do
-        print(i, ConfigFile)
-    end
 
     return ConfigSection
 end
