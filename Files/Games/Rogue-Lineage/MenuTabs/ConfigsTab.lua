@@ -54,22 +54,22 @@ function Sections:Configs(WindowTab)
         Callback = function()
             if (ConfigName == "") then
                 getgenv().Drawification:Notification("l_error", {
-                    Text = "[ALCHEMY]: Config name cannot be blank";
+                    Text = "[ALCHEMY]: Config name cannot be blank; did you press enter?";
                     Size = 18;
                     Time = 4;
                 })
                 return
             end
 
-            print(ConfigName)
             local FileFormat = string.format("%s.txt", ConfigName)
+            local CurrentConfig = getgenv().Library:GetConfig()
 
             if (isfile(FolderPath .. FileFormat) == true) then
                 delfile(FolderPath .. FileFormat)
             end
 
             print(FolderPath .. FileFormat)
-            local Success, Error = pcall(writefile, FolderPath .. FileFormat)
+            local Success, Error = pcall(writefile, FolderPath .. FileFormat, CurrentConfig)
 
             if (Success == false) then
                 getgenv().Drawification:Notification("l_error", {
