@@ -45,6 +45,7 @@ function Sections:Configs(WindowTab)
         Placeholder = "Enter your config name...";
         Callback = function(Input)
             ConfigName = Input
+            warn(Input, ConfigName)
         end;
     })
 
@@ -54,16 +55,20 @@ function Sections:Configs(WindowTab)
             if (ConfigName == "") then
                 getgenv().Drawification:Notification("l_error", {
                     Text = "[ALCHEMY]: Config name cannot be blank";
+                    Size = 18;
+                    Time = 4;
                 })
                 return
             end
 
+            print(ConfigName)
             local FileFormat = string.format("%s.txt", ConfigName)
 
             if (isfile(FolderPath .. FileFormat) == true) then
                 delfile(FolderPath .. FileFormat)
             end
 
+            print(FolderPath .. FileFormat)
             local Success, Error = pcall(writefile, FolderPath .. FileFormat)
 
             if (Success == false) then
@@ -90,7 +95,7 @@ function Sections:Configs(WindowTab)
         Callback = function()
             if (ConfigSelected == nil) then
                 getgenv().Drawification:Notification("l_error", {
-                    Text = string.format("[ALCHEMY]: Unable to read config: %s | %s", ConfigSelected, ConfigData);
+                    Text = "[ALCHEMY]: No config selected";
                     Size = 18;
                     Time = 4;
                 })
