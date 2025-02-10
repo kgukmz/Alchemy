@@ -3,7 +3,21 @@ local OldRequire = require
 local RequireCache = {}
 local ServiceCache = {}
 
-local function GetService(Service)
+local function DeepcloneTbl(Target)
+    local Result = {}
+
+    for i, v in pairs(Target) do
+        if (typeof(v) == "table") then
+            Result[i] = DeepcloneTbl(Target)
+        end
+
+        Result[i] = v
+    end
+
+    return Result
+end
+
+function GetService(Service)
     if (ServiceCache[Service] ~= nil) then
         return ServiceCache[Service]
     end
@@ -21,7 +35,16 @@ local function GetService(Service)
     return Cloned
 end
 
-local function RequireHook(Value)
+function setreadonly(Tbl, State)
+    if (State == true) then
+        table.freeze(Tbl)
+    else
+        local TblDeepclone = DeepcloneTbl(Tbl)
+        return TblDeepclone
+    end
+end
+
+function RequireHook(Value)
     if (not (typeof(Value) == "string") or not checkcaller()) then
         return OldRequire(Value)
     end
@@ -40,3 +63,7 @@ end
 
 getgenv().require = RequireHook -- // was testing something: newcclosure(RequireHook)
 getgenv().GetService = GetService
+
+if (getgenv().setreadonly == nil) then
+    getgenv().setreadonly = setreadonly
+end
