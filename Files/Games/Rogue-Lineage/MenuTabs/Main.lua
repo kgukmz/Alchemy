@@ -182,10 +182,11 @@ function Sections:Utility(WindowTab, Library)
             Data.Filter = Library.ServerFilterList
 
             if (Library.RegionCheckToggle == true) then
+                print("REGION CHECK IS ON!")
                 Data.Region = Library.ServerRegionList
             end
 
-            print(Data)
+            table.foreach(Data, warn)
 
             Utility.ServerHop(Data)
         end;
