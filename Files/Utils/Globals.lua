@@ -45,9 +45,11 @@ function setreadonly(Tbl, State)
 end
 
 function RequireHook(Value)
+    --[[
     if (not (typeof(Value) == "string") or not checkcaller()) then
         return OldRequire(Value)
     end
+    --]]
 
     if (RequireCache[Value] ~= nil) then
         local CachedDirectory = RequireCache[Value]
