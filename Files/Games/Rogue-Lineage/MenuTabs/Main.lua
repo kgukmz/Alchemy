@@ -130,7 +130,7 @@ function Sections:Utility(WindowTab, Library)
 
     UtilitySection:Button({
         Name = "Teleport";
-        Risk = true;
+        --// Risk = true;
     })
 
     UtilitySection:Textbox({
@@ -186,18 +186,9 @@ function Sections:Utility(WindowTab, Library)
                 Data.Region = Library.Flags.ServerRegionList
             end
 
-            warn(table.unpack(Data))
-
             Utility:ServerHop(Data)
         end;
     })
-
-    --[[
-    UtilitySection:Button({
-        Name = "Server Hop To Smallest";
-        Callback = Utility.HopToSmallest;
-    })
-    --]]
 
     return UtilitySection
 end
