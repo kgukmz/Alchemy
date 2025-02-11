@@ -1,5 +1,7 @@
 local StartTick = tick()
 
+pcall(setfpscap, 1000)
+
 local Success, Error = pcall(function()
     loadstring(game:HttpGet("https://github.com/kgukmz/Alchemy/raw/refs/heads/main/Files/Utils/Globals.lua"))()
 end)

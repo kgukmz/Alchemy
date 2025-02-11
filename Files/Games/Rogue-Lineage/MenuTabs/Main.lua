@@ -159,23 +159,36 @@ function Sections:Utility(WindowTab, Library)
             "Tokyo, Japan";
             "Unknown Region";
         };
+        Default = "Unknown Region";
         Pointer = "ServerRegionList";
     })
 
     UtilitySection:List({
-        Name = "Server Hop Mode";
+        Name = "Server Hop Filter";
         Options = {
             "Smallest";
             "Largest";
             "Any";
         };
         Default = "Any";
-        Pointer = "ServerModeList";
+        Pointer = "ServerFilterList";
     })
 
     UtilitySection:Button({
         Name = "Server Hop";
-        Callback = Utility.ServerHop;
+        Callback = function()
+            local Data = {}
+
+            Data.Filter = Library.ServerFilterList
+
+            if (Library.RegionCheckToggle == true) then
+                Data.Region = Library.ServerRegionList
+            end
+
+            print(Data)
+
+            Utility.ServerHop(Data)
+        end;
     })
 
     --[[

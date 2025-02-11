@@ -3,6 +3,7 @@ local Utility = {}
 local ReplicatedStorage = GetService("ReplicatedStorage")
 local HttpService = GetService("HttpService")
 local Players = GetService("Players")
+local ServerScriptService = game:GetService("ServerScriptService")
 
 function Utility:CharacterReset()
     local LocalPlayer = Players.LocalPlayer
@@ -34,15 +35,31 @@ function Utility:ServerHop()
     end
 end
 
-function Utility:HopToSmallest()
+function Utility:ServerHop(Data)
+    local Region = Data.Region or nil
+    local Filter = Data.Filter or nil
+
     local ServerInfo = ReplicatedStorage.ServerInfo
+    local JoinPublicServer = ReplicatedStorage.Requests.JoinPublicServer
     local Servers = {}
 
-    for i, Server in next, ServerInfo:GetChildren() do
+    for i, Server in ServerInfo do
         local Players = Server:FindFirstChild("Players")
         local PlayersDecoded = HttpService:JSONDecode(Players.Value)
 
+        if (Region ~= nil) then
+            local ServerRegion = Server:FindFirstChild("Region")
+
+            if (ServerRegion.Value ~= Region) then
+                continue
+            end
+        end
+
         if (#PlayersDecoded < 2) then
+            continue
+        end
+
+        if (#PlayersDecoded == Players.MaxPlayers) then
             continue
         end
 
@@ -56,8 +73,16 @@ function Utility:HopToSmallest()
         return Result1.PlayerCount < Result2.PlayerCount
     end)
 
-    warn(Servers[1].Job_Id)
-    ReplicatedStorage.Requests.JoinPublicServer:FireServer(Servers[1].Job_Id)
+    if (Filter ~= nil) then
+        if (Filter == "Smallest") then
+            JoinPublicServer:FireServer(Servers[1].Job_Id)
+        elseif (Filter == "Largest") then
+            JoinPublicServer:FireServer(Servers[#Servers].Job_Id)
+        elseif (Filter == "Any") then
+            local RandomIndex = math.random(1, #PlayersDecoded)    
+            JoinPublicServer:FireServer(Servers[RandomIndex].Job_Id)
+        end
+    end    
 end
 
 return Utility
