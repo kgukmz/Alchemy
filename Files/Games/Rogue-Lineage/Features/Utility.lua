@@ -36,8 +36,8 @@ function Utility:ServerHop()
 end
 
 function Utility:ServerHop(Data)
-    local Region = Data.Region or nil
-    local Filter = Data.Filter or nil
+    local Region = Data.Region ~= nil and Data.Region or nil
+    local Filter = Data.Filter ~= nil and Data.Filter or nil
 
     local ServerInfo = ReplicatedStorage.ServerInfo
     local JoinPublicServer = ReplicatedStorage.Requests.JoinPublicServer
