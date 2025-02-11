@@ -177,10 +177,11 @@ function Sections:Utility(WindowTab, Library)
     UtilitySection:Button({
         Name = "Server Hop";
         Callback = function()
-            local Data = {}
+            local Data = {
+                Filter = Library.Flags.ServerFilterList
+            }
 
-            Data.Filter = Library.Flags.ServerFilterList
-
+            warn(Library.Flags.RegionCheckToggle)
             if (Library.Flags.RegionCheckToggle == true) then
                 print("REGION CHECK IS ON!")
                 Data.Region = Library.Flags.ServerRegionList
