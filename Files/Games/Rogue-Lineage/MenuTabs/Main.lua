@@ -181,7 +181,7 @@ function Sections:Utility(WindowTab, Library)
 
             Data.Filter = Library.Flags.ServerFilterList
 
-            if (Library.RegionCheckToggle == true) then
+            if (Library.Flags.RegionCheckToggle == true) then
                 print("REGION CHECK IS ON!")
                 Data.Region = Library.Flags.ServerRegionList
             end
