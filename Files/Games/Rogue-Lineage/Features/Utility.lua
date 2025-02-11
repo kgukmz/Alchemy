@@ -60,6 +60,10 @@ function Utility:ServerHop(Data)
         return Result1.PlayerCount < Result2.PlayerCount
     end)
 
+    for i,v in next, Servers do
+        warn(i, unpack(v))
+    end
+
     if (Filter == "Any") then
         local RandomIndex math.random(1, #Servers)
         local Server = Servers[RandomIndex]
