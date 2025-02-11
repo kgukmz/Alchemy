@@ -38,7 +38,7 @@ function Utility:ServerHop(Data)
         local ServerRegion = Server:FindFirstChild("Region")
 
         if (Region ~= nil and ServerRegion.Value ~= Region) then
-            print("Region isn't", Region "?", ServerRegion.Value)
+            --  print("Region isn't", Region "?", ServerRegion.Value)
             continue
         end
 
@@ -56,8 +56,6 @@ function Utility:ServerHop(Data)
             JobId = Server.Name;
             PlayerCount = #PlayersDecoded;
         })
-        
-        print("SHA!")
     end
 
     table.sort(Servers, function(Result1, Result2)
@@ -65,14 +63,16 @@ function Utility:ServerHop(Data)
     end)
 
     if (Filter == "Any") then
-        local RandomIndex math.random(1, #Servers)
-        local Server = Servers[RandomIndex]
-        JoinPublicServer:FireServer(Server.JobId)
+        local RandomIndex = Servers[math.random(1, #Servers)]
+        print(RandomIndex.PlayerCount)
+        JoinPublicServer:FireServer(RandomIndex.JobId)
     elseif (Filter == "Smallest") then
         local FirstIndex = Servers[1]
+        print(FirstIndex.PlayerCount)
         JoinPublicServer:FireServer(FirstIndex.JobId)
     elseif (Filter == "Largest") then
         local LastIndex = Servers[#Servers]
+        print(LastIndex.PlayerCount)
         JoinPublicServer:FireServer(LastIndex.JobId)
     end
 end
