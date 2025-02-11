@@ -22,19 +22,6 @@ function Utility:CharacterReset()
     Head:Destroy()
 end
 
-function Utility:ServerHop()
-    local ServerInfo = ReplicatedStorage.ServerInfo
-    local Servers = ServerInfo:GetChildren()
-
-    local RandomIndex = math.random(1, #Servers)
-    local ChosenServer = Servers[RandomIndex]
-
-    if (ChosenServer ~= nil) then
-        local Job_Id = ChosenServer.Name
-        ReplicatedStorage.Requests.JoinPublicServer:FireServer(Job_Id)
-    end
-end
-
 function Utility:ServerHop(Data)
     local Region = Data.Region or nil
     local Filter = Data.Filter or nil
@@ -64,7 +51,7 @@ function Utility:ServerHop(Data)
         end
 
         table.insert(Servers, {
-            Job_Id = Server.Name;
+            JobId = Server.Name;
             PlayerCount = #PlayersDecoded;
         })
     end
@@ -73,17 +60,17 @@ function Utility:ServerHop(Data)
         return Result1.PlayerCount < Result2.PlayerCount
     end)
 
-    if (Filter ~= nil) then
-        if (Filter == "Smallest") then
-            JoinPublicServer:FireServer(Servers[1].Job_Id)
-        elseif (Filter == "Largest") then
-            pcall(warn, Servers[#Servers], Servers[#Servers].Job_Id)
-            JoinPublicServer:FireServer(Servers[#Servers].Job_Id)
-        elseif (Filter == "Any") then
-            local RandomIndex = math.random(1, #PlayersDecoded)    
-            JoinPublicServer:FireServer(Servers[RandomIndex].Job_Id)
-        end
-    end    
+    if (Filter == "Any") then
+        local RandomIndex math.random(1, #Servers)
+        local Server = Servers[RandomIndex]
+        JoinPublicServer:FireServer(Server.JobId)
+    elseif (Filter == "Smallest") then
+        local FirstIndex = Servers[1]
+        JoinPublicServer:FireServer(FirstIndex.JobId)
+    elseif (Filter == "Largest") then
+        local LastIndex = Servers[#Servers]
+        JoinPublicServer:FireServer(LastIndex.JobId)
+    end
 end
 
 return Utility
