@@ -179,11 +179,11 @@ function Sections:Utility(WindowTab, Library)
         Callback = function()
             local Data = {}
 
-            Data.Filter = Library.ServerFilterList
+            Data.Filter = Library.Flags.ServerFilterList
 
             if (Library.RegionCheckToggle == true) then
                 print("REGION CHECK IS ON!")
-                Data.Region = Library.ServerRegionList
+                Data.Region = Library.Flags.ServerRegionList
             end
 
             table.foreach(Data, warn)
