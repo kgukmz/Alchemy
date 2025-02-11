@@ -19,10 +19,7 @@ local function DeepcloneTbl(Target)
     return Result
 end
 
-local FakeModule = Instance.new("ModuleScript")
-local Success, Error = pcall(require, FakeModule)
-
-if (Success == false) then
+if (getgenv().setthreadidentity == nil) then
     LowThreadIdentity = true
 end
 
