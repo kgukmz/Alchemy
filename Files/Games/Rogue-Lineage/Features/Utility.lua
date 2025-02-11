@@ -26,6 +26,8 @@ function Utility:ServerHop(Data)
     local Region = Data.Region or nil
     local Filter = Data.Filter or nil
 
+    print("Region:", Region, "Filter:", Filter)
+
     local ServerInfo = ReplicatedStorage.ServerInfo
     local JoinPublicServer = ReplicatedStorage.Requests.JoinPublicServer
     local Servers = {}
@@ -38,15 +40,20 @@ function Utility:ServerHop(Data)
             local ServerRegion = Server:FindFirstChild("Region")
 
             if (ServerRegion.Value ~= Region) then
+                print("Region isn't", Region "?", ServerRegion.Value)
                 continue
             end
+
+            print("if i give you my whole body")
         end
 
         if (#PlayersDecoded < 2) then
+            print("Unjoinable server Lol")
             continue
         end
 
         if (#PlayersDecoded == Players.MaxPlayers) then
+            print("Server is full")
             continue
         end
 
@@ -54,6 +61,8 @@ function Utility:ServerHop(Data)
             JobId = Server.Name;
             PlayerCount = #PlayersDecoded;
         })
+        
+        print("SHA!")
     end
 
     table.sort(Servers, function(Result1, Result2)

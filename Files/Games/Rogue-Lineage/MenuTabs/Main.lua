@@ -185,6 +185,8 @@ function Sections:Utility(WindowTab, Library)
                 Data.Region = Library.Flags.ServerRegionList
             end
 
+            warn(table.unpack(Data))
+
             Utility:ServerHop(Data)
         end;
     })
