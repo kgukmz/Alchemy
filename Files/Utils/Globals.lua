@@ -34,7 +34,7 @@ function RequireHook(Value)
     end
 
     local URL = "https://github.com/kgukmz/Alchemy/raw/refs/heads/main/" .. Value
-    local RequiredDirecory = loadstring(game:HttpGet(URL), "[ALCHEMY]")
+    local RequiredDirecory = loadstring(game:HttpGet(URL), "ALCHEMY")
     
     RequireCache[Value] = RequiredDirecory
     return RequiredDirecory()
