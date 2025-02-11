@@ -4,7 +4,7 @@ local Tabs = {}
 local Library = require("Files/Utils/Library/UILibrary.lua")
 
 table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/Main.lua"))
-table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/Players.lua"))
+-- // table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/Players.lua"))
 table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/Configs.lua"))
 
 function Menu:Load()

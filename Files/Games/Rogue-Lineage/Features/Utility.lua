@@ -33,18 +33,13 @@ function Utility:ServerHop(Data)
     local Servers = {}
 
     for i, Server in ServerInfo do
-        local Players = Server:FindFirstChild("Players")
-        local PlayersDecoded = HttpService:JSONDecode(Players.Value)
+        local PlayerInfo = Server:FindFirstChild("Players")
+        local PlayersDecoded = HttpService:JSONDecode(PlayerInfo.Value)
+        local ServerRegion = Server:FindFirstChild("Region")
 
-        if (Region ~= nil) then
-            local ServerRegion = Server:FindFirstChild("Region")
-
-            if (ServerRegion.Value ~= Region) then
-                print("Region isn't", Region "?", ServerRegion.Value)
-                continue
-            end
-
-            print("if i give you my whole body")
+        if (Region ~= nil and ServerRegion.Value ~= Region) then
+            print("Region isn't", Region "?", ServerRegion.Value)
+            continue
         end
 
         if (#PlayersDecoded < 2) then
@@ -68,10 +63,6 @@ function Utility:ServerHop(Data)
     table.sort(Servers, function(Result1, Result2)
         return Result1.PlayerCount < Result2.PlayerCount
     end)
-
-    for i,v in next, Servers do
-        warn(i, unpack(v))
-    end
 
     if (Filter == "Any") then
         local RandomIndex math.random(1, #Servers)
