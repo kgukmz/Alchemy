@@ -3,6 +3,8 @@ local OldRequire = require
 local RequireCache = {}
 local ServiceCache = {}
 
+local LowThreadIdentity = false
+
 local function DeepcloneTbl(Target)
     local Result = {}
 
@@ -15,6 +17,30 @@ local function DeepcloneTbl(Target)
     end
 
     return Result
+end
+
+local FakeModule = Instance.new("ModuleScript")
+local Success, Error = pcall(require, FakeModule)
+
+if (Success == false) then
+    LowThreadIdentity = true
+end
+
+function RequireHook(Value)
+    if (not (typeof(Value) == "string") and LowThreadIdentity ~= true) then
+        return OldRequire(Value)
+    end
+
+    if (RequireCache[Value] ~= nil) then
+        local CachedDirectory = RequireCache[Value]
+        return CachedDirectory()
+    end
+
+    local URL = "https://github.com/kgukmz/Alchemy/raw/refs/heads/main/" .. Value
+    local RequiredDirecory = loadstring(game:HttpGet(URL), "[ALCHEMY]")
+    
+    RequireCache[Value] = RequiredDirecory
+    return RequiredDirecory()
 end
 
 function GetService(Service)
@@ -44,28 +70,13 @@ function setreadonly(Tbl, State)
     end
 end
 
-function RequireHook(Value)
-    --[[
-    if (not (typeof(Value) == "string") or not checkcaller()) then
-        return OldRequire(Value)
-    end
-    --]]
-
-    if (RequireCache[Value] ~= nil) then
-        local CachedDirectory = RequireCache[Value]
-        return CachedDirectory()
-    end
-
-    local URL = "https://github.com/kgukmz/Alchemy/raw/refs/heads/main/" .. Value
-    local RequiredDirecory = loadstring(game:HttpGet(URL), "[ALCHEMY]")
-    
-    RequireCache[Value] = RequiredDirecory
-    return RequiredDirecory()
-end
-
 getgenv().require = RequireHook -- // was testing something: newcclosure(RequireHook)
 getgenv().GetService = GetService
 
 if (getgenv().setreadonly == nil) then
     getgenv().setreadonly = setreadonly
+end
+
+if (getgenv().Drawing == nil) then
+    getgenv().Drawing = RequireHook("Utils/Modules/Drawing.lua")
 end
