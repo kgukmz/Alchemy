@@ -32,7 +32,7 @@ function Utility:ServerHop(Data)
     local JoinPublicServer = ReplicatedStorage.Requests.JoinPublicServer
     local Servers = {}
 
-    for i, Server in ServerInfo do
+    for i, Server in ServerInfo:GetChildren() do
         local PlayerInfo = Server:FindFirstChild("Players")
         local PlayersDecoded = HttpService:JSONDecode(PlayerInfo.Value)
         local ServerRegion = Server:FindFirstChild("Region")
