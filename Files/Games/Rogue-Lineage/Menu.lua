@@ -8,6 +8,10 @@ table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/Main.lua"))
 table.insert(Tabs, require("Files/Games/Rogue-Lineage/MenuTabs/Configs.lua"))
 
 function Menu:Load()
+    repeat
+        task.wait()
+    until game:IsLoaded() == true
+
     self.Library = Library
 
     self.Window = Library:Window({

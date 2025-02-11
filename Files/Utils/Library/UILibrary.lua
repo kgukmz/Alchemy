@@ -1793,6 +1793,11 @@ do
 			Title.BorderSizePixel = 0
 			Title.Position = UDim2.new(0, 14, 0, 0)
 			Title.Size = UDim2.new(1, 0, 1, 0)
+
+			if Toggle.Risk == true then
+				Title.TextColor3 = Color3.fromRGB(255, 48, 48)
+			end
+
 			Title.Parent = NewToggle
 
 			-- // Functions
@@ -3456,6 +3461,7 @@ do
 				Page = self.Page,
 				Section = self,
 				Name = Properties.Name or "button",
+				Risk = Properties.Risk or false,
 				Callback = (
 					Properties.callback
 						or Properties.Callback
@@ -3515,6 +3521,11 @@ do
 			Value.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Value.BorderSizePixel = 0
 			Value.Size = UDim2.new(1, 0, 1, 0)
+
+			if Button.Risk == true then
+				Value.TextColor3 = Color3.fromRGB(255, 48, 48)
+			end
+
 			Value.Parent = ToggleFrame
 
 			ToggleFrame.Parent = NewButton

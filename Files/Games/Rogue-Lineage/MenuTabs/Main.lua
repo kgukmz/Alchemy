@@ -130,6 +130,7 @@ function Sections:Utility(WindowTab, Library)
 
     UtilitySection:Button({
         Name = "Teleport";
+        Risk = true;
     })
 
     UtilitySection:Textbox({
