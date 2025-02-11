@@ -77,6 +77,7 @@ function Utility:ServerHop(Data)
         if (Filter == "Smallest") then
             JoinPublicServer:FireServer(Servers[1].Job_Id)
         elseif (Filter == "Largest") then
+            pcall(warn, Servers[#Servers], Servers[#Servers].Job_Id)
             JoinPublicServer:FireServer(Servers[#Servers].Job_Id)
         elseif (Filter == "Any") then
             local RandomIndex = math.random(1, #PlayersDecoded)    
