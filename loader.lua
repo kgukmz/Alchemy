@@ -5,7 +5,7 @@ local Success, Error = pcall(function()
 end)
 
 if (Success == false) then
-    warn("Unable to load script environment")
+    warn("Unable to load script environment:", Error)
     return
 end
 
