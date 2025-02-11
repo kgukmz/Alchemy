@@ -42,13 +42,11 @@ function Utility:ServerHop(Data)
             continue
         end
 
-        if (#PlayersDecoded < 2) then
-            print("Unjoinable server Lol")
+        if (#PlayersDecoded < 3) then
             continue
         end
 
         if (#PlayersDecoded == Players.MaxPlayers) then
-            print("Server is full")
             continue
         end
 
