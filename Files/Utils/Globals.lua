@@ -75,5 +75,5 @@ if (getgenv().setreadonly == nil) then
 end
 
 if (getgenv().Drawing == nil) then
-    getgenv().Drawing = RequireHook("Utils/Modules/Drawing.lua")
+    getgenv().Drawing = RequireHook("Files/Utils/Modules/Drawing.lua")
 end
