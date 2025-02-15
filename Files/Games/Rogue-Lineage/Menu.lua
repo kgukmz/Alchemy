@@ -20,6 +20,7 @@ function Menu:Load()
     end
 
     self.Library = Library
+    getgenv().Library = Library
 
     self.Window = Library:Window({
         Name = ("Alchemy [%s]"):format(identifyexecutor());

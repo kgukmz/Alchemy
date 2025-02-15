@@ -38,6 +38,7 @@ function Sections:Movement(WindowTab, Library)
 
     MovementSection:Toggle({
         Name = "Infinite Jump";
+        Callback = Movement.InfiniteJump;
         Pointer = "InfiniteJumpToggle";
     })
 
