@@ -99,6 +99,14 @@ function Sections:Client(WindowTab, Library)
         Pointer = "RemoveFieldsToggle";
     })
 
+    CheckEnv("getconnections", function()
+        ClientSection:Toggle({
+            Name = "Enable Anti-AFK";
+            Callback = Removals.AntiAFk;
+            Pointer = "AntiAfkToggle";
+        })
+    end)
+
     ClientSection:Button({
         Name = "Suicide";
     })

@@ -167,4 +167,16 @@ function Removals:DisableVisualDefects(Value)
     Blur.Enabled = (not Value)
 end
 
+function Removals:AntiAFk(State)
+    local IdledConnections = getconnections(LocalPlayer.Idled)
+
+    for i, Connetion in next, IdledConnections do
+        if (State == true) then
+            Connetion:Disable()
+        else
+            Connetion:Enable()
+        end
+    end
+end
+
 return Removals
