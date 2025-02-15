@@ -109,6 +109,9 @@ function Sections:Client(WindowTab, Library)
 
     ClientSection:Button({
         Name = "Suicide";
+        Callback = function()
+            Library:Notification("Test 123 | Milo", 5)
+        end
     })
 
     ClientSection:Button({

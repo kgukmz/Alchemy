@@ -168,15 +168,7 @@ function Removals:DisableVisualDefects(Value)
 end
 
 function Removals:AntiAFk(State)
-    local IdledConnections = getconnections(LocalPlayer.Idled)
-
-    for i, Connetion in next, IdledConnections do
-        if (State == true) then
-            Connetion:Disable()
-        else
-            Connetion:Enable()
-        end
-    end
+    return true
 end
 
 return Removals
