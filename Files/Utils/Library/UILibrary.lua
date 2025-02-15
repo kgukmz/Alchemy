@@ -830,6 +830,7 @@ do
 				Elements = {};
 				Dragging = { false, UDim2.new(0, 0, 0, 0) };
 				Name = Options.Name or "Monlith";
+				Size = Options.Size or UDim2.new(0, 500, 0, 600);
 			};
 			--
 			local ScreenGui = Instance.new("ScreenGui", game:GetService("RunService"):IsStudio() and game.Players.LocalPlayer.PlayerGui or game.CoreGui)
@@ -844,7 +845,7 @@ do
 			Outline.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 			Outline.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Outline.Position = UDim2.new(0.5, 0, 0.5, 0)
-			Outline.Size = UDim2.new(0, 600, 0, 600)
+			Outline.Size = UDim2.new(0, 500, 0, 600)
 			Library.Holder = Outline
 			Outline.Text = ""
 			Outline.AutoButtonColor = false
