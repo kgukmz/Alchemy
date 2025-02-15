@@ -58,6 +58,24 @@ function GetService(Service)
     return Cloned
 end
 
+function SafeLoad(URL)
+    local Success, HttpGetResult = pcall(game.HttpGet, game, URL)
+
+    if (Success == false) then
+        warn("Unable to get thingy:", URL)
+        return
+    end
+
+    local Success, Loadstring = pcall(loadstring, HttpGetResult, "ALCHEMY")
+
+    if (Success == false) then
+        warn("Unable to loadstring url:", url)
+        return
+    end
+
+    return Loadstring
+end
+
 function setreadonly(Tbl, State)
     if (State == true) then
         table.freeze(Tbl)

@@ -10,6 +10,7 @@ local Event = require("Files/Utils/Event.lua")
 local LocalPlayer = Players.LocalPlayer
 
 local NofallCheck = Event:Create(RunService.Heartbeat)
+local FullbrightChanged = Event:Create(Lighting:GetPropertyChangedSignal("Ambient"))
 
 local OrderFieldCache = {}
 local OldDustInstance

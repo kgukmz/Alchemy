@@ -1,5 +1,8 @@
 local Menu = {}
 local Tabs = {}
+    
+local ConfigFolder = "ALCHEMY/Configurations/"
+local GameConfig = ConfigFolder .. "Rogue-Lineage"
 
 local Library = require("Files/Utils/Library/UILibrary.lua")
 
@@ -11,6 +14,10 @@ function Menu:Load()
     repeat
         task.wait()
     until game:IsLoaded() == true
+
+    if (isfolder(GameConfig) == false) then
+        makefolder(GameConfig)
+    end
 
     self.Library = Library
 
@@ -28,13 +35,6 @@ function Menu:Load()
                 Time = 10;
             })
         end
-    end
-
-    local ConfigFolder = "ALCHEMY/Configurations/"
-    local GameConfig = ConfigFolder .. "Rogue-Lineage"
-
-    if (isfolder(GameConfig) == false) then
-        makefolder(GameConfig)
     end
 
     if (isfile(GameConfig .. "/Auto-Load.txt") == true) then
