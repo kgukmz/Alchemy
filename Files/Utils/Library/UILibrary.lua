@@ -1276,6 +1276,7 @@ do
 					UIGradient.Enabled = Page.Open and true or false
 					Frame.BackgroundColor3 = Page.Open and Color3.new(1,1,1) or Color3.fromRGB(30,30,30)
 					--
+					--[[
 					task.spawn(function()
 						Page.Window.Elements.FadeThing.Visible = true
 						TweenService:Create(Page.Window.Elements.FadeThing, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
@@ -1285,6 +1286,8 @@ do
 						task.wait(0.1)
 						Page.Window.Elements.FadeThing.Visible = false
 					end)
+					--]]
+					RealPage.Visible = Page.Open
 					--
 					for Index, Page in pairs(Page.Window.Pages) do
 						Page.Elements.PageFrame.Size = UDim2.new(1,Index == 1 and -1 or Index == #Page.Window.Pages and -1 or -2,1,Page.Open and -2 or -4)
