@@ -24,7 +24,7 @@ function Menu:Load()
 
     self.Window = Library:Window({
         Name = ("Alchemy [%s]"):format(identifyexecutor());
-        Size = UDim2.new(0, 550, 0, 600)
+        Size = UDim2.new(0, 575, 0, 600)
     })
 
     for i, WindowTab in next, Tabs do
